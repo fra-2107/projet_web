@@ -7,9 +7,9 @@ csv_file = '../Data_Arbre.csv'
 # Connexion à la base de données
 db = mysql.connector.connect(
     host="localhost",
-    user="root",
-    password="",
-    database="arbre"
+    user="etu0106",
+    password="lepooufn",
+    database="etu0106"
 )
 
 cursor = db.cursor()
