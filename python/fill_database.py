@@ -2,7 +2,7 @@ import csv
 import mysql.connector
 
 # Chemin vers le fichier CSV
-csv_file = '../Data_Arbre.csv'
+csv_file = 'Data_Arbre.csv'
 
 # Connexion à la base de données
 db = mysql.connector.connect(
