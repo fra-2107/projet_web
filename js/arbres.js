@@ -3,7 +3,9 @@
 ajaxRequest('GET', 'php/request.php/arbres', afficheArbres);
 
 function afficheArbres(data){
+    console.log("io");
     let arbres = JSON.parse(data);
+    console.log('non');
     let table = document.getElementById('tableArbres');
     for (let arbre of arbres){
         let tr = document.createElement('tr');
