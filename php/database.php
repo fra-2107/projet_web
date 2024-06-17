@@ -38,11 +38,11 @@
   // \param db The connected database.
   // \param login The login of the user (for specific request).
   // \return The list of tweets.
-  function dbRequestTweets($db, $login = '')
+  function dbRequestArbres($db, $login = '')
   {
     try
     {
-      $request = 'SELECT * FROM tweets';
+      $request = 'SELECT * FROM arbre';
       if ($login != '')
         $request .= ' WHERE login=:login';
       $statement = $db->prepare($request);

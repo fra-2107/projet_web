@@ -22,7 +22,7 @@
     $request = $_SERVER['PATH_INFO'];
     $request = explode('/', $request);
 
-    if ($request[1] != 'tweets')
+    if ($request[1] != 'arbres')
     {
         header('HTTP/1.1 400 Bad Request');
         exit;
@@ -32,9 +32,9 @@
     if ($requestMethod == 'GET')
     {
         if(isset($_GET['login']))
-            $data = dbRequestTweets($db, $_GET['login']);
+            $data = dbRequestArbres($db, $_GET['login']);
         else 
-            $data = dbRequestTweets($db);
+            $data = dbRequestArbres($db);
     }
   
     if ($requestMethod == 'POST')

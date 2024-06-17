@@ -1,9 +1,9 @@
 'use strict'
 
 helloWorld();
-ajaxRequest('GET', 'php/request.php', helloWorld);
+ajaxRequest('GET', 'php/request.php/arbres', helloWorld);
 
-function helloWorld()
+function helloWorld(data)
 {
-  console.log('Hello World');
+  console.log(data);
 }
