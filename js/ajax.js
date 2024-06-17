@@ -19,7 +19,7 @@
 function ajaxRequest(type, url, callback, data = null)
 {
   let xhr;
-
+  console.log('Ajax request: ' + type + ' ' + url);
   // Create XML HTTP request.
   xhr = new XMLHttpRequest();
   if (type == 'GET' && data != null)
@@ -27,6 +27,7 @@ function ajaxRequest(type, url, callback, data = null)
   xhr.open(type, url);
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
+  console.log('pet');
   // Add the onload function.
   xhr.onload = () =>
   {
