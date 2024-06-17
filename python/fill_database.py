@@ -2,7 +2,7 @@ import csv
 
 
 # Chemin vers le fichier CSV
-csv_file = '../../Data_Arbre.csv'
+csv_file = '../Data_Arbre.csv'
 
 
 
