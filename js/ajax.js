@@ -27,7 +27,6 @@ function ajaxRequest(type, url, callback, data = null)
   xhr.open(type, url);
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-  console.log('pet');
   // Add the onload function.
   xhr.onload = () =>
   {
@@ -35,15 +34,14 @@ function ajaxRequest(type, url, callback, data = null)
     {
       case 200:
       case 201:
-        console.log('whr'+ xhr.responseText);
+        console.log(xhr.responseText);
         callback(JSON.parse(xhr.responseText));
         break;
       default:
-        console.log("c'est la merde");
         httpErrors(xhr.status);
     }
   };
-  console.log('pouet');
+
   // Send XML HTTP request.
   xhr.send(data);
 }
