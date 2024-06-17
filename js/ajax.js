@@ -39,10 +39,11 @@ function ajaxRequest(type, url, callback, data = null)
         callback(JSON.parse(xhr.responseText));
         break;
       default:
+        console.log("c'est la merde");
         httpErrors(xhr.status);
     }
   };
-
+  console.log('pouet');
   // Send XML HTTP request.
   xhr.send(data);
 }
