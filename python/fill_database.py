@@ -9,7 +9,7 @@ csv_file = '../../Data_Arbre.csv'
 import mysql.connector
 
 db = mysql.connector.connect(
-    host="etu0106.projets.isen-ouest.fr",
+    host="localhost",
     user="etu0106",
     password="lepooufn",
     database="etu0106"
