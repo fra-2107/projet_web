@@ -39,31 +39,37 @@ function afficheArbres(data){
 }
 
 // Récupérer l'élément select
+let selectElement = document.getElementById('fk_stadedev');
 
 // Fonction pour récupérer les options depuis l'API
-async function fetchOptionsFromDB(selectName) {
+async function fetchOptionsFromDB() {
     try {
-            // Fonction callback pour ajouter les options au select
-        let addOptionsToSelect = function(data) {
-            console.log('Options récupérées :', data);
-            let selectElement = document.getElementById(selectName);
+        // let response = await fetch('php/request.php/fk_stadedev'); // Remplacez par l'URL de votre API PHP
+        // let data = await response.json();
+        // console.log('Options récupérées :', data);
+        // // Ajouter les options récupérées au select
+        // data.forEach(optionData => {
+        //     let option = document.createElement('option');
+        //     option.value = optionData.id;
+        //     option.textContent = optionData.fk_stadedev;
+        //     selectElement.appendChild(option);
+        // });
 
+        // On peut aussi utiliser ajaxRequest pour récupérer les options
+        ajaxRequest('GET', 'php/request.php/fk_stadedev', (data) => {
+            console.log('Options récupérées :', data);
             // Ajouter les options récupérées au select
             data.forEach(optionData => {
-                let optionElement = document.createElement('option');
-                optionElement.value = optionData.id;
-                optionElement.textContent = optionData.selectName;
-                selectElement.appendChild(optionElement);
+                let option = document.createElement('option');
+                option.value = optionData.id;
+                option.textContent = optionData.fk_stadedev;
+                selectElement.appendChild(option);
             });
-        };
-
-        // Appeler votre fonction ajaxRequest pour récupérer les données
-        ajaxRequest('GET', 'php/request.php/' + selectName, addOptionsToSelect);
-
+        });
     } catch (error) {
         console.error('Erreur lors de la récupération des options :', error);
     }
 }
 
 // Appeler la fonction pour récupérer et ajouter les options au chargement de la page
-fetchOptionsFromDB('fk_stadedev');
+fetchOptionsFromDB();
