@@ -20,17 +20,25 @@
         </div>
 
         <div class="right_nav">
-            <a href="#">Accueil</a>
+            <a href="index_accueil.html">Accueil</a>
             <a href="carte.html">Carte</a>
             <a href="#">Ajouter un arbre</a>
             <a href="#">Prédiction</a>
             <button class="login-btn">Se connecter</button>
         </div> 
     </nav>
-    
+
     <h1>Requête AJAX vers PHP</h1>
 
-
-    <div id="map" style="width: 50%; height: 600px;"></div>
+    <div class="carte_content">
+        <div id="map" style="width: 50%; height: 600px;"></div>
+        <div class="carte_clusters">
+            <h2>Prédiction des clusters</h2>
+            <div class="cluster_card">
+                <input type="text" placeholder="Nombre de clusters">
+                <button class="cta-btn">Prédire</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
