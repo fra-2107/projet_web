@@ -3,9 +3,11 @@
 ajaxRequest('GET', 'php/request.php/arbres', afficheArbres);
 
 $('#ajoutArbre').submit((event) =>{
-    console.log('ajouter');
-    console.log(event);
-    // ajaxRequest('POST', 'php/request.php/arbres', afficheArbres);
+    event.preventDefault();
+    ajaxRequest('POST', 'php/request.php/arbres/', () =>
+      {
+        ajaxRequest('GET', 'php/request.php/arbres/', afficheArbres);
+      });
 })
 
 function afficheArbres(data){
