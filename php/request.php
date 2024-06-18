@@ -34,7 +34,7 @@
             $offset = ($page - 1) * $limit;
         
             $total = dbGetTotalArbres($db);
-            $arbres = dbGetArbres($db, $limit, $offset);
+            $arbres = dbGetArbres($db, $limit);
         
             echo json_encode([
                 'total' => $total,

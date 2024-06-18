@@ -59,7 +59,7 @@
     return $result;
   }
 
-  function dbGetArbres($db, $filters = null, $limit = 10){
+  function dbGetArbres($db, $limit = 10, $filters = null){
     $whereArgs = [];
 
     if (isset($_GET["page"])) {
