@@ -43,6 +43,7 @@ function afficheArbres(data){
 // Fonction pour récupérer les options depuis l'API
 async function fetchOptionsFromDB(selectName) {
     try {
+        let i=1;
         let urlapi= 'php/request.php/'+ selectName;
         let selectElement = document.getElementById(selectName);
         
@@ -50,10 +51,10 @@ async function fetchOptionsFromDB(selectName) {
             // Ajouter les options récupérées au select
             data.forEach(optionData => {
                 let option = document.createElement('option');
-                option.value = optionData.id;
-                console.log('id '+optionData.id);
+                option.value = i;
                 option.textContent = optionData[selectName];
                 selectElement.appendChild(option);
+                i++;
             });
         });
     } catch (error) {
