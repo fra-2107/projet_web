@@ -1,0 +1,117 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* BARRE DE NAVIGATION */
+nav {
+    background-color: #f2f3eb;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+nav .right_nav {
+    margin-left: 70rem;
+}
+
+nav .right_nav a{
+    margin-right: 15px;
+    text-decoration: none;
+    color: black;
+}
+
+nav .right_nav a:hover {
+    color:#34671b;
+    border-bottom: solid #34671b;
+}
+
+.login-btn {
+    margin-left: 10px;
+    background-color: #34671b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* FORMAT MOBILE NAV */
+@media screen and (max-width:680px) {
+    nav .right_nav {
+        margin-left: 0rem;
+    }
+}
+/* FIN FORMAT MOBILE NAV */
+
+/* FIN BARRE DE NAVIGATION */
+
+
+/* HEADER */
+header .content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    background: url('img/fond_header.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+header .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+     /* Ajustez l'opacité ici */
+  }
+
+header h1 {
+    font-size: 3em;
+    margin: 17.8rem 0px 0px 0px;
+}
+
+header p {
+    font-size: 1.2em;
+    margin: 20px 0;
+}
+
+header .cta-btn {
+    background-color: #34671b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1em;
+    margin: 0px 0px 17.8rem 0px;
+}
+/* FIN HEADER */
+
+
+/* FOOTER */
+
+footer {
+    background-color: #f2f3eb;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.footer-logos {
+    margin-top: 10px;
+    margin-left: 70rem;
+}
+
+.footer-logos img {
+    width: 100px;
+    margin: 0 10px;
+}
+
+/* FIN FOOTER */
