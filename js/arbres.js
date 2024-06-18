@@ -52,7 +52,7 @@ async function fetchOptionsFromDB(selectName) {
             data.forEach(optionData => {
                 let option = document.createElement('option');
                 option.value = optionData.id;
-                option.textContent = optionData.fk_stadedev;
+                option.textContent = optionData.selectName;
                 selectElement.appendChild(option);
             });
         });
