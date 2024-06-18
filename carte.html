@@ -9,11 +9,37 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src="js/ajax.js" defer></script>
     <script src="js/map.js" defer></script>
+
+    <link rel="stylesheet" href="assets/style.css">
+
 </head>
 <body>
-    <h1>Requête AJAX vers PHP</h1>
+    <nav>
+        <div class="left_nav">
+            <img src="assets/img/logo_web_project.jpg" alt="ISEN Logo" class="logo" width="60px">
+        </div>
 
+        <div class="right_nav">
+            <a href="index_accueil.html">Accueil</a>
+            <a href="carte.html">Carte</a>
+            <a href="#">Ajouter un arbre</a>
+            <a href="#">Prédiction</a>
+            <button class="login-btn">Se connecter</button>
+        </div> 
+    </nav>
+    <main>
+        <h1>Requête AJAX vers PHP</h1>
 
-    <div id="map" style="width: 50%; height: 600px;"></div>
+        <div class="carte_content">
+            <div id="map" style="width: 50%; height: 600px;"></div>
+            <div class="carte_clusters">
+                <h2>Prédiction des clusters</h2>
+                <div class="cluster_card">
+                    <input type="text" placeholder="Nombre de clusters">
+                    <button class="cta-btn">Prédire</button>
+                </div>
+            </div>
+        </div>
+    </main>
 </body>
 </html>
