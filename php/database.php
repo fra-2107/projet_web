@@ -143,4 +143,15 @@
     }
     return true;
   }
+
+  function dbGetOptions($db, $table) {
+    try {
+        $stmt = $db->prepare("SELECT * FROM $table");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        echo json_encode(['error' => 'Erreur : ' . $e->getMessage()]);
+        return false;
+    }
+}
 ?>
