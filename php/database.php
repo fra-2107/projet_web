@@ -67,13 +67,12 @@
   // \param login The login of the user.
   // \param text The tweet to add.
   // \return True on success, false otherwise.
-  function dbAddTweet($db, $login, $text)
+  function dbAddArbre($db, $text)
   {
     try
     {
-      $request = 'INSERT INTO tweets(login, text) VALUES(:login, :text)';
+      $request = 'INSERT INTO arbre(login, text) VALUES(:login, :text)';
       $statement = $db->prepare($request);
-      $statement->bindParam(':login', $login, PDO::PARAM_STR, 20);
       $statement->bindParam(':text', $text, PDO::PARAM_STR, 80);
       $statement->execute();
     }

@@ -38,8 +38,11 @@
     }
   
     if ($requestMethod == 'POST')
-        if(isset($_POST['login'])&&isset($_POST['text']))
-            $data = dbAddTweet($db, $_POST['login'], strip_tags($_POST['text']));
+        // if(isset($_POST['login'])&&isset($_POST['text']))
+            // $data = dbAddArbre($db, strip_tags($_POST['text']));
+
+        if(isset($_POST['text']))
+            $data = dbAddArbre($db, strip_tags($_POST['text']));
     
     if ($requestMethod == 'PUT')
     {

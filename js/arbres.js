@@ -3,7 +3,9 @@
 ajaxRequest('GET', 'php/request.php/arbres', afficheArbres);
 
 $('#ajouterbtn').onclick(() => {
-    ajaxRequest('POST', 'php/request.php/arbres', afficheArbres);
+    console.log('ajouter');
+    console.log($POST);
+    // ajaxRequest('POST', 'php/request.php/arbres', afficheArbres);
 })
 
 function afficheArbres(data){
