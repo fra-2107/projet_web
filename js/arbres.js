@@ -43,17 +43,18 @@ function afficheArbres(data){
 // Fonction pour récupérer les options depuis l'API
 async function fetchOptionsFromDB(selectName) {
     try {
+        let i=1;
         let urlapi= 'php/request.php/'+ selectName;
         let selectElement = document.getElementById(selectName);
         
         ajaxRequest('GET', urlapi, (data) => {
-            console.log('Options récupérées :', data);
             // Ajouter les options récupérées au select
             data.forEach(optionData => {
                 let option = document.createElement('option');
-                option.value = optionData.id;
+                option.value = optionData[selectName];
                 option.textContent = optionData[selectName];
                 selectElement.appendChild(option);
+                i++;
             });
         });
     } catch (error) {
