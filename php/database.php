@@ -38,17 +38,62 @@
   // \param db The connected database.
   // \param login The login of the user (for specific request).
   // \return The list of tweets.
-  function dbGetArbres($db, $limit, $offset) {
-    try {
-        $stmt = $db->prepare("SELECT * FROM arbre LIMIT :limit OFFSET :offset");
-        $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
-        $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    } catch (PDOException $e) {
-        echo json_encode(['error' => 'Erreur : ' . $e->getMessage()]);
-        return false;
+  function dbRequestArbres($db, $login = '')
+  {
+    try
+    {
+      $request = 'SELECT * FROM arbre';
+      if ($login != '')
+        $request .= ' WHERE login=:login';
+      $statement = $db->prepare($request);
+      if ($login != '')
+        $statement->bindParam(':login', $login, PDO::PARAM_STR, 20);
+      $statement->execute();
+      $result = $statement->fetchAll(PDO::FETCH_ASSOC);
     }
+    catch (PDOException $exception)
+    {
+      error_log('Request error: '.$exception->getMessage());
+      return false;
+    }
+    return $result;
+  }
+
+  function dbGetArbres($db, $filters = null, $limit = 10){
+    $whereArgs = [];
+
+    if (isset($_GET["page"])) {
+        $page = intval($_GET['page']);
+    } else {
+        $page = 1;
+    }
+
+    $decalage = ($page - 1) * $limit;
+
+    $sql = 'SELECT * FROM arbre ';
+
+    if ($filters != null) {
+        foreach ($filters as $key => $value) {
+            if ($value != '') $whereArgs[] = $key . ' = :' . $key;
+        }
+    }
+    if (!empty($whereArgs)) $sql .= 'WHERE ' . implode(' AND ', $whereArgs);
+
+    $sql .= ' LIMIT :limit OFFSET :offset';
+    $sth = $db->prepare($sql);
+
+    if ($filters != null) {
+        // if ($filters['date'] != '') $sth->bindParam('date', $filters['date']);
+        // if ($filters['espece'] != '') $sth->bindParam('espece', $filters['espece']);
+        // if ($filters['zone'] != '') $sth->bindParam('zone', $filters['zone']);
+        echo('filters: ');
+    }
+    $sth->bindParam(':limit', $limit, PDO::PARAM_INT);
+    $sth->bindParam(':offset', $decalage, PDO::PARAM_INT);
+    $sth->execute();
+    $result = $sth->fetchAll(PDO::FETCH_ASSOC);
+
+  return $result;
 }
 
 function dbGetTotalArbres($db) {
