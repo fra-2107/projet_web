@@ -39,13 +39,13 @@ function afficheArbres(data){
 }
 
 // Récupérer l'élément select
-let selectElement = document.getElementById('fk_stadedev');
 
 // Fonction pour récupérer les options depuis l'API
 async function fetchOptionsFromDB(selectName) {
     try {
         let urlapi= 'php/request.php/'+ selectName;
-
+        let selectElement = document.getElementById(selectName);
+        
         ajaxRequest('GET', urlapi, (data) => {
             console.log('Options récupérées :', data);
             // Ajouter les options récupérées au select
