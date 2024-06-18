@@ -154,4 +154,22 @@
         return false;
     }
 }
+
+function dbGetCoordMap($db)
+{
+  try
+  {
+      $request = 'SELECT lat, longi FROM arbre';
+      $statement = $db->prepare($request);
+      $statement->execute();
+      $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+  }
+  catch (PDOException $exception)
+  {
+      error_log('Request error: '.$exception->getMessage());
+      return false;
+  }
+  return $result;
+}
+
 ?>

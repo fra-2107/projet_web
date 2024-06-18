@@ -107,7 +107,7 @@
     }else if ($request[1] == 'fk_port'){
         $data = dbGetOptions($db, 'fk_port');
     }else if ($request[1] == 'map'){
-        // $data = dbRequestMap($db); mettre ici le nom de ta fonction
+        $data = dbGetCoordMap($db);
     }
     
     else
