@@ -62,4 +62,7 @@ async function fetchOptionsFromDB(selectName) {
 }
 
 // Appeler la fonction pour récupérer et ajouter les options au chargement de la page
+fetchOptionsFromDB('fk_arb_etat');
 fetchOptionsFromDB('fk_stadedev');
+fetchOptionsFromDB('fk_pied');
+fetchOptionsFromDB('fk_port');
