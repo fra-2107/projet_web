@@ -56,7 +56,7 @@
         // Si aucun champ n'est manquant, procéder à la validation des données
         if (empty($errors)) {
             // Validation des données pour s'assurer qu'elles sont numériques où c'est nécessaire
-            foreach (['haut_tot', 'haut_tronc', 'diam_tronc', 'lat', 'longi', 'fk_arb_etat', 'fk_stadedev', 'fk_port', 'fk_pied', 'remarquable'] as $numericField) {
+            foreach (['haut_tot', 'haut_tronc', 'diam_tronc', 'lat', 'longi', 'fk_arb_etat', 'fk_stadedev', 'fk_port', 'fk_pied'] as $numericField) {
                 if (!is_numeric($data[$numericField])) {
                     $errors[] = "Le champ $numericField doit être un nombre valide.";
                 }
