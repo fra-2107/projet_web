@@ -100,7 +100,11 @@
     }
     else if ($request[1] == 'fk_stadedev'){
         $data = dbGetOptions($db, 'fk_stadedev');
-    }else
+    }else if ($request[1] == 'map'){
+        // $data = dbRequestMap($db); mettre ici le nom de ta fonction
+    }
+    
+    else
     {
         header('HTTP/1.1 400 Bad Request');
         exit;
