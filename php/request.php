@@ -76,8 +76,6 @@
                 // Afficher les erreurs
                 echo json_encode($errors);
             }
-        } else {
-            echo json_encode(['message' => 'Erreur : méthode de requête non valide.']);
         }
 
         if ($requestMethod == 'PUT')
