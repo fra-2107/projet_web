@@ -16,7 +16,8 @@ $('#ajoutArbre').submit((event) => {
       fk_arb_etat: $('#fk_arb_etat').val(),
       fk_stadedev: $('#fk_stadedev').val(),
       fk_port: $('#fk_port').val(),
-      fk_pied: $('#fk_pied').val()
+      fk_pied: $('#fk_pied').val(),
+      remarquable : $('#remarquable').val()
     };
   
     console.log('Form Data:', formData);

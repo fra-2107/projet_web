@@ -81,6 +81,7 @@
         $stmt->bindParam(':fk_stadedev', $data['fk_stadedev'], PDO::PARAM_INT);
         $stmt->bindParam(':fk_port', $data['fk_port'], PDO::PARAM_INT);
         $stmt->bindParam(':fk_pied', $data['fk_pied'], PDO::PARAM_INT);
+        $stmt->bindParam(':remarquable', $data['remarquable'], PDO::PARAM_INT);
         $stmt->execute();
         return $db->lastInsertId();
     } catch (PDOException $e) {

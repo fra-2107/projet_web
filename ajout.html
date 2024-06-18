@@ -26,10 +26,27 @@
             <input type="number" id="diam_tronc" name="diam_tronc" placeholder="Diamètre du Tronc" required>
             <input type="number" id="lat" name="lat" placeholder="Latitude" required>
             <input type="number" id="longi" name="longi" placeholder="Longitude" required>
-            <input type="number" id="fk_arb_etat" name="fk_arb_etat" placeholder="État de l'Arbre" required>
-            <input type="number" id="fk_stadedev" name="fk_stadedev" placeholder="Stade de Développement" required>
-            <input type="number" id="fk_port" name="fk_port" placeholder="Port" required>
-            <input type="number" id="fk_pied" name="fk_pied" placeholder="Pied" required>
+            <select id="fk_arb_etat" name="fk_arb_etat" required>
+                <option value="1">EN PLACE</option>
+                <option value="2">ABATTU</option>
+            </select>
+
+            <select id="fk_stadedev" name="fk_stadedev" required>
+                <option value="1">Jeune</option>
+                <option value="2">Adulte</option>
+            </select>
+
+            <select id="fk_port" name="fk_port" required>
+                <option value="1">etete</option>
+                <option value="2">cepee</option>
+            </select>
+
+            <select id="fk_pied" name="fk_pied" required>
+                <option value="1">Terre</option>
+                <option value="2">gazon</option>
+            </select>
+
+            <input type="text" id="remarquable" name="remarquable" placeholder="Remarquable" required>
             <button type="submit">Ajouter l'Arbre</button>
         </form>
 
