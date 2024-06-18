@@ -124,7 +124,7 @@ header p {
 }
 
 .carte_content .carte_clusters{
-    border: solid 1px black;
+    border: solid 1px rgb(109, 109, 109);
     border-radius: 5px;
 }
 
