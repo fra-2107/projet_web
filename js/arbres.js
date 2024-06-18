@@ -6,7 +6,7 @@ $('#ajoutArbre').submit((event) =>{
     event.preventDefault();
     ajaxRequest('POST', 'php/request.php/arbres/', () =>
       {
-        ajaxRequest('GET', 'php/request.php/arbres/', afficheArbres);
+        ajaxRequest('GET', 'php/request.php/arbres', afficheArbres);
       });
 })
 
