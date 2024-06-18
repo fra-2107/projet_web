@@ -19,61 +19,19 @@
 
     </head>
     <body>
-        <div id="ajoutArbre">
-            <form>
-                <label for="espece">Espece de l'arbre</label>
-                <input type="text" name="espece" id="espece">
-
-                <label for="haut_tot">hauteur totale de l'arbre</label>
-                <input type="number" name="haut_tot" id="haut_tot">
-
-                <label for="haut_tronc">hauteur du tronc de l'arbre</label>
-                <input type="number" name="haut_tronc" id="haut_tronc">
-
-                <label for="diam_tronc">diametre du tronc de l'arbre</label>
-                <input type="number" name="diam_tronc" id="diam_tronc">
-
-                <label for="lat">latitude de l'arbre (X)</label>
-                <input type="number" name="lat" id="lat" step="any">
-
-                <label for="longi">longitude de l'arbre (Y)</label>
-                <input type="number" name="longi" id="longi" step="any">
-
-                <label for="remarquable">arbre remarquable</label>
-                <input type="checkbox" name="remarquable" id="remarquable">
-
-                <label for="fk_arb_etat">etat de l'arbre</label>
-                <select name="fk_arb_etat" id="fk_arb_etat">
-                    <option value="1">EN PLACE</option>
-                    <option value="2">ABATTU</option>
-                    <option value="3">SUPPRIME</option>
-                </select>
-
-                <label for="fk_stadedev">stade de developpement de l'arbre</label>
-                <select name="fk_stadedev" id="fk_stadedev">
-                    <option value="1">JEUNE</option>
-                    <option value="2">ADULTE</option>
-                    <option value="3">VIEUX</option>
-                </select>
-
-                <label for="fk_port">port de l'arbre</label>
-                <select name="fk_port" id="fk_port">
-                    <option value="1">Couronne</option>
-                    <option value="2">réduit relâché</option>
-                    <option value="3">semi libre</option>
-                </select>
-
-                <label for="fk_pied">pied de l'arbre</label>
-                <select name="fk_pied" id="fk_pied">
-                    <option value="1">gazon</option>
-                    <option value="2">Terre</option>
-                </select>
-
-
-                <input type="submit" value="Ajouter" id="ajouterbtn">
-
-            </form>
-        </div>
+        <form id="ajoutArbre">
+            <input type="text" id="espece" name="espece" placeholder="Espèce" required>
+            <input type="number" id="haut_tot" name="haut_tot" placeholder="Hauteur Totale" required>
+            <input type="number" id="haut_tronc" name="haut_tronc" placeholder="Hauteur du Tronc" required>
+            <input type="number" id="diam_tronc" name="diam_tronc" placeholder="Diamètre du Tronc" required>
+            <input type="number" id="lat" name="lat" placeholder="Latitude" required>
+            <input type="number" id="longi" name="longi" placeholder="Longitude" required>
+            <input type="number" id="fk_arb_etat" name="fk_arb_etat" placeholder="État de l'Arbre" required>
+            <input type="number" id="fk_stadedev" name="fk_stadedev" placeholder="Stade de Développement" required>
+            <input type="number" id="fk_port" name="fk_port" placeholder="Port" required>
+            <input type="number" id="fk_pied" name="fk_pied" placeholder="Pied" required>
+            <button type="submit">Ajouter l'Arbre</button>
+        </form>
 
         <table id="tableArbres"></table>
         

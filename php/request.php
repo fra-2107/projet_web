@@ -38,50 +38,45 @@
     }
   
     if ($requestMethod == 'POST'){
-        // Vérification de l'existence de tous les paramètres requis
+        // Liste des champs requis
         $requiredFields = ['espece', 'haut_tot', 'haut_tronc', 'diam_tronc', 'lat', 'longi', 'fk_arb_etat', 'fk_stadedev', 'fk_port', 'fk_pied'];
         $data = [];
         $errors = [];
     
+        // Vérifier la présence de chaque champ requis dans $_POST
         foreach ($requiredFields as $field) {
-            if (isset($_POST[$field])) {
-                // Nettoyage et assignation des valeurs
+            if (isset($_POST[$field]) && !empty($_POST[$field])) {
+                // Nettoyer les valeurs et les stocker dans le tableau $data
                 $data[$field] = strip_tags($_POST[$field]);
             } else {
                 $errors[] = "Le champ $field est manquant.";
             }
         }
     
+        // Si aucun champ n'est manquant, procéder à la validation des données
         if (empty($errors)) {
-            // Validation des données, par exemple s'assurer que les valeurs sont des nombres valides
-            if (!is_numeric($data['haut_tot']) || !is_numeric($data['haut_tronc']) || !is_numeric($data['diam_tronc']) ||
-                !is_numeric($data['lat']) || !is_numeric($data['longi']) ||
-                !is_numeric($data['fk_arb_etat']) || !is_numeric($data['fk_stadedev']) ||
-                !is_numeric($data['fk_port']) || !is_numeric($data['fk_pied'])) {
-                $errors[] = "Tous les champs numériques doivent contenir des valeurs valides.";
-            }
-    
-            if (empty($errors)) {
-                // Appel de la fonction pour ajouter les données à la base
-                $result = dbAddArbre($db, $data);
-                
-                if ($result) {
-                    echo "L'arbre a été ajouté avec succès. ID : " . $result;
-                } else {
-                    echo "Erreur lors de l'ajout de l'arbre.";
+            // Validation des données pour s'assurer qu'elles sont numériques où c'est nécessaire
+            foreach (['haut_tot', 'haut_tronc', 'diam_tronc', 'lat', 'longi', 'fk_arb_etat', 'fk_stadedev', 'fk_port', 'fk_pied'] as $numericField) {
+                if (!is_numeric($data[$numericField])) {
+                    $errors[] = "Le champ $numericField doit être un nombre valide.";
                 }
-            } else {
-                foreach ($errors as $error) {
-                    echo $error . "<br>";
-                }
-            }
-        } else {
-            foreach ($errors as $error) {
-                echo $error . "<br>";
             }
         }
+    
+        // Si aucune erreur de validation, insérer les données dans la base de données
+        if (empty($errors)) {
+            $result = dbAddArbre($db, $data);
+            if ($result) {
+                echo json_encode(['message' => "L'arbre a été ajouté avec succès. ID : " . $result]);
+            } else {
+                echo json_encode(['message' => "Erreur lors de l'ajout de l'arbre."]);
+            }
+        } else {
+            // Afficher les erreurs
+            echo json_encode($errors);
+        }
     } else {
-        echo 'Erreur : méthode de requête non valide.';
+        echo json_encode(['message' => 'Erreur : méthode de requête non valide.']);
     }
 
     if ($requestMethod == 'PUT')

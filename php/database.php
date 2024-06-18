@@ -67,7 +67,7 @@
   // \param login The login of the user.
   // \param text The tweet to add.
   // \return True on success, false otherwise.
-  function dbAddArbre($db, $data){
+  function dbAddArbre($db, $data) {
     try {
         $stmt = $db->prepare("INSERT INTO arbres (espece, haut_tot, haut_tronc, diam_tronc, lat, longi, fk_arb_etat, fk_stadedev, fk_port, fk_pied)
                               VALUES (:espece, :haut_tot, :haut_tronc, :diam_tronc, :lat, :longi, :fk_arb_etat, :fk_stadedev, :fk_port, :fk_pied)");
