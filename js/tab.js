@@ -3,7 +3,7 @@
 ajaxRequest('GET', 'php/request.php/arbres', afficheArbres);
 
 function afficheArbres(data){
-    tableArbre=document.getElementById('arbres');
+    let tableArbre=document.getElementById('arbres');
     data.forEach(el => {
         tableArbre.document.createElement('tr');
         tableArbre.document.createElement('td_id').textContent=el.id;
