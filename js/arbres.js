@@ -39,25 +39,32 @@ function afficheArbres(data){
 }
 
 // Récupérer l'élément select
-let selectElement = document.getElementById('fk_stadedev');
 
 // Fonction pour récupérer les options depuis l'API
-async function fetchOptionsFromDB() {
+async function fetchOptionsFromDB(selectName) {
     try {
-        let response = await fetch('php/request.php/stadedev'); // Remplacez par l'URL de votre API PHP
-        let data = await response.json();
-        console.log('Options récupérées :', data);
-        // Ajouter les options récupérées au select
-        data.forEach(optionData => {
-            let option = document.createElement('option');
-            option.value = optionData.id;
-            option.textContent = optionData.fk_stadedev;
-            selectElement.appendChild(option);
-        });
+            // Fonction callback pour ajouter les options au select
+        let addOptionsToSelect = function(data) {
+            console.log('Options récupérées :', data);
+            let selectElement = document.getElementById(selectName);
+
+            // Ajouter les options récupérées au select
+            data.forEach(optionData => {
+                let option = document.createElement('option');
+                option.value = optionData.id;
+                option.textContent = optionData.selectName; // Assurez-vous que le champ correct est utilisé
+
+                selectElement.appendChild(option);
+            });
+        };
+
+        // Appeler votre fonction ajaxRequest pour récupérer les données
+        ajaxRequest('GET', 'php/request.php/' + selectName, addOptionsToSelect);
+        
     } catch (error) {
         console.error('Erreur lors de la récupération des options :', error);
     }
 }
 
 // Appeler la fonction pour récupérer et ajouter les options au chargement de la page
-fetchOptionsFromDB();
+fetchOptionsFromDB('fk_stadedev');

@@ -98,7 +98,7 @@
                 $data = dbDeleteTweet($db, intval($id), $_GET['login']);
         }
     }
-    else if ($request[1] == 'stadedev'){
+    else if ($request[1] == 'fk_stadedev'){
         $data = dbGetOptions($db, 'fk_stadedev');
     }else
     {
