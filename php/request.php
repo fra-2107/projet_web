@@ -29,10 +29,19 @@
 
         if ($requestMethod == 'GET')
         {
-            if(isset($_GET['login']))
-                $data = dbRequestArbres($db, $_GET['login']);
-            else 
-                $data = dbRequestArbres($db);
+            $limit = isset($_GET['limit']) ? (int)$_GET['limit'] : 20;
+            $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+            $offset = ($page - 1) * $limit;
+        
+            $total = dbGetTotalArbres($db);
+            $arbres = dbGetArbres($db, $limit, $offset);
+        
+            echo json_encode([
+                'total' => $total,
+                'page' => $page,
+                'limit' => $limit,
+                'data' => $arbres
+            ]);
         }
     
         if ($requestMethod == 'POST'){

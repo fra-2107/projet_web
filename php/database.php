@@ -38,26 +38,28 @@
   // \param db The connected database.
   // \param login The login of the user (for specific request).
   // \return The list of tweets.
-  function dbRequestArbres($db, $login = '')
-  {
-    try
-    {
-      $request = 'SELECT * FROM arbre';
-      if ($login != '')
-        $request .= ' WHERE login=:login';
-      $statement = $db->prepare($request);
-      if ($login != '')
-        $statement->bindParam(':login', $login, PDO::PARAM_STR, 20);
-      $statement->execute();
-      $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+  function dbGetArbres($db, $limit, $offset) {
+    try {
+        $stmt = $db->prepare("SELECT * FROM arbre LIMIT :limit OFFSET :offset");
+        $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+        $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        echo json_encode(['error' => 'Erreur : ' . $e->getMessage()]);
+        return false;
     }
-    catch (PDOException $exception)
-    {
-      error_log('Request error: '.$exception->getMessage());
+}
+
+function dbGetTotalArbres($db) {
+  try {
+      $stmt = $db->query("SELECT COUNT(*) as total FROM arbre");
+      return $stmt->fetch(PDO::FETCH_ASSOC)['total'];
+  } catch (PDOException $e) {
+      echo json_encode(['error' => 'Erreur : ' . $e->getMessage()]);
       return false;
-    }
-    return $result;
   }
+}
 
   //----------------------------------------------------------------------------
   //--- dbAddCTweet ------------------------------------------------------------
