@@ -52,15 +52,16 @@ async function fetchOptionsFromDB(selectName) {
             data.forEach(optionData => {
                 let option = document.createElement('option');
                 option.value = optionData.id;
+                console.log(optionData.id);
                 option.textContent = optionData.selectName; // Assurez-vous que le champ correct est utilisé
-
+                console.log(optionData.selectName);
                 selectElement.appendChild(option);
             });
         };
 
         // Appeler votre fonction ajaxRequest pour récupérer les données
         ajaxRequest('GET', 'php/request.php/' + selectName, addOptionsToSelect);
-        
+
     } catch (error) {
         console.error('Erreur lors de la récupération des options :', error);
     }
