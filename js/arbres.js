@@ -46,7 +46,7 @@ async function fetchOptionsFromDB() {
     try {
         let response = await fetch('php/request.php/stadedev'); // Remplacez par l'URL de votre API PHP
         let data = await response.json();
-
+        console.log('Options récupérées :', data);
         // Ajouter les options récupérées au select
         data.forEach(optionData => {
             let option = document.createElement('option');
