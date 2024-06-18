@@ -21,13 +21,16 @@ $('#ajoutArbre').submit((event) => {
   
     console.log('Form Data:', formData);
 
+    // Convert formData to URL-encoded string
+    let urlEncodedData = new URLSearchParams(formData).toString();
+
     // Envoyer les données via AJAX
     ajaxRequest('POST', 'php/request.php/arbres/', (response) => {
-      console.log('Arbre ajouté avec succès:', response);
-      // Mettre à jour l'affichage des arbres
-      ajaxRequest('GET', 'php/request.php/arbres', afficheArbres);
-    }, formData);
-  });
+        console.log('Arbre ajouté avec succès:', response);
+        // Mettre à jour l'affichage des arbres
+        ajaxRequest('GET', 'php/request.php/arbres', afficheArbres);
+    }, urlEncodedData);
+});
   
 
 function afficheArbres(data){
