@@ -51,7 +51,7 @@ async function fetchOptionsFromDB(selectName) {
             // Ajouter les options récupérées au select
             data.forEach(optionData => {
                 let option = document.createElement('option');
-                option.value = i;
+                option.value = optionData[selectName];
                 option.textContent = optionData[selectName];
                 selectElement.appendChild(option);
                 i++;
