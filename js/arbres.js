@@ -53,9 +53,9 @@ async function fetchOptionsFromDB(selectName) {
                 console.log(data);
                 let option = document.createElement('option');
                 option.value = optionData.id;
-                console.log(optionData.id);
+                console.log('id'+ optionData.id);
                 option.textContent = optionData.selectName; // Assurez-vous que le champ correct est utilisé
-                console.log(optionData.selectName);
+                console.log('name'+optionData.selectName);
                 selectElement.appendChild(option);
             });
         };
