@@ -1,6 +1,6 @@
 'use strict'
 
-ajaxRequest('GET', 'php/request.php/arbres', afficheArbres);
+// ajaxRequest('GET', 'php/request.php/arbres', afficheArbres);
 
 $('#ajoutArbre').submit((event) =>{
     event.preventDefault();
