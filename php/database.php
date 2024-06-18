@@ -67,23 +67,28 @@
   // \param login The login of the user.
   // \param text The tweet to add.
   // \return True on success, false otherwise.
-  function dbAddTweet($db, $login, $text)
-  {
-    try
-    {
-      $request = 'INSERT INTO tweets(login, text) VALUES(:login, :text)';
-      $statement = $db->prepare($request);
-      $statement->bindParam(':login', $login, PDO::PARAM_STR, 20);
-      $statement->bindParam(':text', $text, PDO::PARAM_STR, 80);
-      $statement->execute();
+  function dbAddArbre($db, $data) {
+    try {
+        $stmt = $db->prepare("INSERT INTO arbre (espece, haut_tot, haut_tronc, diam_tronc, lat, longi, fk_arb_etat, fk_stadedev, fk_port, fk_pied, remarquable)
+                              VALUES (:espece, :haut_tot, :haut_tronc, :diam_tronc, :lat, :longi, :fk_arb_etat, :fk_stadedev, :fk_port, :fk_pied, :remarquable)");
+        $stmt->bindParam(':espece', $data['espece'], PDO::PARAM_STR);
+        $stmt->bindParam(':haut_tot', $data['haut_tot'], PDO::PARAM_INT);
+        $stmt->bindParam(':haut_tronc', $data['haut_tronc'], PDO::PARAM_INT);
+        $stmt->bindParam(':diam_tronc', $data['diam_tronc'], PDO::PARAM_INT);
+        $stmt->bindParam(':lat', $data['lat'], PDO::PARAM_STR);
+        $stmt->bindParam(':longi', $data['longi'], PDO::PARAM_STR);
+        $stmt->bindParam(':fk_arb_etat', $data['fk_arb_etat'], PDO::PARAM_INT);
+        $stmt->bindParam(':fk_stadedev', $data['fk_stadedev'], PDO::PARAM_INT);
+        $stmt->bindParam(':fk_port', $data['fk_port'], PDO::PARAM_INT);
+        $stmt->bindParam(':fk_pied', $data['fk_pied'], PDO::PARAM_INT);
+        $stmt->bindParam(':remarquable', $data['remarquable'], PDO::PARAM_STR);
+        $stmt->execute();
+        return $db->lastInsertId();
+    } catch (PDOException $e) {
+        echo json_encode(['error' => 'Erreur : ' . $e->getMessage()]);
+        return false;
     }
-    catch (PDOException $exception)
-    {
-      error_log('Request error: '.$exception->getMessage());
-      return false;
-    }
-    return true;
-  }
+}
   
   //----------------------------------------------------------------------------
   //--- dbModifyTweet ----------------------------------------------------------

@@ -37,10 +37,56 @@
             $data = dbRequestArbres($db);
     }
   
-    if ($requestMethod == 'POST')
-        if(isset($_POST['login'])&&isset($_POST['text']))
-            $data = dbAddTweet($db, $_POST['login'], strip_tags($_POST['text']));
+    if ($requestMethod == 'POST'){
+        // Liste des champs requis
+        $requiredFields = ['espece', 'haut_tot', 'haut_tronc', 'diam_tronc', 'lat', 'longi', 'fk_arb_etat', 'fk_stadedev', 'fk_port', 'fk_pied', 'remarquable'];
+        $data = [];
+        $errors = [];
     
+        // Log the POST data to ensure it's correct
+        error_log('POST Data: ' . print_r($_POST, true));
+    
+        // Vérifier la présence de chaque champ requis dans $_POST
+        foreach ($requiredFields as $field) {
+            if (isset($_POST[$field]) && !empty($_POST[$field])) {
+                // Nettoyer les valeurs et les stocker dans le tableau $data
+                $data[$field] = strip_tags($_POST[$field]);
+            } else {
+                $errors[] = "Le champ $field est manquant.";
+            }
+        }
+    
+        // Log errors if any
+        if (!empty($errors)) {
+            error_log('Errors: ' . print_r($errors, true));
+        }
+    
+        // Si aucun champ n'est manquant, procéder à la validation des données
+        if (empty($errors)) {
+            // Validation des données pour s'assurer qu'elles sont numériques où c'est nécessaire
+            foreach (['haut_tot', 'haut_tronc', 'diam_tronc', 'lat', 'longi', 'fk_arb_etat', 'fk_stadedev', 'fk_port', 'fk_pied'] as $numericField) {
+                if (!is_numeric($data[$numericField])) {
+                    $errors[] = "Le champ $numericField doit être un nombre valide.";
+                }
+            }
+        }
+    
+        // Si aucune erreur de validation, insérer les données dans la base de données
+        if (empty($errors)) {
+            $result = dbAddArbre($db, $data);
+            if ($result) {
+                echo json_encode(['message' => "L'arbre a été ajouté avec succès. ID : " . $result]);
+            } else {
+                echo json_encode(['message' => "Erreur lors de l'ajout de l'arbre."]);
+            }
+        } else {
+            // Afficher les erreurs
+            echo json_encode($errors);
+        }
+    } else {
+        echo json_encode(['message' => 'Erreur : méthode de requête non valide.']);
+    }
+
     if ($requestMethod == 'PUT')
     {
         parse_str(file_get_contents('php://input'), $_PUT);
