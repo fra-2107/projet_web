@@ -77,10 +77,10 @@
         $stmt->bindParam(':diam_tronc', $data['diam_tronc'], PDO::PARAM_INT);
         $stmt->bindParam(':lat', $data['lat'], PDO::PARAM_STR);
         $stmt->bindParam(':longi', $data['longi'], PDO::PARAM_STR);
-        $stmt->bindParam(':fk_arb_etat', $data['fk_arb_etat'], PDO::PARAM_INT);
-        $stmt->bindParam(':fk_stadedev', $data['fk_stadedev'], PDO::PARAM_INT);
-        $stmt->bindParam(':fk_port', $data['fk_port'], PDO::PARAM_INT);
-        $stmt->bindParam(':fk_pied', $data['fk_pied'], PDO::PARAM_INT);
+        $stmt->bindParam(':fk_arb_etat', $data['fk_arb_etat'], PDO::PARAM_STR); // Assurez-vous que les types de paramètres sont corrects
+        $stmt->bindParam(':fk_stadedev', $data['fk_stadedev'], PDO::PARAM_STR); // Assurez-vous que les types de paramètres sont corrects
+        $stmt->bindParam(':fk_port', $data['fk_port'], PDO::PARAM_STR); // Assurez-vous que les types de paramètres sont corrects
+        $stmt->bindParam(':fk_pied', $data['fk_pied'], PDO::PARAM_STR); // Assurez-vous que les types de paramètres sont corrects
         $stmt->bindParam(':remarquable', $data['remarquable'], PDO::PARAM_STR);
         $stmt->execute();
         return $db->lastInsertId();

@@ -40,10 +40,10 @@
             $requiredFields = ['espece', 'haut_tot', 'haut_tronc', 'diam_tronc', 'lat', 'longi', 'fk_arb_etat', 'fk_stadedev', 'fk_port', 'fk_pied', 'remarquable'];
             $data = [];
             $errors = [];
-        
+            
             // Log the POST data to ensure it's correct
             error_log('POST Data: ' . print_r($_POST, true));
-        
+            
             // Vérifier la présence de chaque champ requis dans $_POST
             foreach ($requiredFields as $field) {
                 if (isset($_POST[$field]) && !empty($_POST[$field])) {
@@ -53,12 +53,12 @@
                     $errors[] = "Le champ $field est manquant.";
                 }
             }
-        
+            
             // Log errors if any
             if (!empty($errors)) {
                 error_log('Errors: ' . print_r($errors, true));
             }
-        
+            
             // Si aucun champ n'est manquant, procéder à la validation des données
             if (empty($errors)) {
                 // Validation des données pour s'assurer qu'elles sont numériques où c'est nécessaire
@@ -68,7 +68,7 @@
                     }
                 }
             }
-        
+            
             // Si aucune erreur de validation, insérer les données dans la base de données
             if (empty($errors)) {
                 $result = dbAddArbre($db, $data);

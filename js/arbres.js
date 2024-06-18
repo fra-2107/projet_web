@@ -7,19 +7,19 @@ $('#ajoutArbre').submit((event) => {
     
     // Collecter les données du formulaire
     let formData = {
-      espece: $('#espece').val(),
-      haut_tot: $('#haut_tot').val(),
-      haut_tronc: $('#haut_tronc').val(),
-      diam_tronc: $('#diam_tronc').val(),
-      lat: $('#lat').val(),
-      longi: $('#longi').val(),
-      fk_arb_etat: $('#fk_arb_etat').val(),
-      fk_stadedev: $('#fk_stadedev').val(),
-      fk_port: $('#fk_port').val(),
-      fk_pied: $('#fk_pied').val(),
-      remarquable : $('#remarquable').val()
+        espece: $('#espece').val(),
+        haut_tot: $('#haut_tot').val(),
+        haut_tronc: $('#haut_tronc').val(),
+        diam_tronc: $('#diam_tronc').val(),
+        lat: $('#lat').val(),
+        longi: $('#longi').val(),
+        fk_arb_etat: $('#fk_arb_etat').val(),
+        fk_stadedev: $('#fk_stadedev').val(),
+        fk_port: $('#fk_port').val(),
+        fk_pied: $('#fk_pied').val(),
+        remarquable : $('#remarquable').val()
     };
-  
+
     console.log('Form Data:', formData);
 
     // Convert formData to URL-encoded string
@@ -43,19 +43,16 @@ function afficheArbres(data){
 // Fonction pour récupérer les options depuis l'API
 async function fetchOptionsFromDB(selectName) {
     try {
-        let i=1;
-        let urlapi= 'php/request.php/'+ selectName;
+        let urlapi = 'php/request.php/' + selectName;
         let selectElement = document.getElementById(selectName);
-        
+
         ajaxRequest('GET', urlapi, (data) => {
             // Ajouter les options récupérées au select
             data.forEach(optionData => {
                 let option = document.createElement('option');
-                option.value = optionData[selectName];
-                console.log(optionData[selectName]);
+                option.value = optionData[selectName]; // Assurez-vous que l'index ici correspond aux données récupérées
                 option.textContent = optionData[selectName];
                 selectElement.appendChild(option);
-                i++;
             });
         });
     } catch (error) {
