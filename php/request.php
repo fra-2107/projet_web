@@ -98,8 +98,14 @@
                 $data = dbDeleteTweet($db, intval($id), $_GET['login']);
         }
     }
-    else if ($request[1] == 'fk_stadedev'){
+    else if ($request[1] == 'fk_arb_etat'){
+        $data = dbGetOptions($db, 'fk_arb_etat');
+    }else if ($request[1] == 'fk_stadedev'){
         $data = dbGetOptions($db, 'fk_stadedev');
+    }else if ($request[1] == 'fk_pied'){
+        $data = dbGetOptions($db, 'fk_pied');
+    }else if ($request[1] == 'fk_port'){
+        $data = dbGetOptions($db, 'fk_port');
     }else if ($request[1] == 'map'){
         // $data = dbRequestMap($db); mettre ici le nom de ta fonction
     }
