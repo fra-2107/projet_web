@@ -72,11 +72,6 @@
             // Si aucune erreur de validation, insérer les données dans la base de données
             if (empty($errors)) {
                 $result = dbAddArbre($db, $data);
-                if ($result) {
-                    echo json_encode(['message' => "L'arbre a été ajouté avec succès. ID : " . $result]);
-                } else {
-                    echo json_encode(['message' => "Erreur lors de l'ajout de l'arbre."]);
-                }
             } else {
                 // Afficher les erreurs
                 echo json_encode($errors);
