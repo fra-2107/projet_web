@@ -13,6 +13,7 @@ ajaxRequest('POST', 'php/request.php/map/', (response) => {
 
     // Ajouter les marqueurs sur la carte
     response.forEach(arbre => {
+        console.log(arbre.lat)
         L.marker([arbre.lat, arbre.longi]).addTo(map)
             .bindPopup(`Arbre: ${arbre.lat}, ${arbre.longi}`);
     });
