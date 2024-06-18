@@ -1,39 +1,19 @@
 'use strict'
 
 ajaxRequest('POST', 'php/request.php/map/', (response) => {
-    console.log('Arbre ajouté avec succès:', response);
+    console.log('Données reçues:', response);
 
-    // Extraire les coordonnées de la réponse
-    const latitudes = response.map(arbre => arbre.lat);
-    const longitudes = response.map(arbre => arbre.longi);
+    // Initialiser la carte
+    var map = L.map('map').setView([49.848, 3.287], 13); // Coordonnées centrées sur Saint-Quentin
 
-    // Créer les traces pour Plotly
-    const trace = {
-        type: 'scattergeo',
-        lat: longitudes,
-        lon: latitudes,
-        mode: 'markers',
-        marker: {
-            size: 10,
-            color: 'rgb(255, 0, 0)',
-            opacity: 0.7
-        },
-        text: 'Arbre'
-    };
+    // Ajouter les tuiles OpenStreetMap
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
 
-    const layout = {
-        geo: {
-            projection: {
-                type: 'natural earth'
-            },
-            showland: true,
-            landcolor: 'rgb(217, 217, 217)',
-            subunitwidth: 1,
-            subunitcolor: 'rgb(255,255,255)'
-        },
-        margin: { r: 0, t: 0, b: 0, l: 0 }
-    };
-
-    // Tracer la carte
-    Plotly.newPlot('map', [trace], layout);
+    // Ajouter les marqueurs sur la carte
+    response.forEach(arbre => {
+        L.marker([arbre.lat, arbre.longi]).addTo(map)
+            .bindPopup('Arbre');
+    });
 });
