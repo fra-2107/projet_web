@@ -62,4 +62,4 @@ async function fetchOptionsFromDB(selectName) {
 }
 
 // Appeler la fonction pour récupérer et ajouter les options au chargement de la page
-fetchOptionsFromDB(fk_stadedev);
+fetchOptionsFromDB('fk_stadedev');
