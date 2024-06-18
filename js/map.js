@@ -3,8 +3,8 @@
 ajaxRequest('POST', 'php/request.php/map/', (response) => {
     console.log('Données reçues:', response);
 
-    // Initialiser la carte
-    var map = L.map('map').setView([49.848, 3.287], 13); // Coordonnées centrées sur Saint-Quentin
+    // Initialiser la carte centrée sur Saint-Quentin
+    var map = L.map('map').setView([49.848, 3.287], 13);
 
     // Ajouter les tuiles OpenStreetMap
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -14,6 +14,6 @@ ajaxRequest('POST', 'php/request.php/map/', (response) => {
     // Ajouter les marqueurs sur la carte
     response.forEach(arbre => {
         L.marker([arbre.lat, arbre.longi]).addTo(map)
-            .bindPopup('Arbre');
+            .bindPopup(`Arbre: ${arbre.lat}, ${arbre.longi}`);
     });
 });
