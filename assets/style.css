@@ -50,40 +50,6 @@ nav .right_nav a:hover {
 
 /* FIN BARRE DE NAVIGATION */
 
-
-/* HEADER */
-header .content{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: white;
-    background: url('img/fond_header.jpg') no-repeat center center;
-    background-size: cover;
-}
-
-header h1 {
-    font-size: 3em;
-    margin: 17.8rem 0px 0px 0px;
-}
-
-header p {
-    font-size: 1.2em;
-    margin: 20px 0;
-}
-
-header .cta-btn {
-    background-color: #34671b;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 1em;
-    margin: 0px 0px 17.8rem 0px;
-}
-/* FIN HEADER */
-
-
 /* FOOTER */
 
 footer {
@@ -107,3 +73,55 @@ footer {
 }
 
 /* FIN FOOTER */
+
+.cta-btn {
+    background-color: #34671b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1em;
+    margin: 0px 0px 17.8rem 0px;
+}
+
+/* ------------------------------------------------------ */
+/* PAGE D'ACCUEIL */
+
+/* HEADER */
+header .content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    background: url('img/fond_header.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+header h1 {
+    font-size: 3em;
+    margin: 17.8rem 0px 0px 0px;
+}
+
+header p {
+    font-size: 1.2em;
+    margin: 20px 0;
+}
+/* FIN HEADER */
+
+/*  FIN PAGE D'ACCUEIL */
+/* ------------------------------------------------------ */
+
+
+/* ------------------------------------------------------ */
+/* PAGE CARTE */
+
+.carte_content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+/* FINPAGE CARTE */
+/* ------------------------------------------------------ */
