@@ -69,8 +69,8 @@
   // \return True on success, false otherwise.
   function dbAddArbre($db, $data) {
     try {
-        $stmt = $db->prepare("INSERT INTO arbre (espece, haut_tot, haut_tronc, diam_tronc, lat, longi, fk_arb_etat, fk_stadedev, fk_port, fk_pied)
-                              VALUES (:espece, :haut_tot, :haut_tronc, :diam_tronc, :lat, :longi, :fk_arb_etat, :fk_stadedev, :fk_port, :fk_pied)");
+        $stmt = $db->prepare("INSERT INTO arbres (espece, haut_tot, haut_tronc, diam_tronc, lat, longi, fk_arb_etat, fk_stadedev, fk_port, fk_pied, remarquable)
+                              VALUES (:espece, :haut_tot, :haut_tronc, :diam_tronc, :lat, :longi, :fk_arb_etat, :fk_stadedev, :fk_port, :fk_pied, :remarquable)");
         $stmt->bindParam(':espece', $data['espece'], PDO::PARAM_STR);
         $stmt->bindParam(':haut_tot', $data['haut_tot'], PDO::PARAM_INT);
         $stmt->bindParam(':haut_tronc', $data['haut_tronc'], PDO::PARAM_INT);
@@ -81,11 +81,11 @@
         $stmt->bindParam(':fk_stadedev', $data['fk_stadedev'], PDO::PARAM_INT);
         $stmt->bindParam(':fk_port', $data['fk_port'], PDO::PARAM_INT);
         $stmt->bindParam(':fk_pied', $data['fk_pied'], PDO::PARAM_INT);
-        $stmt->bindParam(':remarquable', $data['remarquable'], PDO::PARAM_INT);
+        $stmt->bindParam(':remarquable', $data['remarquable'], PDO::PARAM_STR);
         $stmt->execute();
         return $db->lastInsertId();
     } catch (PDOException $e) {
-        echo 'Erreur : ' . $e->getMessage();
+        echo json_encode(['error' => 'Erreur : ' . $e->getMessage()]);
         return false;
     }
 }

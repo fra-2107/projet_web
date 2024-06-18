@@ -43,6 +43,9 @@
         $data = [];
         $errors = [];
     
+        // Log the POST data to ensure it's correct
+        error_log('POST Data: ' . print_r($_POST, true));
+    
         // Vérifier la présence de chaque champ requis dans $_POST
         foreach ($requiredFields as $field) {
             if (isset($_POST[$field]) && !empty($_POST[$field])) {
@@ -51,6 +54,11 @@
             } else {
                 $errors[] = "Le champ $field est manquant.";
             }
+        }
+    
+        // Log errors if any
+        if (!empty($errors)) {
+            error_log('Errors: ' . print_r($errors, true));
         }
     
         // Si aucun champ n'est manquant, procéder à la validation des données
