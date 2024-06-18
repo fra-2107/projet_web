@@ -10,8 +10,8 @@ ajaxRequest('POST', 'php/request.php/map/', (response) => {
     // Créer les traces pour Plotly
     const trace = {
         type: 'scattergeo',
-        lat: latitudes,
-        lon: longitudes,
+        lat: longitudes,
+        lon: latitudes,
         mode: 'markers',
         marker: {
             size: 10,
