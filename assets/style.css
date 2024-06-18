@@ -27,6 +27,7 @@ nav .right_nav a{
 nav .right_nav a:hover {
     color:#34671b;
     border-bottom: solid #34671b;
+    cursor: pointer;
 }
 
 .login-btn {
@@ -59,15 +60,6 @@ header .content{
     background: url('img/fond_header.jpg') no-repeat center center;
     background-size: cover;
 }
-
-header .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-     /* Ajustez l'opacité ici */
-  }
 
 header h1 {
     font-size: 3em;
