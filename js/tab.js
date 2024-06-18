@@ -60,3 +60,35 @@ function afficheArbres(data) {
         tableArbre.appendChild(tr);
     });
 }
+
+function affichePagination(total, limit, page) {
+    let paginationDiv = document.getElementById('pagination');
+    paginationDiv.innerHTML = ''; // Clear existing pagination buttons
+
+    let totalPages = Math.ceil(total / limit);
+
+    for (let i = 1; i <= totalPages; i++) {
+        let button = document.createElement('button');
+        button.textContent = i;
+        if (i === page) {
+            button.disabled = true;
+        }
+        button.addEventListener('click', () => {
+            fetchArbres(i);
+        });
+        paginationDiv.appendChild(button);
+    }
+}
+
+function fetchArbres(page = 1) {
+    let limit = 20; // Nombre d'éléments par page
+    ajaxRequest('GET', `php/request.php/arbres?limit=${limit}&page=${page}`, (response) => {
+        afficheArbres(response.data);
+        affichePagination(response.total, response.limit, response.page);
+    });
+}
+
+// Déclencher la récupération des arbres au chargement de la page
+document.addEventListener('DOMContentLoaded', (event) => {
+    fetchArbres();
+});
