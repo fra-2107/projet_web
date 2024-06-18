@@ -37,13 +37,53 @@
             $data = dbRequestArbres($db);
     }
   
-    if ($requestMethod == 'POST')
-        // if(isset($_POST['login'])&&isset($_POST['text']))
-            // $data = dbAddArbre($db, strip_tags($_POST['text']));
-
-        if(isset($_POST['text']))
-            $data = dbAddArbre($db, strip_tags($_POST['text']));
+    if ($requestMethod == 'POST'){
+        // Vérification de l'existence de tous les paramètres requis
+        $requiredFields = ['espece', 'haut_tot', 'haut_tronc', 'diam_tronc', 'lat', 'longi', 'fk_arb_etat', 'fk_stadedev', 'fk_port', 'fk_pied'];
+        $data = [];
+        $errors = [];
     
+        foreach ($requiredFields as $field) {
+            if (isset($_POST[$field])) {
+                // Nettoyage et assignation des valeurs
+                $data[$field] = strip_tags($_POST[$field]);
+            } else {
+                $errors[] = "Le champ $field est manquant.";
+            }
+        }
+    
+        if (empty($errors)) {
+            // Validation des données, par exemple s'assurer que les valeurs sont des nombres valides
+            if (!is_numeric($data['haut_tot']) || !is_numeric($data['haut_tronc']) || !is_numeric($data['diam_tronc']) ||
+                !is_numeric($data['lat']) || !is_numeric($data['longi']) ||
+                !is_numeric($data['fk_arb_etat']) || !is_numeric($data['fk_stadedev']) ||
+                !is_numeric($data['fk_port']) || !is_numeric($data['fk_pied'])) {
+                $errors[] = "Tous les champs numériques doivent contenir des valeurs valides.";
+            }
+    
+            if (empty($errors)) {
+                // Appel de la fonction pour ajouter les données à la base
+                $result = dbAddArbre($db, $data);
+                
+                if ($result) {
+                    echo "L'arbre a été ajouté avec succès. ID : " . $result;
+                } else {
+                    echo "Erreur lors de l'ajout de l'arbre.";
+                }
+            } else {
+                foreach ($errors as $error) {
+                    echo $error . "<br>";
+                }
+            }
+        } else {
+            foreach ($errors as $error) {
+                echo $error . "<br>";
+            }
+        }
+    } else {
+        echo 'Erreur : méthode de requête non valide.';
+    }
+
     if ($requestMethod == 'PUT')
     {
         parse_str(file_get_contents('php://input'), $_PUT);
