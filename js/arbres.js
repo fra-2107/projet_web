@@ -19,6 +19,8 @@ $('#ajoutArbre').submit((event) => {
       fk_pied: $('#fk_pied').val()
     };
   
+    console.log('Form Data:', formData);
+
     // Envoyer les données via AJAX
     ajaxRequest('POST', 'php/request.php/arbres/', (response) => {
       console.log('Arbre ajouté avec succès:', response);
