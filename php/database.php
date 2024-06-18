@@ -69,7 +69,7 @@
   // \return True on success, false otherwise.
   function dbAddArbre($db, $data) {
     try {
-        $stmt = $db->prepare("INSERT INTO arbres (espece, haut_tot, haut_tronc, diam_tronc, lat, longi, fk_arb_etat, fk_stadedev, fk_port, fk_pied)
+        $stmt = $db->prepare("INSERT INTO arbre (espece, haut_tot, haut_tronc, diam_tronc, lat, longi, fk_arb_etat, fk_stadedev, fk_port, fk_pied)
                               VALUES (:espece, :haut_tot, :haut_tronc, :diam_tronc, :lat, :longi, :fk_arb_etat, :fk_stadedev, :fk_port, :fk_pied)");
         $stmt->bindParam(':espece', $data['espece'], PDO::PARAM_STR);
         $stmt->bindParam(':haut_tot', $data['haut_tot'], PDO::PARAM_INT);
