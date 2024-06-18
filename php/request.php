@@ -101,7 +101,7 @@
     else if ($request[1] == 'fk_stadedev'){
         $data = dbGetOptions($db, 'fk_stadedev');
     }else if ($request[1] == 'map'){
-        // $data = dbRequestMap($db); mettre ici le nom de ta fonction
+        $data = dbGetCoordMap($db);
     }
     
     else
