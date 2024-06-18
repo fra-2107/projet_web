@@ -47,7 +47,6 @@ async function fetchOptionsFromDB(selectName) {
         let selectElement = document.getElementById(selectName);
         
         ajaxRequest('GET', urlapi, (data) => {
-            console.log('Options récupérées :', data);
             // Ajouter les options récupérées au select
             data.forEach(optionData => {
                 let option = document.createElement('option');
