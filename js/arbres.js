@@ -2,9 +2,9 @@
 
 ajaxRequest('GET', 'php/request.php/arbres', afficheArbres);
 
-$('#ajouterbtn').click(() => {
+$('#ajoutArbre').submit((event) =>{
     console.log('ajouter');
-    console.log($POST);
+    console.log(event);
     // ajaxRequest('POST', 'php/request.php/arbres', afficheArbres);
 })
 
