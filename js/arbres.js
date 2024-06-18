@@ -51,7 +51,7 @@ async function fetchOptionsFromDB() {
         data.forEach(optionData => {
             let option = document.createElement('option');
             option.value = optionData.id;
-            option.textContent = optionData.nom_option;
+            option.textContent = optionData.fk_stadedev;
             selectElement.appendChild(option);
         });
     } catch (error) {
