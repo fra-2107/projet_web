@@ -192,5 +192,21 @@ table {
     align-items: center;
     justify-content: center;
 }
+
+.pagination button {
+    background-color: #34671b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: all 0.2s;
+}
+
+.pagination button:hover {
+    background-color: #87bc26;
+}
+
 /* FIN PAGE CARTE */
 /* ------------------------------------------------------ */
