@@ -112,6 +112,10 @@
     }else if ($request[1] == 'map'){
         $data = dbGetCoordMap($db);
     }elseif ($request[1] == 'predictClust') { 
+        if (file_exists("/var/www/etu0106/projet_web/map.html"))
+            exec("rm /var/www/etu0106/projet_web/map.html");
+
+            
         $nb_clusters = isset($_POST['nb_clusters']) ? (int)$_POST['nb_clusters'] : 0;
 
         if (is_numeric($nb_clusters) && $nb_clusters > 0) {
