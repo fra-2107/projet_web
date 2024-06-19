@@ -152,7 +152,7 @@ main .carte_content .carte_clusters{
 
 main .carte_content .carte_clusters .cluster_card input {
     padding: 5px;
-    border: silver;
+    border: rgb(153, 0, 0);
     margin-right: 10px;
 }
 
