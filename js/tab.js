@@ -111,9 +111,11 @@ function affichePagination(total, limit, page) {
     currentPageSpan.id = 'current-page';
     currentPageSpan.textContent = page;
 
+    paginationDiv.appendChild(fisrtButton);
     paginationDiv.appendChild(prevButton);
     paginationDiv.appendChild(currentPageSpan);
     paginationDiv.appendChild(nextButton);
+    paginationDiv.appendChild(LastButton);
 }
 
 function fetchArbres(page = 1) {
