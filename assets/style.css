@@ -123,6 +123,10 @@ header .cta-btn {
 /* ------------------------------------------------------ */
 /* PAGE CARTE */
 
+main {
+    margin: 2rem 0px 2rem 0px;
+}
+
 main .carte_content {
     display: flex;
     flex-wrap: wrap;
