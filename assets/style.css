@@ -218,15 +218,16 @@ table {
 /* ------------------------------------------------------ */
 
 /* RESPONSIVE */
+@media all and (max-width:1600px) {
+    nav .right_nav {
+        margin-left: 30rem;
+    }
+}
+
 @media all and (max-width:680px) {
     nav .right_nav {
         margin-left: 0rem;
     }
 }
 
-@media all and (max-width:1600px) {
-    nav .right_nav {
-        margin-left: 30rem;
-    }
-}
 /* FIN RESPONSIVE */
