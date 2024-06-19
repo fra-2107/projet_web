@@ -136,13 +136,6 @@
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
             $data = dbGetArbre($db, $id);
-            if ($data !== false) {
-                echo json_encode($data); // Envoyer les données en JSON par exemple
-            } else {
-                echo 'Erreur lors de la récupération des données.';
-            }
-        } else {
-            echo 'Paramètres invalides.';
         }
     }
     
