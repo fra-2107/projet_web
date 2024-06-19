@@ -110,6 +110,10 @@ header p {
     font-size: 1.2em;
     margin: 20px 0;
 }
+
+header .cta-btn {
+    margin: 0px 0px 17.8rem 0px;
+}
 /* FIN HEADER */
 
 /*  FIN PAGE D'ACCUEIL */
@@ -135,8 +139,8 @@ main .text_content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 10rem 0px 10rem 0px;
-    background-color: #c0d6b8;
+    padding: 6rem 0px 6rem 0px;
+    background-color: rgba(78, 165, 78, 0.3); /* 1.0 - opaque */
 }
 
 
