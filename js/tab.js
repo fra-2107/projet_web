@@ -67,24 +67,38 @@ function affichePagination(total, limit, page) {
 
     let totalPages = Math.ceil(total / limit);
 
-    for (let i = 1; i <= totalPages; i++) {
-        let button = document.createElement('button');
-        button.textContent = i;
-        if (i === page) {
-            button.disabled = true;
+    let prevButton = document.createElement('button');
+    prevButton.textContent = 'Page précédente';
+    prevButton.disabled = page === 1;
+    prevButton.addEventListener('click', () => {
+        if (page > 1) {
+            fetchArbres(page - 1);
         }
-        button.addEventListener('click', () => {
-            fetchArbres(i);
-        });
-        paginationDiv.appendChild(button);
-    }
+    });
+
+    let nextButton = document.createElement('button');
+    nextButton.textContent = 'Page suivante';
+    nextButton.disabled = page === totalPages;
+    nextButton.addEventListener('click', () => {
+        if (page < totalPages) {
+            fetchArbres(page + 1);
+        }
+    });
+
+    let currentPageSpan = document.createElement('span');
+    currentPageSpan.id = 'current-page';
+    currentPageSpan.textContent = page;
+
+    paginationDiv.appendChild(prevButton);
+    paginationDiv.appendChild(currentPageSpan);
+    paginationDiv.appendChild(nextButton);
 }
 
 function fetchArbres(page = 1) {
     let limit = 20; // Nombre d'éléments par page
     ajaxRequest('GET', `php/request.php/arbres?limit=${limit}&page=${page}`, (response) => {
         afficheArbres(response.data);
-        affichePagination(response.total, response.limit, response.page);
+        affichePagination(response.total, limit, page);
     });
 }
 
