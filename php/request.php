@@ -119,7 +119,7 @@
             $python_script = "/var/www/etu0106/projet_web/python/script_besoin_1.py"; // Chemin absolu vers le script Python
             
             if (file_exists($python_script)) {
-                $command = "pyhton " . $python_script . " " . intval($nb_clusters);
+                $command = "/usr/bin/python " . $python_script . " " . intval($nb_clusters);
                 
                 // Exécution de la commande
                 exec($command, $output, $return_var);
