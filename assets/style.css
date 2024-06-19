@@ -14,7 +14,7 @@ nav {
 }
 
 nav .right_nav {
-    margin-left: 70rem;
+    margin-left: 60rem;
 }
 
 nav .right_nav .cta-btn {
@@ -43,15 +43,9 @@ nav .right_nav a:hover {
     border-radius: 5px;
 }
 
-/* FORMAT MOBILE NAV */
-@media screen and (max-width:680px) {
-    nav .right_nav {
-        margin-left: 0rem;
-    }
-}
-/* FIN FORMAT MOBILE NAV */
-
 /* FIN BARRE DE NAVIGATION */
+
+/* ------------------------------------------------------ */
 
 /* FOOTER */
 
@@ -62,12 +56,11 @@ footer {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .footer-logos {
     margin-top: 10px;
-    margin-left: 70rem;
+    margin-left: 60rem;
 }
 
 .footer-logos img {
@@ -121,10 +114,9 @@ header .cta-btn {
 /* FIN HEADER */
 
 /*  FIN PAGE D'ACCUEIL */
-/* ------------------------------------------------------ */
-
 
 /* ------------------------------------------------------ */
+
 /* PAGE CARTE */
 
 main .text_content {
@@ -215,11 +207,20 @@ table {
 }
 
 /* FIN PAGE CARTE */
-/* ------------------------------------------------------ */
 
 /* ------------------------------------------------------ */
+
 /* PAGE AJOUT */
 
 
 /* FIN PAGE AJOUT */
+
 /* ------------------------------------------------------ */
+
+/* RESPONSIVE */
+@media all and (max-width:680px) {
+    nav .right_nav {
+        margin-left: 0rem;
+    }
+}
+/* FIN RESPONSIVE */
