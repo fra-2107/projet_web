@@ -33,6 +33,24 @@ $('#ajoutArbre').submit((event) => {
     }, urlEncodedData);
 });
   
+function setRemarkableValue(event) {
+    // Prevent the default form submission
+    event.preventDefault();
+
+    // Get the checkbox and hidden input elements
+    const checkbox = document.getElementById('remarquable');
+    const hiddenInput = document.getElementById('remarquableHidden');
+
+    // Set the value of the hidden input based on the checkbox state
+    hiddenInput.value = checkbox.checked ? 'Oui' : 'Non';
+
+    // For demonstration purposes, logging the form data to the console
+    const formData = new FormData(document.getElementById('treeForm'));
+    console.log('Form data:');
+    for (let [key, value] of formData.entries()) {
+        console.log(`${key}: ${value}`);
+    }
+}
 
 function afficheArbres(data){
     console.log(data);

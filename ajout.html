@@ -38,7 +38,7 @@
         </div>
         
         <main>
-            <form id="ajoutArbre">
+            <form id="ajoutArbre" onsubmit="setRemarkableValue(event)">
                 <input type="text" id="espece" name="espece" placeholder="Espèce" required>
                 <input type="number" id="haut_tot" name="haut_tot" placeholder="Hauteur Totale" required>
                 <input type="number" id="haut_tronc" name="haut_tronc" placeholder="Hauteur du Tronc" required>
@@ -65,13 +65,21 @@
                 </select>
     
                 <input
-                    type="checkbox"
-                    id="remarquable"
-                    name="remarquable"
-                    value="Oui" />
+                type="checkbox"
+                id="remarquable"
+                name="remarquableCheckbox"
+                value="Oui" />
                 <label for="remarquable">
-                remarquable 
+                    remarquable 
                 </label>
+        
+                <!-- Hidden input to store the actual value -->
+                <input
+                    type="hidden"
+                    id="remarquableHidden"
+                    name="remarquable"
+                    value="Non" />
+
 
                 <button type="submit">Ajouter l'Arbre</button>
             </form>  
