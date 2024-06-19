@@ -17,7 +17,7 @@ $('#ajoutArbre').submit((event) => {
         fk_stadedev: $('#fk_stadedev').val(),
         fk_port: $('#fk_port').val(),
         fk_pied: $('#fk_pied').val(),
-        remarquable : $('#remarquable').val()
+        remarquable : () => {if ($('#remarquable').is(':checked')) {return 'Oui'} else {return 'Non'}},
     };
 
     console.log('Form Data:', formData);
@@ -32,18 +32,7 @@ $('#ajoutArbre').submit((event) => {
         ajaxRequest('GET', 'php/request.php/arbres', afficheArbres);
     }, urlEncodedData);
 });
-  
-function setRemarkableValue(event) {
-    // Get the checkbox and hidden input elements
-    const checkbox = document.getElementById('remarquable');
-    const hiddenInput = document.getElementById('remarquableHidden');
 
-    // Set the value of the hidden input based on the checkbox state
-    hiddenInput.value = checkbox.checked ? 'Oui' : 'Non';
-}
-
-// Attach the event listener to the form
-document.getElementById('ajoutArbre').addEventListener('submit', setRemarkableValue);
 
 
 function afficheArbres(data){
