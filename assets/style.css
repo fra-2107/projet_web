@@ -227,6 +227,7 @@ main #ajoutArbre {
 main .form_ajout {
     display: flex;
     justify-content: center;
+    background: url('img/fond_header.jpg') no-repeat center center;
 }
 
 main #ajoutArbre .taille_form {
