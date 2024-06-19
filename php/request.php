@@ -116,7 +116,7 @@
 
         if (is_numeric($nb_clusters) && $nb_clusters > 0) {
             // Construction de la commande pour exécuter le script Python
-            $python_script = "../python/script_besoin_1.py"; // Chemin absolu vers le script Python
+            $python_script = "/var/www/etu0106/projet_web/python/script_besoin_1.py"; // Chemin absolu vers le script Python
             
             if (file_exists($python_script)) {
                 $command = "pyhton " . $python_script . " " . intval($nb_clusters);
