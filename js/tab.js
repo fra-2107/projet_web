@@ -70,6 +70,15 @@ function affichePagination(total, limit, page) {
     paginationDiv.innerHTML = ''; // Clear existing pagination buttons
 
     let totalPages = Math.ceil(total / limit);
+    
+    let fisrtButton = document.createElement('button');
+    fisrtButton.textContent = 'Première Page';
+    fisrtButton.disabled = page === 1;
+    fisrtButton.addEventListener('click', () => {
+        if (page > 1) {
+            fetchArbres(page = 1);
+        }
+    });
 
     let prevButton = document.createElement('button');
     prevButton.textContent = 'Page précédente';
@@ -86,6 +95,15 @@ function affichePagination(total, limit, page) {
     nextButton.addEventListener('click', () => {
         if (page < totalPages) {
             fetchArbres(page + 1);
+        }
+    });
+
+    let LastButton = document.createElement('button');
+    LastButton.textContent = 'Dernière Page';
+    LastButton.disabled = page === totalPages;
+    LastButton.addEventListener('click', () => {
+        if (page < totalPages) {
+            fetchArbres(page = totalPages);
         }
     });
 
