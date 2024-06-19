@@ -36,8 +36,8 @@ def mapcluster(nb_clusters):
         hover_data={'hauteur_tot': True},
         zoom=12
     )
-    # fig.write_html('map.html')
-    fig.show()
+    fig.write_html('map.html')
+    # fig.show()
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:

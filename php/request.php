@@ -114,13 +114,11 @@
     }elseif ($request[1] == 'predictClust') { 
         // Récupérer le nombre de clusters à partir de POST
         $nb_clusters = isset($_POST['nb_clusters']) ? (int)$_POST['nb_clusters'] : 0;
-        echo "nb cluster : " . $nb_clusters;
     
         if (is_numeric($nb_clusters) && $nb_clusters > 0) {
             // Construction de la commande pour exécuter le script Python
             $command = escapeshellcmd("python ../python/script_besoin_1.py " . intval($nb_clusters));
             $output = shell_exec($command);
-            echo json_encode(['status' => 'success', 'output' => $output]);
         } else {
             echo json_encode(['status' => 'error', 'message' => 'Nombre de clusters invalide.']);
         }
