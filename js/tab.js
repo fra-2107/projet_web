@@ -57,7 +57,15 @@ function afficheArbres(data) {
         td_lon.textContent = el.longi;
         tr.appendChild(td_lon);
 
-        tableArbre.appendChild(tr);
+        let td_btn = document.createElement('td');
+        let predictionButton = document.createElement('button');
+        predictionButton.textContent = 'Prediction';
+        predictionButton.addEventListener('click', () => {
+            // Call the function for prediction
+            console.log('prediction : ' + el.id);
+        });
+        td_btn.appendChild(predictionButton);
+        tr.appendChild(td_btn);
     });
 }
 
