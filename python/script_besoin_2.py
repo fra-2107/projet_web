@@ -3,6 +3,7 @@ import joblib
 import json
 from sklearn.preprocessing import OrdinalEncoder, MinMaxScaler
 from io import StringIO
+import sys
 
 def predict_age_from_json(input_json):
     # Charger les encodeurs et le modèle
@@ -64,6 +65,13 @@ def predict_age_from_json(input_json):
     return result_json
 
 # Exemple d'utilisation
-input_json = '[{"haut_tot": 34.0, "haut_tronc": 27.0, "tronc_diam": 20.0, "fk_prec_estim": 10}]'
+if __name__ == "__main__":
+    # Récupérer input_json depuis la ligne de commande
+    if len(sys.argv) != 2:
+        print("Usage: python script.py '[{\"haut_tot\": 34.0, \"haut_tronc\": 27.0, \"tronc_diam\": 20.0, \"fk_prec_estim\": 10}]'")
+        sys.exit(1)
+    
+    input_json = sys.argv[1]
+    
 output_json = predict_age_from_json(input_json)
 print(output_json)

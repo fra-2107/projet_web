@@ -135,6 +135,8 @@
     }elseif ($request[1] == 'preds') {
         $id = $_GET['id'];
         $data = dbGetArbretoAge($db, $id);
+        $python_script = "/var/www/etu0106/projet_web/python/script_besoin_2.py"; // Chemin absolu vers le script Python
+
 
         // Vérifier si des données ont été récupérées
         if ($data !== false) {
@@ -145,8 +147,17 @@
         
             // Encoder le tableau en JSON
             $jsonData = json_encode($data);
+
+            if (file_exists($python_script)) {
+                $command = "/usr/bin/python " . $python_script . " " . intval($jsonData);
+                if (file_exists("/var/www/etu0106/projet_web/map.html"))
+                    exec("rm /var/www/etu0106/projet_web/map.html");
+                // Exécution de la commande
+                exec($command, $output, $return_var);
+                echo $output;
         }
     }
+}   
     
     else
     {
