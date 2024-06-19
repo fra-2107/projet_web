@@ -219,8 +219,9 @@ main #ajoutArbre {
     align-items: center;
     justify-content: center;
     margin: 5rem 0rem 5rem 0rem;
-    background-color: white;
+    background-color: pink;
     border-radius: 5px;
+    width: 20rem;
 }
 
 main #ajoutArbre .taille_form {
