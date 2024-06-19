@@ -124,8 +124,8 @@
             
             if (file_exists($python_script)) {
                 $command = "/usr/bin/python " . $python_script . " " . intval($nb_clusters);
-                if (file_exists("/var/www/etu0106/projet_web/map.html"))
-                    exec("rm /var/www/etu0106/projet_web/map.html");
+                // if (file_exists("/var/www/etu0106/projet_web/map.html"))
+                //     exec("rm /var/www/etu0106/projet_web/map.html");
                 // Exécution de la commande
                 exec($command, $output, $return_var);
             }
