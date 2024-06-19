@@ -34,8 +34,15 @@ function ajaxRequest(type, url, callback, data = null)
     {
       case 200:
       case 201:
-        console.log(xhr.responseText);
-        callback(JSON.parse(xhr.responseText));
+        console.log('Raw response: ', xhr.responseText);  // Afficher la réponse brute
+        try {
+          let jsonResponse = JSON.parse(xhr.responseText);
+          callback(jsonResponse);
+        } catch (e) {
+          console.error('JSON parse error: ', e);
+        }
+        // console.log(xhr.responseText);
+        // callback(JSON.parse(xhr.responseText));
         break;
       default:
         httpErrors(xhr.status);
