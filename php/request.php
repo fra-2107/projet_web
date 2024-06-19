@@ -138,24 +138,16 @@
         echo 'Données JSON reçues : ' . $data;
         // Vérifier si des données ont été récupérées
         if ($data !== false) {
-            // Décoder le JSON en un tableau PHP
-            $decodedData = json_decode($data, true);
-
-            // Vérifier si le décodage JSON a réussi
-            if ($decodedData !== null) {
-                // Ajouter l'attribut 'fk_prec_estim' à chaque objet
-                foreach ($decodedData as &$item) {
-                    $item['fk_prec_estim'] = 10;
-                }
-
-                // Ré-encoder le tableau modifié en JSON
-                $jsonData = json_encode($decodedData);
-
-                // Afficher le JSON encodé
-                echo 'dat: ' . $jsonData;
-            } else {
-                echo 'Erreur lors du décodage du JSON.';
+            // Ajouter l'attribut 'fk_prec_estim' à chaque élément du tableau
+            foreach ($data as &$item) {
+                $item['fk_prec_estim'] = 10;
             }
+        
+            // Encoder le tableau en JSON
+            $jsonData = json_encode($data);
+        
+            // Afficher le JSON encodé
+            echo 'dat: ' . $jsonData;
         } else {
             echo 'Erreur lors de la récupération des données depuis la base de données.';
         }
