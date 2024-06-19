@@ -168,8 +168,8 @@ if ($request[1] == 'arbres') {
                 // Exécution de la commande
                 exec($command, $output, $return_var);
                 $data = $output;
-                // echo 'output : ' . $output;
-                // echo 'return_var : ' . $return_var;
+                echo 'output : ' . $output;
+                echo 'return_var : ' . $return_var;
             }
         }
     }
