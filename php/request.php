@@ -134,6 +134,7 @@
         }
     }elseif ($request[1] == 'preds') {
         $id = $_GET['id'];
+        echo $id;
         $data = dbGetArbre($db, $id);
     }
     
