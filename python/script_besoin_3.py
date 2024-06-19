@@ -7,6 +7,7 @@ import sys
 # data = file[['fk_arb_etat', 'latitude', 'tronc_diam', 'age_estim', 'feuillage', 'fk_prec_estim', 'villeca', 'haut_tronc', 'haut_tot', 'clc_nbr_diag']].copy()
 
 def predict_risque(input_json):
+    
     input_data = pd.read_json(StringIO(input_json))
     
     input_data.rename(columns={'lat': 'latitude'}, inplace=True)
