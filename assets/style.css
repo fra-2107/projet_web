@@ -130,10 +130,10 @@ main .carte_content .carte_clusters{
 
 main .text_content {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    background-color: #6f8a62;
+    padding: 500px 0px 0px 0px;
+    background-color: #838b80;
 }
 
 
