@@ -135,7 +135,7 @@
     }elseif ($request[1] == 'preds') {
         $id = $_GET['id'];
         $data = dbGetArbretoAge($db, $id);
-        echo 'Données JSON reçues : ' . $data;
+
         // Vérifier si des données ont été récupérées
         if ($data !== false) {
             // Ajouter l'attribut 'fk_prec_estim' à chaque élément du tableau
