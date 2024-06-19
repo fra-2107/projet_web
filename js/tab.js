@@ -82,40 +82,40 @@ function affichePagination(total, limit, page) {
     let totalPages = Math.ceil(total / limit);
     
     let fisrtButton = document.createElement('button');
-    fisrtButton.textContent = 'Première Page';
-    fisrtButton.disabled = page === 1;
-    fisrtButton.addEventListener('click', () => {
-        if (page > 1) {
+    if (page > 1) {
+        fisrtButton.textContent = 'Première Page';
+        fisrtButton.disabled = page === 1;
+        fisrtButton.addEventListener('click', () => {
             fetchArbres(page = 1);
-        }
-    });
+        });
+    }
 
     let prevButton = document.createElement('button');
-    prevButton.textContent = 'Page précédente';
-    prevButton.disabled = page === 1;
-    prevButton.addEventListener('click', () => {
-        if (page > 1) {
+    if (page > 1) {
+        prevButton.textContent = 'Page précédente';
+        prevButton.disabled = page === 1;
+        prevButton.addEventListener('click', () => {
             fetchArbres(page - 1);
-        }
-    });
+        });
+    }
 
     let nextButton = document.createElement('button');
-    nextButton.textContent = 'Page suivante';
-    nextButton.disabled = page === totalPages;
-    nextButton.addEventListener('click', () => {
-        if (page < totalPages) {
+    if (page < totalPages) {
+        nextButton.textContent = 'Page suivante';
+        nextButton.disabled = page === totalPages;
+        nextButton.addEventListener('click', () => {
             fetchArbres(page + 1);
-        }
-    });
+        });
+    }
 
     let LastButton = document.createElement('button');
-    LastButton.textContent = 'Dernière Page';
-    LastButton.disabled = page === totalPages;
-    LastButton.addEventListener('click', () => {
-        if (page < totalPages) {
+    if (page < totalPages) {
+        LastButton.textContent = 'Dernière Page';
+        LastButton.disabled = page === totalPages;
+        LastButton.addEventListener('click', () => {
             fetchArbres(page = totalPages);
-        }
-    });
+        });
+    }
 
     let currentPageSpan = document.createElement('span');
     currentPageSpan.id = 'current-page';
