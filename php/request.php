@@ -146,11 +146,11 @@
             }
         
             // Encoder le tableau en JSON
-            $jsonData = (string)json_encode($data);
+            $jsonData = json_encode($data);
             echo 'jsonData : '.$jsonData;
 
             if (file_exists($python_script)) {
-                $command = "/usr/bin/python " . $python_script . " " . $jsonData;
+                $command = "/usr/bin/python " . $python_script . " " . (string)$jsonData;
                 if (file_exists("/var/www/etu0106/projet_web/map.html"))
                     exec("rm /var/www/etu0106/projet_web/map.html");
                 // Exécution de la commande
