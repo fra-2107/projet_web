@@ -156,7 +156,7 @@ if ($request[1] == 'arbres') {
     } elseif (isset($_GET['risque'])) {
         $data = dbGetArbretoRisque($db, $id);
         $python_script = "/var/www/etu0106/projet_web/python/script_besoin_3.py"; // Chemin absolu vers le script Python
-
+        echo'bonjour';
         // Vérifier si des données ont été récupérées
         if ($data !== false) {
 
