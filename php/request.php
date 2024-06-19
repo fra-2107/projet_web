@@ -112,13 +112,28 @@
     }else if ($request[1] == 'map'){
         $data = dbGetCoordMap($db);
     }elseif ($request[1] == 'predictClust') { 
-        // Récupérer le nombre de clusters à partir de POST
         $nb_clusters = isset($_POST['nb_clusters']) ? (int)$_POST['nb_clusters'] : 0;
-    
+
         if (is_numeric($nb_clusters) && $nb_clusters > 0) {
             // Construction de la commande pour exécuter le script Python
-            $command = "python python/script_besoin_1.py " . intval($nb_clusters);
-            exec($command);
+            $python_script = "../python/script_besoin_1.py"; // Chemin absolu vers le script Python
+            
+            if (file_exists($python_script)) {
+                $command = "pyhton " . $python_script . " " . intval($nb_clusters);
+                
+                // Exécution de la commande
+                exec($command, $output, $return_var);
+                
+                // Vérification du retour de la commande
+                if ($return_var === 0) {
+                    echo json_encode(['status' => 'success', 'message' => 'Script Python exécuté avec succès.']);
+                } else {
+                    echo json_encode(['status' => 'error', 'message' => 'Erreur lors de l\'exécution du script Python.']);
+                    // Vous pouvez ajouter $output pour voir les messages d'erreur retournés par le script Python
+                }
+            } else {
+                echo json_encode(['status' => 'error', 'message' => 'Fichiers Python non trouvés. Vérifiez les chemins.']);
+            }
         } else {
             echo json_encode(['status' => 'error', 'message' => 'Nombre de clusters invalide.']);
         }
