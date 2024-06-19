@@ -33,35 +33,43 @@
             </div> 
         </nav>
 
-        <form id="ajoutArbre">
-            <input type="text" id="espece" name="espece" placeholder="Espèce" required>
-            <input type="number" id="haut_tot" name="haut_tot" placeholder="Hauteur Totale" required>
-            <input type="number" id="haut_tronc" name="haut_tronc" placeholder="Hauteur du Tronc" required>
-            <input type="number" id="diam_tronc" name="diam_tronc" placeholder="Diamètre du Tronc" required>
-            <input type="number" id="lat" name="lat" placeholder="Latitude" required>
-            <input type="number" id="longi" name="longi" placeholder="Longitude" required>
-            
-            <select id="fk_arb_etat" name="fk_arb_etat" required>
-                <option value="0">fk_arb_etat</option>
-            </select>
 
-            <select id="fk_stadedev" name="fk_stadedev" required>
-                <option value="0">fk_stadedev</option>
-            </select>
+        
+        <main>
+            <div class="text_content">
+                <h1>Ajouter un arbre</h1>
+            </div>
 
-            <select id="fk_port" name="fk_port" required>
-                <option value="0">fk_port</option>
-
-            </select>
-
-            <select id="fk_pied" name="fk_pied" required>
-                <option value="0">fk_pied</option>
-
-            </select>
-
-            <input type="text" id="remarquable" name="remarquable" placeholder="Remarquable" required>
-            <button type="submit">Ajouter l'Arbre</button>
-        </form>        
+            <form id="ajoutArbre">
+                <input type="text" id="espece" name="espece" placeholder="Espèce" required>
+                <input type="number" id="haut_tot" name="haut_tot" placeholder="Hauteur Totale" required>
+                <input type="number" id="haut_tronc" name="haut_tronc" placeholder="Hauteur du Tronc" required>
+                <input type="number" id="diam_tronc" name="diam_tronc" placeholder="Diamètre du Tronc" required>
+                <input type="number" id="lat" name="lat" placeholder="Latitude" required>
+                <input type="number" id="longi" name="longi" placeholder="Longitude" required>
+                
+                <select id="fk_arb_etat" name="fk_arb_etat" required>
+                    <option value="0">fk_arb_etat</option>
+                </select>
+    
+                <select id="fk_stadedev" name="fk_stadedev" required>
+                    <option value="0">fk_stadedev</option>
+                </select>
+    
+                <select id="fk_port" name="fk_port" required>
+                    <option value="0">fk_port</option>
+    
+                </select>
+    
+                <select id="fk_pied" name="fk_pied" required>
+                    <option value="0">fk_pied</option>
+    
+                </select>
+    
+                <input type="text" id="remarquable" name="remarquable" placeholder="Remarquable" required>
+                <button type="submit">Ajouter l'Arbre</button>
+            </form>  
+        </main>    
 
         <footer>
             <div class="footer_left">
