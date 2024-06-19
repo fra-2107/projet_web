@@ -94,7 +94,7 @@ header .content{
     flex-direction: column;
     align-items: center;
     color: white;
-    background: url('img/fond_header.jpg') no-repeat center center;
+    background: url('img/arbre2.jpg') no-repeat center center;
     background-size: cover;
 }
 
@@ -288,7 +288,6 @@ main #ajoutArbre .taille_form input {
 }
 
 /* FIN PAGE AJOUT */
-
 
 /* ------------------------------------------------------ */
 
