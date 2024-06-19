@@ -111,6 +111,9 @@
         $data = dbGetOptions($db, 'fk_port');
     }else if ($request[1] == 'map'){
         $data = dbGetCoordMap($db);
+    }elseif ($request[1] == 'predictClust') {
+        $cmd = 'python3 ../python/script_besoin_1.py';
+        exec($cmd, $output);
     }
     
     else

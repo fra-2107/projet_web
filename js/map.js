@@ -22,3 +22,11 @@ ajaxRequest('POST', 'php/request.php/map/', (response) => {
         .bindPopup(`Arbre: ${arbre.lat}, ${arbre.longi}`);
     });
 });
+
+
+$('#predClusterBtn').click(() => {
+    console.log('Prédiction de clusters');
+    ajaxRequest('POST', 'php/request.php/predictClust/', (response) => {
+        console.log('Prédiction reçue:', response);
+    }, document.getElementById('nb_clust').value);
+});

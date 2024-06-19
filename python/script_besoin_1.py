@@ -5,6 +5,7 @@ import pandas as pd
 import sklearn as sk
 import plotly as plt
 from sklearn.cluster import KMeans
+import sys
 
 def mapcluster(nb_clusters):
     data = pd.read_csv("assets/csv/Data_Arbre.csv")
@@ -35,7 +36,18 @@ def mapcluster(nb_clusters):
         hover_data={'hauteur_tot': True},
         zoom=12
     )
-    fig.write_html('map.html')
+    # fig.write_html('map.html')
+    fig.show()
 
-nb_clusters = int(input("Entrez le nombre de clusters : "))
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Usage: python script.py <nb_clusters>")
+        sys.exit(1)
+    
+    try:
+        nb_clusters = int(sys.argv[1])
+    except ValueError:
+        print("Le nombre de clusters doit être un entier.")
+        sys.exit(1)
+        
 mapcluster(nb_clusters)
