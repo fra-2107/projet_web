@@ -114,6 +114,7 @@
     }elseif ($request[1] == 'predictClust') { 
         $data = json_decode(file_get_contents('php://input'), true);
         $nb_clusters = (int)$data['nb_clusters'];
+        echo json_encode($data);
         if (is_numeric($nb_clusters) && $nb_clusters > 0) {
             // Construction de la commande pour exécuter le script Python
             $command = escapeshellcmd("python ../python/script_besoin_1.py " . intval($nb_clusters));
