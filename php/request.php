@@ -123,7 +123,7 @@
                 
                 // Exécution de la commande
                 exec($command, $output, $return_var);
-
+            }
         } else {
             echo json_encode(['status' => 'error', 'message' => 'Nombre de clusters invalide.']);
         }
