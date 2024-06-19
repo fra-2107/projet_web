@@ -222,6 +222,10 @@ table {
     nav .right_nav {
         margin-left: 30rem;
     }
+
+    footer .footer-logos {
+        margin-left: 30rem;
+    }
 }
 
 @media all and (max-width:680px) {
