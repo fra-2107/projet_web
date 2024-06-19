@@ -234,11 +234,6 @@ main .form_ajout {
     background-size: cover;
 }
 
-main .form_ajout h1 {
-    color: white;
-    margin: 5rem 0 0 0;
-}
-
 #espece {
     width: 100px;
 }
