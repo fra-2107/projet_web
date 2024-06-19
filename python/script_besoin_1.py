@@ -8,8 +8,8 @@ from sklearn.cluster import KMeans
 import sys
 
 def mapcluster(nb_clusters):
-    data = pd.read_csv("/var/www/etu0106/projet_web/assets/csv/Data_Arbre.csv")
-    data_taille = pd.read_csv("/var/www/etu0106/projet_web/assets/csv/data_taille.csv")
+    data = pd.read_csv("assets/csv/Data_Arbre.csv")
+    data_taille = pd.read_csv("assets/csv/data_taille.csv")
     
     # initalisation du modèle
     kmeans = KMeans(n_clusters=nb_clusters)
@@ -36,7 +36,7 @@ def mapcluster(nb_clusters):
         hover_data={'hauteur_tot': True},
         zoom=12
     )
-    fig.write_html('../map.html')
+    fig.write_html('map.html')
     # fig.show()
 
 if __name__ == "__main__":
