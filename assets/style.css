@@ -297,6 +297,10 @@ main #ajoutArbre .taille_form input {
     border-radius:12px;
 }
 
+.form_ajout #ajoutArbre input[type="checkbox"]:checked + label::before{
+    background:limegreen;
+}
+
 /* FIN PAGE AJOUT */
 
 
