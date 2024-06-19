@@ -14,4 +14,7 @@ ajaxRequest('GET', 'php/request.php/preds?age&id='+id, (response) => {
 
     // Utiliser la valeur récupérée comme nécessaire
     console.log("Valeur de age_estim :", ageEstim);
+
+    // Afficher le résultat
+    document.getElementById('valueage').innerHTML = ageEstim;
 });
