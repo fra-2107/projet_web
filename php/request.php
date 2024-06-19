@@ -136,7 +136,7 @@
         if (isset($_GET['id']) && isset($_GET['age'])) {
             $id = $_GET['id'];
             $data = dbGetArbretoAge($db, $id);
-            echo 'dat: '.$data;
+            echo 'dat: '.json_decode($data);
 
         }
     }
