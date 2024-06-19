@@ -66,6 +66,8 @@ function afficheArbres(data) {
         });
         td_btn.appendChild(predictionButton);
         tr.appendChild(td_btn);
+
+        tableArbre.appendChild(tr);
     });
 }
 
