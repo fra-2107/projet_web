@@ -28,7 +28,6 @@
         $id=$request[2];
 
         if ($requestMethod == 'GET')        {
-            ob_start();  // Démarrer la sortie tampon
             $limit = isset($_GET['limit']) ? (int)$_GET['limit'] : 20;
             $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
             $offset = ($page - 1) * $limit;
@@ -42,10 +41,9 @@
                 'limit' => $limit,
                 'data' => $arbres
             ];
-        
-            echo json_encode($response);
-            ob_end_flush();  // Envoyer la sortie tampon et désactiver la mise en tampon
-        }
+
+            $data = $response;
+}
     
         if ($requestMethod == 'POST'){
             // Liste des champs requis
