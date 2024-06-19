@@ -117,8 +117,8 @@
     
         if (is_numeric($nb_clusters) && $nb_clusters > 0) {
             // Construction de la commande pour exécuter le script Python
-            $command = escapeshellcmd("python ../python/script_besoin_1.py " . intval($nb_clusters));
-            $output = shell_exec($command);
+            $command = "python ../python/script_besoin_1.py " . intval($nb_clusters);
+            exec($command);
         } else {
             echo json_encode(['status' => 'error', 'message' => 'Nombre de clusters invalide.']);
         }
