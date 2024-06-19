@@ -6,7 +6,6 @@ body {
 /* BARRE DE NAVIGATION */
 nav {
     background-color: #f2f3eb;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 10px 20px;
     display: flex;
     flex-wrap: wrap;
@@ -123,6 +122,15 @@ header .cta-btn {
 /* ------------------------------------------------------ */
 /* PAGE CARTE */
 
+main .text_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5rem 0rem 5rem 0rem;
+    background: linear-gradient(to top, #87bc26, #f2f3eb);
+}
+
+
 main .carte_content {
     display: flex;
     flex-wrap: wrap;
@@ -139,14 +147,13 @@ main .carte_content .carte_clusters{
     border: solid 1px rgb(109, 109, 109);
     border-radius: 5px;
     margin-left: 2rem;
+    padding: 3rem 1rem 3rem 1rem;
 }
 
-main .text_content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 3rem 0px 3rem 0px;
-    background: linear-gradient(to top, #87bc26, #f2f3eb);
+main .carte_content .carte_clusters .cluster_card input {
+    padding: 5px;
+    border: silver;
+    margin-right: 10px;
 }
 
 
