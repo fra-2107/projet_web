@@ -287,6 +287,9 @@ main #ajoutArbre .taille_form input {
     background-color: #87bc26;
 }
 
+.form_ajout #ajoutArbre #remarquable {
+    color: #34671b;
+}
 
 /* FIN PAGE AJOUT */
 
