@@ -116,18 +116,27 @@ header p {
 /* ------------------------------------------------------ */
 /* PAGE CARTE */
 
-.carte_content {
+main .carte_content {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
 }
 
-.carte_content .carte_clusters{
+main .carte_content .carte_clusters{
     border: solid 1px rgb(109, 109, 109);
     border-radius: 5px;
 }
 
+main .text_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 500px 0px 0px 0px;
+    background-color: #838b80;
+}
 
-/* FINPAGE CARTE */
+
+
+/* FIN CARTE */
 /* ------------------------------------------------------ */
