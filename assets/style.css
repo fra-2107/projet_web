@@ -223,6 +223,17 @@ main #ajoutArbre {
     margin: 5rem 0rem 5rem 0rem;
 }
 
+main #ajoutArbre .taille_form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+main #ajoutArbre .taille_form input {
+    margin-right: 10px;
+}
+
 /* FIN PAGE AJOUT */
 
 

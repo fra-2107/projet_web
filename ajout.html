@@ -33,56 +33,58 @@
             </div> 
         </nav>
 
-        <div class="text_content">
-            <h1>Ajouter un arbre</h1>
-        </div>
+        
         
         <main>
-            <form id="ajoutArbre" onsubmit="setRemarkableValue(event)">
-                <input type="text" id="espece" name="espece" placeholder="Espèce" required>
-                <input type="number" id="haut_tot" name="haut_tot" placeholder="Hauteur Totale" required>
-                <input type="number" id="haut_tronc" name="haut_tronc" placeholder="Hauteur du Tronc" required>
-                <input type="number" id="diam_tronc" name="diam_tronc" placeholder="Diamètre du Tronc" required>
-                <input type="number" id="lat" name="lat" placeholder="Latitude" required>
-                <input type="number" id="longi" name="longi" placeholder="Longitude" required>
-                
-                <select id="fk_arb_etat" name="fk_arb_etat" required>
-                    <option value="0">fk_arb_etat</option>
-                </select>
-    
-                <select id="fk_stadedev" name="fk_stadedev" required>
-                    <option value="0">fk_stadedev</option>
-                </select>
-    
-                <select id="fk_port" name="fk_port" required>
-                    <option value="0">fk_port</option>
-    
-                </select>
-    
-                <select id="fk_pied" name="fk_pied" required>
-                    <option value="0">fk_pied</option>
-    
-                </select>
-    
-                <input
-                type="checkbox"
-                id="remarquable"
-                name="remarquableCheckbox"
-                value="Oui" />
-                <label for="remarquable">
-                    remarquable 
-                </label>
+            <div class="text_content">
+                <h1>Ajouter un arbre</h1>
+            </div>
+
+            <div class="form_ajout">
+                <form id="ajoutArbre">
+                    <h2>Renseigner un nouvel arbre</h2>
+                    <input type="text" id="espece" name="espece" placeholder="Espèce" required>
+            
+                    <p>Tailles</p>
+                    <div class="taille_form">
+                        <input type="number" id="haut_tot" name="haut_tot" placeholder="Hauteur Totale" required>
+                        <input type="number" id="haut_tronc" name="haut_tronc" placeholder="Hauteur du Tronc" required>
+                        <input type="number" id="diam_tronc" name="diam_tronc" placeholder="Diamètre du Tronc" required>
+                    </div>
+                    
+                    <input type="number" id="lat" name="lat" placeholder="Latitude" required>
+                    <input type="number" id="longi" name="longi" placeholder="Longitude" required>
+                    
+                    <select id="fk_arb_etat" name="fk_arb_etat" required>
+                        <option value="0">fk_arb_etat</option>
+                    </select>
         
-                <!-- Hidden input to store the actual value -->
-                <input
-                    type="hidden"
-                    id="remarquableHidden"
-                    name="remarquable"
-                    value="Non" />
-
-
-                <button type="submit">Ajouter l'Arbre</button>
-            </form>  
+                    <select id="fk_stadedev" name="fk_stadedev" required>
+                        <option value="0">fk_stadedev</option>
+                    </select>
+        
+                    <select id="fk_port" name="fk_port" required>
+                        <option value="0">fk_port</option>
+        
+                    </select>
+        
+                    <select id="fk_pied" name="fk_pied" required>
+                        <option value="0">fk_pied</option>
+        
+                    </select>
+        
+                    <input
+                        type="checkbox"
+                        id="remarquable"
+                        name="remarquable"
+                        value="Oui" />
+                    <label for="remarquable">
+                    remarquable 
+                    </label>
+    
+                    <button type="submit">Ajouter l'Arbre</button>
+                </form>  
+            </div>
         </main>    
 
         <footer>
