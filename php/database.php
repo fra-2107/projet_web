@@ -59,6 +59,24 @@
     return $result;
   }
 
+  function dbGetArbre($db, $id)
+  {
+    try
+    {
+      $request = 'SELECT * FROM arbre WHERE id=:id';
+      $statement = $db->prepare($request);
+      $statement->bindParam(':id', $id, PDO::PARAM_INT, 20);
+      $statement->execute();
+      $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+    catch (PDOException $exception)
+    {
+      error_log('Request error: '.$exception->getMessage());
+      return false;
+    }
+    return $result;
+  }
+
   function dbGetArbres($db, $limit = 10, $filters = null){
     $whereArgs = [];
 

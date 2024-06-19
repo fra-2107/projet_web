@@ -132,6 +132,9 @@
         } else {
             echo json_encode(['status' => 'error', 'message' => 'Nombre de clusters invalide.']);
         }
+    }elseif ($request[1] == 'preds') {
+        $id = $_GET['id'];
+        $data = dbGetarbre($db, $id);
     }
     
     else
