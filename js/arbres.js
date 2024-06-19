@@ -31,6 +31,9 @@ $('#ajoutArbre').submit((event) => {
         // Mettre à jour l'affichage des arbres
         ajaxRequest('GET', 'php/request.php/arbres', afficheArbres);
     }, urlEncodedData);
+
+    // Vider le formulaire
+    $('#ajoutArbre')[0].reset();
 });
 
 
