@@ -9,6 +9,10 @@ import sys
 def predict_risque(input_json):
     input_data = pd.read_json(StringIO(input_json))
     
+    input_data.rename(columns={'lat': 'latitude'}, inplace=True)
+    input_data.rename(columns={'diam_tronc': 'tronc_diam'}, inplace=True)
+    
+    
     # charger l'encodeur
     encoder = joblib.load('/var/www/etu0106/projet_web/python/pkl/ordinal_encoder_besoin3.pkl')
     
