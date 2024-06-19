@@ -146,7 +146,7 @@
             }
         
             // Encoder le tableau en JSON
-            $jsonData = json_encode($data);
+            $jsonData = (string)json_encode($data);
 
             if (file_exists($python_script)) {
                 $command = "/usr/bin/python " . $python_script . " " . intval($jsonData);
