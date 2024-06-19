@@ -150,19 +150,32 @@
 
             if (file_exists($python_script)) {
                 $command = "/usr/bin/python " . $python_script . " '" .($jsonData)."'";
-
-                if (file_exists("/var/www/etu0106/projet_web/map.html"))
-                    exec("rm /var/www/etu0106/projet_web/map.html");
                 // Exécution de la commande
                 exec($command, $output, $return_var);
                 $data = $output;
+            }
+        }
+    }elseif ($request[1] == 'risque') {
+        $id = $_GET['id'];
+        $data = dbGetArbretoRisque($db, $id);
+        $python_script = "/var/www/etu0106/projet_web/python/script_besoin_3.py"; // Chemin absolu vers le script Python
 
+        // Vérifier si des données ont été récupérées
+        if ($data !== false) {
+        
+            // Encoder le tableau en JSON
+            $jsonData = json_encode($data);
+
+            if (file_exists($python_script)) {
+                $command = "/usr/bin/python " . $python_script . " '" .($jsonData)."'";
+
+                // Exécution de la commande
+                exec($command, $output, $return_var);
+                $data = $output;
+            }
         }
     }
-}   
-    
-    else
-    {
+    else{
         header('HTTP/1.1 400 Bad Request');
         exit;
     }
