@@ -266,11 +266,27 @@ main #ajoutArbre .taille_form input {
 }
 
 .form_ajout #ajoutArbre select {
-    margin-top: 5rem;
+    margin-top: 1rem;
     width: 200px;
     padding: 10px;
     border: solid 1px #d1d1d1;
 }
+
+.form_ajout #ajoutArbre button {
+    background-color: #34671b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: all 0.2s;
+}
+
+.form_ajout #ajoutArbre button:hover {
+    background-color: #87bc26;
+}
+
 
 /* FIN PAGE AJOUT */
 
