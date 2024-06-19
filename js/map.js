@@ -36,8 +36,11 @@ $('#predClusterBtn').click(() => {
         return;
     }
 
+    // Préparer les données à envoyer sous forme de chaîne de requête URL-encoded
+    const data = `nb_clusters=${encodeURIComponent(nbClusters)}`;
+
     // Envoi de la requête AJAX avec le nombre de clusters
     ajaxRequest('POST', 'php/request.php/predictClust/', (response) => {
         console.log('Prédiction reçue:', response);
-    }, { nb_clusters: nbClusters });
+    }, data);
 });

@@ -112,18 +112,16 @@
     }else if ($request[1] == 'map'){
         $data = dbGetCoordMap($db);
     }elseif ($request[1] == 'predictClust') { 
-        $data = json_decode(file_get_contents('php://input'), true);
-        $nb_clusters = (int)$data['nb_clusters'];
-        echo "nb cluster : " . $nb_clusters;
+        // Récupérer le nombre de clusters à partir de POST
+        $nb_clusters = isset($_POST['nb_clusters']) ? (int)$_POST['nb_clusters'] : 0;
+    
         if (is_numeric($nb_clusters) && $nb_clusters > 0) {
             // Construction de la commande pour exécuter le script Python
-            $command = escapeshellcmd("python ../python/script_besoin_1.py " . intval($nb_clusters));
-            $output = shell_exec($command);
-            echo json_encode(['status' => 'success', 'output' => $output]);
+            $command = "python ../python/script_besoin_1.py " . intval($nb_clusters);
+            exec($command);
         } else {
             echo json_encode(['status' => 'error', 'message' => 'Nombre de clusters invalide.']);
         }
-    
     }
     
     else
