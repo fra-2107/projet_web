@@ -188,5 +188,8 @@ table {
     padding: 0rem 0rem 2rem 0rem;
 }
 
+.pagination {
+    align-items: center;
+}
 /* FIN PAGE CARTE */
 /* ------------------------------------------------------ */
