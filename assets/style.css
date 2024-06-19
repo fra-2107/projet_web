@@ -259,6 +259,7 @@ main #ajoutArbre .taille_form input {
 
 .form_ajout #ajoutArbre .coord_form input {
     width: 70px;
+    margin-left: 5px;
 }
 
 .form_ajout #ajoutArbre select {
