@@ -39,6 +39,6 @@ if __name__ == "__main__":
 
 # input_json = '[{"fk_arb_etat": "EN PLACE", "latitude": "48.8566", "tronc_diam": "20.0", "haut_tronc": "27.0", "haut_tot": "34.0"}]'
     
-output_json = predict_risque(input_json)
-print(output_json)   
+output = predict_risque(input_json)
+print(output)   
     
