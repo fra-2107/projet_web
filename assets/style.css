@@ -222,13 +222,19 @@ main #ajoutArbre {
     background-color: white;
     border-radius: 5px;
     width: 20rem;
+    padding: 20px;
 }
 
 main .form_ajout {
     display: flex;
     justify-content: center;
+    flex-direction: column;
     background: url('img/fond_header.jpg') no-repeat center center;
     background-size: cover;
+}
+
+#espece {
+    width: 100px;
 }
 
 main #ajoutArbre .taille_form {
@@ -241,6 +247,15 @@ main #ajoutArbre .taille_form {
 main #ajoutArbre .taille_form input {
     margin-right: 5px;
     margin-left: 5px;
+    width: 70px;
+}
+
+.form_ajout #ajoutArbre .coord_form {
+    display: flex;
+    justify-content: center;
+}
+
+.form_ajout #ajoutArbre .coord_form input {
     width: 70px;
 }
 
