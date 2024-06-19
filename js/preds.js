@@ -27,7 +27,7 @@ ajaxRequest('GET', 'php/request.php/preds?risque&id='+id, (response) => {
     var jsonData = JSON.parse(jsonString);
 
     // Accéder à la première (et unique, dans ce cas) entrée du tableau
-    var risqueEstim = jsonData[0].risque_estim;
+    var risqueEstim = jsonData[0];
 
     // Utiliser la valeur récupérée comme nécessaire
     console.log("Valeur de risque_estim :", risqueEstim);
