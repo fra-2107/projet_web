@@ -218,10 +218,9 @@ main #ajoutArbre {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    width: auto;
-    height: auto;
     margin: 5rem 0rem 5rem 0rem;
-    background-color: antiquewhite;
+    background-color: white;
+    border-radius: 5px;
 }
 
 main #ajoutArbre .taille_form {
