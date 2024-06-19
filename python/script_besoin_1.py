@@ -8,8 +8,8 @@ from sklearn.cluster import KMeans
 import sys
 
 def mapcluster(nb_clusters):
-    data = pd.read_csv("assets/csv/Data_Arbre.csv")
-    data_taille = pd.read_csv("assets/csv/data_taille.csv")
+    data = pd.read_csv("/var/www/etu0106/projet_web/assets/csv/Data_Arbre.csv")
+    data_taille = pd.read_csv("/var/www/etu0106/projet_web/assets/csv/data_taille.csv")
     
     # initalisation du modèle
     kmeans = KMeans(n_clusters=nb_clusters)
