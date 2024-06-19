@@ -218,7 +218,7 @@ main #ajoutArbre {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    margin: 5rem 0rem 10rem 0rem;
+    margin: 5rem 0rem 5rem 0rem;
     background-color: white;
     border-radius: 5px;
     width: 20rem;
@@ -236,7 +236,7 @@ main .form_ajout {
 
 main .form_ajout h1 {
     color: white;
-    margin: 10rem 0 10rem 0;
+    margin: 5rem 0 0 0;
 }
 
 #espece {
