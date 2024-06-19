@@ -135,31 +135,29 @@
     }elseif ($request[1] == 'preds') {
         $id = $_GET['id'];
         $data = dbGetArbretoAge($db, $id);
-        echo 'Données JSON reçues : ' . $data;
+        $python_script = "/var/www/etu0106/projet_web/python/script_besoin_2.py"; // Chemin absolu vers le script Python
+
+
         // Vérifier si des données ont été récupérées
         if ($data !== false) {
-            // Décoder le JSON en un tableau PHP
-            $decodedData = json_decode($data, true);
-
-            // Vérifier si le décodage JSON a réussi
-            if ($decodedData !== null) {
-                // Ajouter l'attribut 'fk_prec_estim' à chaque objet
-                foreach ($decodedData as &$item) {
-                    $item['fk_prec_estim'] = 10;
-                }
-
-                // Ré-encoder le tableau modifié en JSON
-                $jsonData = json_encode($decodedData);
-
-                // Afficher le JSON encodé
-                echo 'dat: ' . $jsonData;
-            } else {
-                echo 'Erreur lors du décodage du JSON.';
+            // Ajouter l'attribut 'fk_prec_estim' à chaque élément du tableau
+            foreach ($data as &$item) {
+                $item['fk_prec_estim'] = "10";
             }
-        } else {
-            echo 'Erreur lors de la récupération des données depuis la base de données.';
+        
+            // Encoder le tableau en JSON
+            $jsonData = json_encode($data);
+
+            if (file_exists($python_script)) {
+                $command = "/usr/bin/python " . $python_script . " " . intval($jsonData);
+                if (file_exists("/var/www/etu0106/projet_web/map.html"))
+                    exec("rm /var/www/etu0106/projet_web/map.html");
+                // Exécution de la commande
+                exec($command, $output, $return_var);
+                echo 'output : '.$output;
         }
     }
+}   
     
     else
     {
