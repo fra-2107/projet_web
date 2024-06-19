@@ -284,6 +284,17 @@ main #ajoutArbre .taille_form input {
     background-color: #87bc26;
 }
 
+.form_ajout #ajoutArbre .remarquable_card {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.form_ajout #ajoutArbre .remarquable_card label {
+    margin-left: 10px;
+}
+
 /* FIN PAGE AJOUT */
 
 /* ------------------------------------------------------ */
