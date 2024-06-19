@@ -221,6 +221,7 @@ main #ajoutArbre {
     width: auto;
     height: auto;
     margin: 5rem 0rem 5rem 0rem;
+    background-color: antiquewhite;
 }
 
 main #ajoutArbre .taille_form {
