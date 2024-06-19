@@ -266,7 +266,9 @@ main #ajoutArbre .taille_form input {
 }
 
 .form_ajout #ajoutArbre select {
-    width: 50px;
+    width: 200px;
+    padding: 5;
+    border: solid 1px #a3a3a3;
 }
 
 /* FIN PAGE AJOUT */
