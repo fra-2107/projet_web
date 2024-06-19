@@ -197,16 +197,29 @@ table {
     background-color: #34671b;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 5px 5px;
     cursor: pointer;
     border-radius: 5px;
     font-size: 1em;
     transition: all 0.2s;
+    margin: 5px;
 }
 
 .pagination button:hover {
     background-color: #87bc26;
 }
 
+.pagination span {
+    margin: 10px;
+    font-size: 20px;
+}
+
 /* FIN PAGE CARTE */
+/* ------------------------------------------------------ */
+
+/* ------------------------------------------------------ */
+/* PAGE AJOUT */
+
+
+/* FIN PAGE AJOUT */
 /* ------------------------------------------------------ */
