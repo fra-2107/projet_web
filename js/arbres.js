@@ -53,7 +53,6 @@ function setRemarkableValue(event) {
 }
 
 function afficheArbres(data){
-    console.log(data);
 }
 
 // Récupérer l'élément select
