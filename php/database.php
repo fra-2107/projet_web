@@ -95,6 +95,24 @@
     return $result;
   }
 
+  function dbGetArbretoRisque($db, $id)
+  {
+    try
+    {
+      $request = 'SELECT fk_arb_etat, lat, diam_tronc, haut_tronc, haut_tot FROM arbre WHERE id=:id';
+      $statement = $db->prepare($request);
+      $statement->bindParam(':id', $id, PDO::PARAM_INT);
+      $statement->execute();
+      $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+    catch (PDOException $exception)
+    {
+      error_log('Request error: '.$exception->getMessage());
+      return false;
+    }
+    return $result;
+  }
+
 
   function dbGetArbres($db, $limit = 10, $filters = null){
     $whereArgs = [];
