@@ -65,7 +65,7 @@
     {
       $request = 'SELECT * FROM arbre WHERE id=:id';
       $statement = $db->prepare($request);
-      $statement->bindParam(':id', $id, PDO::PARAM_INT, 20);
+      $statement->bindParam(':id', $id, PDO::PARAM_INT);
       $statement->execute();
       $result = $statement->fetchAll(PDO::FETCH_ASSOC);
     }

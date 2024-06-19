@@ -134,7 +134,7 @@
         }
     }elseif ($request[1] == 'preds') {
         $id = $_GET['id'];
-        $data = dbGetarbre($db, $id);
+        $data = dbGetArbre($db, $id);
     }
     
     else
