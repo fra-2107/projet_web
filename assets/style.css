@@ -94,7 +94,7 @@ header .content{
     flex-direction: column;
     align-items: center;
     color: white;
-    background: url('assets/img/arbre2.jpg') no-repeat center center;
+    background: url(assets/img/arbre2.jpg);
     background-size: cover;
 }
 
