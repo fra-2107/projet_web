@@ -63,6 +63,7 @@ function afficheArbres(data) {
         predictionButton.addEventListener('click', () => {
             // Call the function for prediction
             console.log('prediction : ' + el.id);
+            window.open('prediction.html?id=' + el.id, '_blank');
         });
         td_btn.appendChild(predictionButton);
         tr.appendChild(td_btn);
