@@ -123,18 +123,7 @@
                 
                 // Exécution de la commande
                 exec($command, $output, $return_var);
-                echo json_encode($output);
-                echo json_encode('var : '.$return_var);
-                // Vérification du retour de la commande
-                if ($return_var === 0) {
-                    echo json_encode(['status' => 'success', 'message' => 'Script Python exécuté avec succès.']);
-                } else {
-                    echo json_encode(['status' => 'error', 'message' => 'Erreur lors de l\'exécution du script Python.']);
-                    // Vous pouvez ajouter $output pour voir les messages d'erreur retournés par le script Python
-                }
-            } else {
-                echo json_encode(['status' => 'error', 'message' => 'Fichiers Python non trouvés. Vérifiez les chemins.']);
-            }
+
         } else {
             echo json_encode(['status' => 'error', 'message' => 'Nombre de clusters invalide.']);
         }
