@@ -17,7 +17,7 @@ $('#ajoutArbre').submit((event) => {
         fk_stadedev: $('#fk_stadedev').val(),
         fk_port: $('#fk_port').val(),
         fk_pied: $('#fk_pied').val(),
-        remarquable : () => {if ($('#remarquable').is(':checked')) {return 'Oui'} else {return 'Non'}},
+        remarquable: $('#remarquable').is(':checked') ? 'Oui' : 'Non'
     };
 
     console.log('Form Data:', formData);
