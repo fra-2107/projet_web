@@ -197,11 +197,12 @@ table {
     background-color: #34671b;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 5px 5px;
     cursor: pointer;
     border-radius: 5px;
     font-size: 1em;
     transition: all 0.2s;
+    margin: 10px;
 }
 
 .pagination button:hover {
