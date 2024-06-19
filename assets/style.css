@@ -218,7 +218,7 @@ main #ajoutArbre {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    margin: 5rem 0rem 0rem 0rem;
+    margin: 5rem 0rem 10rem 0rem;
     background-color: white;
     border-radius: 5px;
     width: 20rem;
@@ -230,13 +230,13 @@ main .form_ajout {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    background: url('img/fond_header.jpg') no-repeat center center;
+    background: url('img/arbre2.jpg');
     background-size: cover;
 }
 
 main .form_ajout h1 {
     color: white;
-    margin-top: 20px;
+    margin: 10rem 0 10rem 0;
 }
 
 #espece {
