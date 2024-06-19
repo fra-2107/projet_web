@@ -63,6 +63,10 @@ function afficheArbres(data) {
 
 function affichePagination(total, limit, page) {
     let paginationDiv = document.getElementById('pagination');
+    if (!paginationDiv) {
+        console.error('Pagination element not found');
+        return;
+    }
     paginationDiv.innerHTML = ''; // Clear existing pagination buttons
 
     let totalPages = Math.ceil(total / limit);
