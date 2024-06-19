@@ -26,7 +26,18 @@ ajaxRequest('POST', 'php/request.php/map/', (response) => {
 
 $('#predClusterBtn').click(() => {
     console.log('Prédiction de clusters');
+
+    // Récupération de la valeur du champ de saisie
+    const nbClusters = document.getElementById('nb_clust').value;
+
+    // Vérification que la valeur est bien un nombre et est valide
+    if (!nbClusters || isNaN(nbClusters) || nbClusters <= 0) {
+        alert("Veuillez entrer un nombre valide de clusters.");
+        return;
+    }
+
+    // Envoi de la requête AJAX avec le nombre de clusters
     ajaxRequest('POST', 'php/request.php/predictClust/', (response) => {
         console.log('Prédiction reçue:', response);
-    }, document.getElementById('nb_clust').value);
+    }, { nb_clusters: nbClusters });
 });
