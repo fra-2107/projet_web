@@ -234,6 +234,7 @@ main #ajoutArbre .taille_form {
 main #ajoutArbre .taille_form input {
     margin-right: 5px;
     margin-left: 5px;
+    width: 20px;
 }
 
 /* FIN PAGE AJOUT */
