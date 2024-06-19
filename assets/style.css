@@ -224,6 +224,11 @@ main #ajoutArbre {
     width: 20rem;
 }
 
+main .form_ajout {
+    display: flex;
+    justify-content: center;
+}
+
 main #ajoutArbre .taille_form {
     display: flex;
     flex-wrap: wrap;
