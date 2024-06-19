@@ -19,7 +19,7 @@ ajaxRequest('GET', 'php/request.php/preds?age&id='+id, (response) => {
     document.getElementById('valueage').innerHTML = ageEstim;
 });
 
-ajaxRequest('GET', 'php/request.php/preds?risque&id='+id, (response) => {
+ajaxRequest('GET', 'php/request.php/preds?risque&id='+id, (data) => {
     // var jsonString = response;
 
     // // Convertir la chaîne JSON en un tableau d'objets JavaScript
@@ -29,8 +29,8 @@ ajaxRequest('GET', 'php/request.php/preds?risque&id='+id, (response) => {
     // var risqueEstim = jsonData[0].risque_estim;
 
     // Utiliser la valeur récupérée comme nécessaire
-    console.log("Valeur de risque_estim :", response);
+    console.log("Valeur de risque_estim :", data);
 
     // Afficher le résultat
-    document.getElementById('valuerisque').innerHTML = response;
+    document.getElementById('valuerisque').innerHTML = data;
 });
