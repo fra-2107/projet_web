@@ -155,7 +155,7 @@
                     exec("rm /var/www/etu0106/projet_web/map.html");
                 // Exécution de la commande
                 exec($command, $output, $return_var);
-                echo 'output : '.$output;
+                echo 'var : '.$return_var;
         }
     }
 }   
