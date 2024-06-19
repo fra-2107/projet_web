@@ -20,6 +20,7 @@ ajaxRequest('GET', 'php/request.php/preds?age&id='+id, (response) => {
 });
 
 ajaxRequest('GET', 'php/request.php/preds?risque&id='+id, (response) => {
+    console.log(response);
     var jsonString = response;
 
     // Convertir la chaîne JSON en un tableau d'objets JavaScript
