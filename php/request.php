@@ -140,16 +140,11 @@
         if ($data !== false) {
             // Ajouter l'attribut 'fk_prec_estim' à chaque élément du tableau
             foreach ($data as &$item) {
-                $item['fk_prec_estim'] = 10;
+                $item['fk_prec_estim'] = "10";
             }
         
             // Encoder le tableau en JSON
             $jsonData = json_encode($data);
-        
-            // Afficher le JSON encodé
-            echo 'dat: ' . $jsonData;
-        } else {
-            echo 'Erreur lors de la récupération des données depuis la base de données.';
         }
     }
     
