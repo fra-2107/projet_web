@@ -45,7 +45,7 @@ function setRemarkableValue(event) {
     hiddenInput.value = checkbox.checked ? 'Oui' : 'Non';
 
     // For demonstration purposes, logging the form data to the console
-    const formData = new FormData(document.getElementById('treeForm'));
+    const formData = new FormData(document.getElementById('ajoutArbre'));
     console.log('Form data:');
     for (let [key, value] of formData.entries()) {
         console.log(`${key}: ${value}`);
