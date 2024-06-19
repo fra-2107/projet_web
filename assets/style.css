@@ -287,8 +287,14 @@ main #ajoutArbre .taille_form input {
     background-color: #87bc26;
 }
 
-.form_ajout #ajoutArbre #remarquable {
-    color: #34671b;
+
+.form_ajout #ajoutArbre input[type="checkbox"] + label::before{
+    content:"";
+    display:inline-block;
+    width:12px;
+    height:12px;
+    background:#444;
+    border-radius:12px;
 }
 
 /* FIN PAGE AJOUT */
