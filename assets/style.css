@@ -180,7 +180,9 @@ input {
 }
 
 .tabArbre {
-    margin: 20px;
+    margin: 0rem 10rem 0rem 10rem;
+    padding: 0;
+    border: solid black 2px;
 }
 
 /* FIN PAGE CARTE */
