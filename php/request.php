@@ -123,8 +123,8 @@
                 
                 // Exécution de la commande
                 exec($command, $output, $return_var);
-                echo json_encode($output);
-                echo json_encode($return_var);
+                echo json_encode('output : '.$output);
+                echo json_encode('var : '.$return_var);
                 // Vérification du retour de la commande
                 if ($return_var === 0) {
                     echo json_encode(['status' => 'success', 'message' => 'Script Python exécuté avec succès.']);
