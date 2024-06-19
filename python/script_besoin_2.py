@@ -1,4 +1,4 @@
-```import pandas as pd
+import pandas as pd
 import joblib
 import json
 from sklearn.preprocessing import OrdinalEncoder, MinMaxScaler
@@ -67,4 +67,3 @@ def predict_age_from_json(input_json):
 input_json = '[{"haut_tot": 34.0, "haut_tronc": 27.0, "tronc_diam": 20.0, "fk_prec_estim": 10}]'
 output_json = predict_age_from_json(input_json)
 print(output_json)
-```
