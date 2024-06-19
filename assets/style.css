@@ -145,7 +145,7 @@ main .text_content {
     flex-direction: column;
     align-items: center;
     padding: 6rem 0px 6rem 0px;
-    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    background: linear-gradient(to top, #87bc26, #f2f3eb);
 }
 
 
