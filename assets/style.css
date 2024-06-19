@@ -144,7 +144,7 @@ main .text_content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 6rem 0px 6rem 0px;
+    padding: 3rem 0px 3rem 0px;
     background: linear-gradient(to top, #87bc26, #f2f3eb);
 }
 
