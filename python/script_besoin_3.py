@@ -46,4 +46,5 @@ if __name__ == "__main__":
     
 output = predict_risque(input_json)
 print(output)   
+
     
