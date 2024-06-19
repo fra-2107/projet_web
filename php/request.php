@@ -162,7 +162,6 @@ if ($request[1] == 'arbres') {
 
             // Encoder le tableau en JSON
             $jsonData = json_encode($data);
-            echo 'test 3'. $jsonData;
 
             if (file_exists($python_script)) {
                 $command = "/usr/bin/python " . $python_script . " '" . ($jsonData) . "'";
@@ -170,7 +169,6 @@ if ($request[1] == 'arbres') {
                 // Exécution de la commande
                 exec($command, $output, $return_var);
                 $data = $output;
-                echo 'test'. $output;
             }
         }
     }
