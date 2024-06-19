@@ -149,7 +149,7 @@
             $jsonData = json_encode($data);
 
             if (file_exists($python_script)) {
-                $command = "/usr/bin/python " . $python_script . " " . strval($jsonData);
+                $command = "/usr/bin/python " . $python_script . " '" .($jsonData)."'";
                 echo 'command : '.$command;
                 if (file_exists("/var/www/etu0106/projet_web/map.html"))
                     exec("rm /var/www/etu0106/projet_web/map.html");
