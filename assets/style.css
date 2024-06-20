@@ -364,7 +364,7 @@ main #ajoutArbre .taille_form input {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #fff;
+    background-color: #f2f3eb; /* Couleur de fond de la popup */
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     border-radius: 8px;
@@ -378,39 +378,10 @@ main #ajoutArbre .taille_form input {
     align-items: center;
 }
 
-.tree {
-    width: 0;
-    height: 0;
-    border-left: 30px solid transparent;
-    border-right: 30px solid transparent;
-    border-bottom: 60px solid green;
-    position: relative;
+.tree-image {
+    width: 100px; /* Ajustez la taille selon vos besoins */
     animation: spin 2s linear infinite;
     margin-bottom: 10px;
-}
-
-.tree::before {
-    content: '';
-    position: absolute;
-    left: -15px;
-    top: -45px;
-    width: 0;
-    height: 0;
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
-    border-bottom: 40px solid green;
-}
-
-.tree::after {
-    content: '';
-    position: absolute;
-    left: -10px;
-    top: -80px;
-    width: 0;
-    height: 0;
-    border-left: 15px solid transparent;
-    border-right: 15px solid transparent;
-    border-bottom: 30px solid green;
 }
 
 @keyframes spin {

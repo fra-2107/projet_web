@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         setTimeout(() => {
             popup.classList.add('hidden'); // Cache la popup après 3 secondes
+            alert('Formulaire envoyé !'); // Affiche un message de confirmation (optionnel)
             // Tu peux également soumettre le formulaire ici si nécessaire
             // event.target.submit();
         }, 3000);
