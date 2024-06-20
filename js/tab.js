@@ -141,10 +141,17 @@ function fetchArbres(page = 1, filterEspece = '', filterEtat = '') {
         url += `&etat=${encodeURIComponent(filterEtat)}`;
     }
 
+    console.log('URL de requête:', url); // Vérifier l'URL de la requête
+
     ajaxRequest('GET', url, (response) => {
-        console.log('affichge')
-        afficheArbres(response.data);
-        affichePagination(response.total, limit, page);
+        console.log('Réponse de la requête:', response); // Vérifier la réponse du serveur
+
+        if (response.error) {
+            console.error('Erreur du serveur:', response.error);
+        } else {
+            afficheArbres(response.data);
+            affichePagination(response.total, limit, page);
+        }
     });
 }
 
