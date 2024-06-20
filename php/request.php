@@ -156,10 +156,9 @@ if ($request[1] == 'arbres') {
         }
     } elseif (isset($_GET['risque'])) {
         $data = dbGetArbretoRisque($db, $id);
-        $python_script = "/var/www/etu0106/projet_web/python/script_besoin_3.py"; // Chemin absolu vers le script Python
+        $python_script = "/var/www/etu0106/projet_web/python/uprooting.py"; // Chemin absolu vers le script Python
         // Vérifier si des données ont été récupérées
         if ($data !== false) {
-
             // Encoder le tableau en JSON
             $jsonData = json_encode($data);
             echo 'jsonData : ' . $jsonData;
@@ -170,8 +169,7 @@ if ($request[1] == 'arbres') {
                 // Exécution de la commande
                 exec($command, $output, $return_var);
                 $data = $output;
-                echo 'output : ' . $output;
-                echo 'return_var : ' . $return_var;
+
             }
         }
     }
