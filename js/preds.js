@@ -21,13 +21,13 @@ ajaxRequest('GET', 'php/request.php/preds?age&id='+id, (response) => {
 
 ajaxRequest('GET', 'php/request.php/preds?risque&id='+id, (response) => {
     console.log('response'+response);
-    if (response == false)
+    if (response == 'false')
     {
         document.getElementById('valuerisque').innerHTML = "Pas de risque estimé pour cet arbre";
         return;
-    }else
+    }elseif (response == 'true')
     {
-        document.getElementById('valuerisque').innerHTML = "attention il prux tomber";
+        document.getElementById('valuerisque').innerHTML = "attention cet arbre peux tomber";
     }
 
 });
