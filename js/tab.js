@@ -205,7 +205,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 let selectEtat = document.getElementById('fk_arb_etat');
 
-
 selectEtat.addEventListener('change', () => {
     fetchArbres(1, selectEtat.value);
     console.log('Etat : ' + selectEtat.value);
