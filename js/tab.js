@@ -240,8 +240,8 @@ function fillSpecies(){
             // Ajouter les options récupérées au select
             data.forEach(optionData => {
                 let option = document.createElement('option');
-                option.value = optionData[especes]; // Assurez-vous que l'index ici correspond aux données récupérées
-                option.textContent = optionData[especes];
+                option.value = optionData[espece]; // Assurez-vous que l'index ici correspond aux données récupérées
+                option.textContent = optionData[espece];
                 selectElement.appendChild(option);
             });
         });
