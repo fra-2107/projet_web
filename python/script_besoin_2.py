@@ -9,11 +9,11 @@ def predict_age_from_json(input_json):
     # Charger les encodeurs et le modèle
     encoders = {}
     for col in ['remarquable', 'fk_port', 'fk_pied']:
-        encoders[col] = joblib.load(f'/var/www/etu0116/projet_web/python/pkl/{col}_encoder.pkl')
+        encoders[col] = joblib.load(f'/var/www/etu0106/projet_web/python/pkl/{col}_encoder.pkl')
         
-    scaler_X = joblib.load('/var/www/etu0116/projet_web/python/pkl/x_scaler.pkl')
-    scaler_y = joblib.load('/var/www/etu0116/projet_web/python/pkl/y_scaler.pkl')
-    model = joblib.load('/var/www/etu0116/projet_web/python/pkl/regressor_model_besoin2.pkl')
+    scaler_X = joblib.load('/var/www/etu0106/projet_web/python/pkl/x_scaler.pkl')
+    scaler_y = joblib.load('/var/www/etu0106/projet_web/python/pkl/y_scaler.pkl')
+    model = joblib.load('/var/www/etu0106/projet_web/python/pkl/regressor_model_besoin2.pkl')
     
     # Charger les données d'entrée depuis le JSON
     input_data = pd.read_json(StringIO(input_json))
