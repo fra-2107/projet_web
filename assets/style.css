@@ -138,6 +138,14 @@ header .cta-btn {
     margin: 0 1rem 0 1rem;
 }
 
+.main_accueil .desc_project {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #87bc26;
+    border-radius: 5px;
+}
+
 /* FIN MAIN */
 
 /*  FIN PAGE D'ACCUEIL */
