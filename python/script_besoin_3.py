@@ -4,7 +4,7 @@ from io import StringIO
 import joblib
 import sys
 # selection des colonnes necessaires
-# data = file[['fk_arb_etat', 'latitude', 'tronc_diam', 'age_estim', 'feuillage', 'fk_prec_estim', 'villeca', 'haut_tronc', 'haut_tot', 'clc_nbr_diag']].copy()
+# data = file[['fk_arb_etat', 'latitude', 'tronc_diam', 'haut_tronc', 'haut_tot']].copy()
 
 def predict_risque(input_json):
     
@@ -15,7 +15,7 @@ def predict_risque(input_json):
     
     
     # charger l'encodeur
-    encoder = joblib.load('/var/www/etu0106/projet_web/python/pkl/ordinal_encoder_besoin3.pkl')
+    encoder = joblib.load('pkl/ordinal_encoder_besoin3_web.pkl')
     
     # encoder les données
     data_to_encode = ['fk_arb_etat']
@@ -27,7 +27,7 @@ def predict_risque(input_json):
 
 
     # effectuer les predictions
-    reg_model = joblib.load('/var/www/etu0106/projet_web/python/pkl/regression_model_besoin3.pkl')
+    reg_model = joblib.load('pkl/regression_model_besoin3_web.pkl')
     prediction = reg_model.predict(new_X)
     prediction = 100*prediction.round(3)
     
