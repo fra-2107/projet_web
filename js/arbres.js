@@ -78,6 +78,8 @@ $(document).ready(function(){
         speciesList = response; // Assigner la réponse à la variable speciesList
         console.log('Liste des espèces:', speciesList); // Afficher la liste dans la console pour vérification
 
+    });
+    
         // Initialiser les éléments DOM après récupération des données
         var input = $("#autocomplete-input");
         var suggestionsContainer = $("#autocomplete-suggestions");
@@ -122,6 +124,5 @@ $(document).ready(function(){
                 suggestionsContainer.hide();
             }
         });
-    });
 
 });
