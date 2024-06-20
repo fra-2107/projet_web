@@ -128,7 +128,7 @@ function dbGetArbretoRisque($db, $id)
 function dbGetArbres($db, $limit = 10, $filters = null)
 {
   $whereArgs = [];
-
+  echo 'filters : ' . $filters;
   if (isset($_GET["page"])) {
       $page = intval($_GET['page']);
   } else {
