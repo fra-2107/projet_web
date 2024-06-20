@@ -282,7 +282,6 @@ function dbDeleteArbre($db, $id)
       $statement = $db->prepare($request);
       $statement->bindParam(':id', $id, PDO::PARAM_INT);
       $statement->execute();
-      echo json_encode(['success' => 'Arbre supprimé avec succès.']);
     }
     catch (PDOException $exception)
     {
