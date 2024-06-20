@@ -88,6 +88,7 @@ if ($request[1] == 'arbres') {
     }
 
     if ($requestMethod == 'DELETE') {
+        $id = $_GET['id'];
         if($id !='')
             $data = dbDeleteArbre($db, intval($id));
     }
