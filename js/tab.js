@@ -142,6 +142,7 @@ function fetchArbres(page = 1, filterEspece = '', filterEtat = '') {
     }
 
     ajaxRequest('GET', url, (response) => {
+        console.log('affichge')
         afficheArbres(response.data);
         affichePagination(response.total, limit, page);
     });
