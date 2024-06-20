@@ -278,7 +278,7 @@ function dbDeleteArbre($db, $id)
   {
     try
     {
-      $request = 'DELETE FROM tweets WHERE id=:id';
+      $request = 'DELETE FROM arbre WHERE id=:id';
       $statement = $db->prepare($request);
       $statement->bindParam(':id', $id, PDO::PARAM_INT);
       $statement->execute();
