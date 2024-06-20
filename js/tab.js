@@ -174,14 +174,17 @@ function affichePagination(total, limit, page) {
 }
 
 // Fonction pour récupérer les arbres avec pagination et filtres
-function fetchArbres(page = 1, filterEtat = '') {
+function fetchArbres(page = 1, filterEtat = '', filterEspece = '') {
     let limit = 20; // Nombre d'éléments par page
     let url = `php/request.php/arbres?limit=${limit}&page=${page}`;
     
     if (filterEtat !== '') {
         url += `&etat=${encodeURIComponent(filterEtat)}`;
     }
-
+    if (filterEspece !== '') {
+        url += `&espece=${encodeURIComponent(filterEspece)}`;
+    }
+    
     console.log('URL de requête:', url); // Vérifier l'URL de la requête
 
     ajaxRequest('GET', url, (response) => {
@@ -209,8 +212,13 @@ let selectEtat = document.getElementById('fk_arb_etat');
 let selectEspece = document.getElementById('especes');
 
 selectEtat.addEventListener('change', () => {
-    fetchArbres(1, selectEtat.value);
+    fetchArbres(1, selectEtat.value, selectEspece.value);
     console.log('Etat : ' + selectEtat.value);
+});
+
+selectEspece.addEventListener('change', () => {
+    fetchArbres(1, selectEtat.value, selectEspece.value);
+    console.log('Espece : ' + selectEspece.value);
 });
 
 // Fonction pour récupérer les options depuis l'API
