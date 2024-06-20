@@ -27,7 +27,7 @@ if(isset($_POST["check-btn"])) {
         if ($num_ligne > 0) {
             session_start();
             $_SESSION['mail'] = $email;
-            header("Location:index_accueil.html");
+            // header("Location:index_accueil.html");
         } else {
             $erreur = "Adresse mail ou mot de passe incorrect !";
         }
