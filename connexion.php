@@ -53,5 +53,7 @@ if(isset($_POST["check-btn"])) {
         <input type="password" name="mdp">
         <button name="btn_connect">Se connecter</button>
     </form>
+
+    <a href="compte.php">creer un compte</a>
 </body>
 </html>
