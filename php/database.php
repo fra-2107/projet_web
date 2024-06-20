@@ -129,7 +129,7 @@ function dbGetArbres($db, $limit = 10, $filters = null)
 {
     $whereArgs = [];
     $params = [
-        ':limit' => $limit,
+        ':limit' => (int)$limit, // Convertir en entier pour assurer que c'est un nombre
         ':offset' => 0, // Initialisez à zéro, sera ajusté plus tard
     ];
 
@@ -140,7 +140,7 @@ function dbGetArbres($db, $limit = 10, $filters = null)
         $page = 1;
     }
     $offset = ($page - 1) * $limit;
-    $params[':offset'] = $offset;
+    $params[':offset'] = (int)$offset; // Convertir en entier pour assurer que c'est un nombre
 
     $sql = 'SELECT * FROM arbre ';
 
@@ -163,6 +163,8 @@ function dbGetArbres($db, $limit = 10, $filters = null)
 
     try {
         $sth = $db->prepare($sql);
+        $sth->bindParam(':limit', $params[':limit'], PDO::PARAM_INT);
+        $sth->bindParam(':offset', $params[':offset'], PDO::PARAM_INT);
         $sth->execute($params);
         $result = $sth->fetchAll(PDO::FETCH_ASSOC);
         return $result;
@@ -171,6 +173,7 @@ function dbGetArbres($db, $limit = 10, $filters = null)
         return false;
     }
 }
+
 
 //----------------------------------------------------------------------------
 //--- dbGetTotalArbres -------------------------------------------------------
