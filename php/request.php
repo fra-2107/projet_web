@@ -28,7 +28,7 @@ if ($request[1] == 'arbres') {
         if (isset($_GET['etat'])) {
             $filters['fk_arb_etat'] = $_GET['etat'];
         }
-
+        echo 'filtre : '.$filters;
         // Appel de la fonction dbGetArbres avec les paramètres appropriés
         $arbres = dbGetArbres($db, $limit, $filters);
         $total = dbGetTotalArbres($db); 
