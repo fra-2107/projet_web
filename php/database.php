@@ -1,12 +1,4 @@
 <?php
-/**
- * @Author: Thibault Napoléon <Imothep>
- * @Company: ISEN Yncréa Ouest
- * @Email: thibault.napoleon@isen-ouest.yncrea.fr
- * @Created Date: 22-Jan-2018 - 13:57:23
- * @Last Modified: 13-Dec-2019 - 22:21:52
- */
-
   require_once('constants.php');
 
   //----------------------------------------------------------------------------
@@ -31,13 +23,13 @@
   }
 
   //----------------------------------------------------------------------------
-  //--- dbRequestTweets --------------------------------------------------------
+  //--- dbRequestArbres --------------------------------------------------------
   //----------------------------------------------------------------------------
-  // Function to get all tweets (if $login='') or the tweets of a user
-  // (otherwise).
+  // Function to get all trees from the database.
   // \param db The connected database.
-  // \param login The login of the user (for specific request).
-  // \return The list of tweets.
+  // \param login The login of the user.
+  // \return The list of trees on success, false otherwise.
+
   function dbRequestArbres($db, $login = '')
   {
     try
@@ -59,6 +51,14 @@
     return $result;
   }
 
+  //----------------------------------------------------------------------------
+  //--- dbGetArbre -------------------------------------------------------------
+  //----------------------------------------------------------------------------
+  // Function to get a tree from the database.
+  // \param db The connected database.
+  // \param id The id of the tree.
+  // \return The tree on success, false otherwise.
+
   function dbGetArbre($db, $id)
   {
     try
@@ -76,6 +76,14 @@
     }
     return $result;
   }
+
+  //----------------------------------------------------------------------------
+  //--- dbGetArbretoAge --------------------------------------------------------
+  //----------------------------------------------------------------------------
+  // Function to get a tree from the database.
+  // \param db The connected database.
+  // \param id The id of the tree.
+  // \return The tree on success, false otherwise.
 
   function dbGetArbretoAge($db, $id)
   {
@@ -95,6 +103,14 @@
     return $result;
   }
 
+  //----------------------------------------------------------------------------
+  //--- dbGetArbretoRisque -----------------------------------------------------
+  //----------------------------------------------------------------------------
+  // Function to get a tree from the database.
+  // \param db The connected database.
+  // \param id The id of the tree.
+  // \return The tree on success, false otherwise.
+
   function dbGetArbretoRisque($db, $id)
   {
     try
@@ -113,7 +129,14 @@
     return $result;
   }
 
-
+  //----------------------------------------------------------------------------
+  //--- dbGetArbres ------------------------------------------------------------
+  //----------------------------------------------------------------------------
+  // Function to get all trees from the database.
+  // \param db The connected database.
+  // \param limit The number of trees to get.
+  // \return The list of trees on success, false otherwise.
+  
   function dbGetArbres($db, $limit = 10, $filters = null){
     $whereArgs = [];
 
@@ -138,9 +161,7 @@
     $sth = $db->prepare($sql);
 
     if ($filters != null) {
-        // if ($filters['date'] != '') $sth->bindParam('date', $filters['date']);
-        // if ($filters['espece'] != '') $sth->bindParam('espece', $filters['espece']);
-        // if ($filters['zone'] != '') $sth->bindParam('zone', $filters['zone']);
+
         echo('filters: ');
     }
     $sth->bindParam(':limit', $limit, PDO::PARAM_INT);
@@ -150,6 +171,13 @@
 
   return $result;
 }
+
+  //----------------------------------------------------------------------------
+  //--- dbGetTotalArbres -------------------------------------------------------
+  //----------------------------------------------------------------------------
+  // Function to get the total number of trees in the database.
+  // \param db The connected database.
+  // \return The total number of trees on success, false otherwise.
 
 function dbGetTotalArbres($db) {
   try {
@@ -162,13 +190,13 @@ function dbGetTotalArbres($db) {
 }
 
   //----------------------------------------------------------------------------
-  //--- dbAddCTweet ------------------------------------------------------------
+  //--- dbAddArbre -------------------------------------------------------------
   //----------------------------------------------------------------------------
-  // Add a tweet.
+  // Function to add a tree to the database.
   // \param db The connected database.
-  // \param login The login of the user.
-  // \param text The tweet to add.
-  // \return True on success, false otherwise.
+  // \param data The data of the tree.
+  // \return The id of the tree on success, false otherwise.
+  
   function dbAddArbre($db, $data) {
     try {
         $stmt = $db->prepare("INSERT INTO arbre (espece, haut_tot, haut_tronc, diam_tronc, lat, longi, fk_arb_etat, fk_stadedev, fk_port, fk_pied, remarquable)
@@ -193,58 +221,11 @@ function dbGetTotalArbres($db) {
 }
   
   //----------------------------------------------------------------------------
-  //--- dbModifyTweet ----------------------------------------------------------
+  //--- dbGetOptions -----------------------------------------------------------
   //----------------------------------------------------------------------------
-  // Function to modify a tweet.
+  // Function to get all options for the selects from the database.
   // \param db The connected database.
-  // \param id The id of the tweet to update.
-  // \param login The login of the user.
-  // \param text The new tweet.
-  // \return True on success, false otherwise.
-  function dbModifyTweet($db, $id, $login, $text)
-  {
-    try
-    {
-      $request = 'UPDATE tweets SET text=:text WHERE id=:id AND login=:login ';
-      $statement = $db->prepare($request);
-      $statement->bindParam(':id', $id, PDO::PARAM_INT);
-      $statement->bindParam(':login', $login, PDO::PARAM_STR, 20);
-      $statement->bindParam(':text', $text, PDO::PARAM_STR, 80);
-      $statement->execute();
-    }
-    catch (PDOException $exception)
-    {
-      error_log('Request error: '.$exception->getMessage());
-      return false;
-    }
-    return true;
-  }
-
-  //----------------------------------------------------------------------------
-  //--- dbDeleteTweet ----------------------------------------------------------
-  //----------------------------------------------------------------------------
-  // Delete a tweet.
-  // \param db The connected database.
-  // \param id The id of the tweet.
-  // \param login The login of the user.
-  // \return True on success, false otherwise.
-  function dbDeleteTweet($db, $id, $login)
-  {
-    try
-    {
-      $request = 'DELETE FROM tweets WHERE id=:id AND login=:login';
-      $statement = $db->prepare($request);
-      $statement->bindParam(':id', $id, PDO::PARAM_INT);
-      $statement->bindParam(':login', $login, PDO::PARAM_STR, 20);
-      $statement->execute();
-    }
-    catch (PDOException $exception)
-    {
-      error_log('Request error: '.$exception->getMessage());
-      return false;
-    }
-    return true;
-  }
+  // \param table The table to get the options from.
 
   function dbGetOptions($db, $table) {
     try {
@@ -257,6 +238,12 @@ function dbGetTotalArbres($db) {
     }
 }
 
+  //----------------------------------------------------------------------------
+  //--- dbGetCoordMap ----------------------------------------------------------
+  //----------------------------------------------------------------------------
+  // Function to get the coordinates of the trees.
+  // \param db The connected database.
+  // \return The list of coordinates on success, false otherwise.
 function dbGetCoordMap($db)
 {
   try
