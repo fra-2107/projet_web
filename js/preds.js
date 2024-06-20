@@ -3,7 +3,7 @@ var url = new URL(window.location.href);
 // Récupération de la valeur de l'ID à partir des paramètres de l'URL
 let id = url.searchParams.get("id");
 
-ajaxRequest('GET', 'php/request.php/preds?age&id='+id, (response) => {
+ajaxRequest('GET', 'php/request.php/preds?age&id=' + id, (response) => {
     var jsonString = response;
 
     // Convertir la chaîne JSON en un tableau d'objets JavaScript
@@ -19,13 +19,13 @@ ajaxRequest('GET', 'php/request.php/preds?age&id='+id, (response) => {
     document.getElementById('valueage').innerHTML = ageEstim;
 });
 
-ajaxRequest('GET', 'php/request.php/preds?risque&id='+id, (response) => {
-    console.log('response'+response);
-    if (response == 'false')
-    {
+ajaxRequest('GET', 'php/request.php/preds?risque&id=' + id, (response) => {
+    console.log('response' + response);
+    if (response == 'false') {
         document.getElementById('valuerisque').innerHTML = "Pas de risque estimé pour cet arbre";
         return;
-    }elseif (response == 'true')
+    }
+    elseif(response == 'true') 
     {
         document.getElementById('valuerisque').innerHTML = "attention cet arbre peux tomber";
     }

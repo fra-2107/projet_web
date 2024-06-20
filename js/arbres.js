@@ -4,7 +4,7 @@
 
 $('#ajoutArbre').submit((event) => {
     event.preventDefault(); // Empêcher la soumission par défaut du formulaire
-    
+
     // Collecter les données du formulaire
     let formData = {
         espece: $('#espece').val(),
@@ -38,8 +38,7 @@ $('#ajoutArbre').submit((event) => {
 
 
 
-function afficheArbres(data){
-}
+function afficheArbres(data) {}
 
 // Récupérer l'élément select
 

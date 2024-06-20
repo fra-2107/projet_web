@@ -1,13 +1,4 @@
 <?php
-
-/**
- * @Author: Thibault Napoléon <Imothep>
- * @Company: ISEN Yncréa Ouest
- * @Email: thibault.napoleon@isen-ouest.yncrea.fr
- * @Created Date: 29-Jan-2018 - 16:48:46
- * @Last Modified: 08-Dec-2019 - 15:56:37
- */
-
 require_once('database.php');
 
 // Database connexion.
@@ -86,17 +77,6 @@ if ($request[1] == 'arbres') {
             echo json_encode($errors);
         }
     }
-
-    if ($requestMethod == 'PUT') {
-        parse_str(file_get_contents('php://input'), $_PUT);
-        if ($id != '' && isset($_PUT['login']) && isset($_PUT['text']))
-            $data = dbModifyTweet($db, $id, $_PUT['login'], strip_tags($_PUT['text']));
-    }
-
-    if ($requestMethod == 'DELETE') {
-        if ($id != '' && isset($_GET['login']))
-            $data = dbDeleteTweet($db, intval($id), $_GET['login']);
-    }
 } else if ($request[1] == 'fk_arb_etat') {
     $data = dbGetOptions($db, 'fk_arb_etat');
 } else if ($request[1] == 'fk_stadedev') {
@@ -167,9 +147,16 @@ if ($request[1] == 'arbres') {
             $trunc_height = $data[0]['haut_tronc'];
             $height = $data[0]['haut_tot'];
 
-            $argdata = sprintf('-m %s --species "%s" --height %d --trunc_height %d --trunc_diameter %d --latitude %f --longitude %f',
-                   $model, $species, $height, $trunc_height, $trunc_diameter,
-                   $latitude, $longitude);
+            $argdata = sprintf(
+                '-m %s --species "%s" --height %d --trunc_height %d --trunc_diameter %d --latitude %f --longitude %f',
+                $model,
+                $species,
+                $height,
+                $trunc_height,
+                $trunc_diameter,
+                $latitude,
+                $longitude
+            );
 
 
 
@@ -180,7 +167,6 @@ if ($request[1] == 'arbres') {
                 // Exécution de la commande
                 exec($command, $output, $return_var);
                 $data = $output;
-
             }
         }
     }

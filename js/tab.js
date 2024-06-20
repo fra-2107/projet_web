@@ -8,7 +8,7 @@ function afficheArbres(data) {
 
     data.forEach(el => {
         let tr = document.createElement('tr');
-        
+
         let td_id = document.createElement('td');
         td_id.textContent = el.id;
         tr.appendChild(td_id);
@@ -81,7 +81,7 @@ function affichePagination(total, limit, page) {
     paginationDiv.innerHTML = ''; // Clear existing pagination buttons
 
     let totalPages = Math.ceil(total / limit);
-    
+
     let fisrtButton = document.createElement('button');
     if (page > 1) {
         fisrtButton.textContent = 'Première Page';
