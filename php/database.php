@@ -99,7 +99,7 @@
   {
     try
     {
-      $request = 'SELECT fk_arb_etat, lat, diam_tronc, haut_tronc, haut_tot FROM arbre WHERE id=:id';
+      $request = 'SELECT espece, lat, longi, diam_tronc, haut_tronc, haut_tot FROM arbre WHERE id=:id';
       $statement = $db->prepare($request);
       $statement->bindParam(':id', $id, PDO::PARAM_INT);
       $statement->execute();

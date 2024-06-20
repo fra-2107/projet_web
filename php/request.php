@@ -160,11 +160,23 @@ if ($request[1] == 'arbres') {
         // Vérifier si des données ont été récupérées
         if ($data !== false) {
             // Encoder le tableau en JSON
-            $jsonData = json_encode($data);
-            echo 'jsonData : ' . $jsonData;
+            $model = 'rf';
+            $species = $data[0]['espece'];
+            $latitude  = $data[0]['lat'];
+            $longitude = $data[0]['longi'];
+            $trunc_diameter = $data[0]['diam_tronc'];
+            $trunc_height = $data[0]['haut_tronc'];
+            $height = $data[0]['haut_tot'];
+
+            $argdata = sprintf('-m %s --species "%s" --height %d --trunc_height %d --trunc_diameter %d --latitude %f --longitude %f',
+                   $model, $species, $height, $trunc_height, $trunc_diameter,
+                   $latitude, $longitude);
+
+
+
 
             if (file_exists($python_script)) {
-                $command = "/usr/bin/python " . $python_script . " '" . ($jsonData) . "'";
+                $command = "/usr/bin/python " . $python_script . " " . ($argdata);
 
                 // Exécution de la commande
                 exec($command, $output, $return_var);
