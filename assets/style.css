@@ -122,6 +122,11 @@ header .cta-btn {
     flex-direction: column;
 }
 
+.main_accueil h1 {
+    margin-top: 2rem;
+
+}
+
 .main_accueil .image_card{
     display: flex;
     align-items: center;
@@ -130,7 +135,7 @@ header .cta-btn {
 }
 
 .main_accueil .image_card img{
-    margin: 1rem 0 1rem 0 1rem;
+    margin: 0 1rem 0 1rem;
 }
 
 /* FIN MAIN */
