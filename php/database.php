@@ -126,39 +126,38 @@ function dbGetArbretoRisque($db, $id)
 // \return The list of trees on success, false otherwise.
 
 // Préparation de la requête avec les filtres
-function dbGetArbres($db, $limit = 10, $offset = 0, $espece = '', $etat = '') {
+function dbGetArbres($db, $limit = 10, $offset = 0, $filters = null) {
   $whereArgs = [];
+  $params = [];
 
-  if ($espece !== '') {
-      $whereArgs[] = 'espece = :espece';
-  }
-  if ($etat !== '') {
-      $whereArgs[] = 'fk_arb_etat = :etat';
+  if ($filters != null) {
+      foreach ($filters as $key => $value) {
+          if ($value != '') {
+              $whereArgs[] = $key . ' = :' . $key;
+              $params[$key] = $value;
+          }
+      }
   }
 
   $sql = 'SELECT * FROM arbre';
   if (!empty($whereArgs)) {
       $sql .= ' WHERE ' . implode(' AND ', $whereArgs);
   }
-
   $sql .= ' LIMIT :limit OFFSET :offset';
 
   $sth = $db->prepare($sql);
 
-  // Liaison des paramètres
-  if ($espece !== '') {
-      $sth->bindParam(':espece', $espece, PDO::PARAM_STR);
-  }
-  if ($etat !== '') {
-      $sth->bindParam(':etat', $etat, PDO::PARAM_STR);
+  foreach ($params as $key => $value) {
+      $sth->bindParam(':' . $key, $value, PDO::PARAM_STR);
   }
   $sth->bindParam(':limit', $limit, PDO::PARAM_INT);
   $sth->bindParam(':offset', $offset, PDO::PARAM_INT);
-  echo 'sth'.$sth;
-  // Exécution de la requête
-  $sth->execute();
 
-  // Récupération des résultats
+  // Debugging
+  error_log('SQL Query: ' . $sql);
+  error_log('Params: ' . print_r($params, true));
+
+  $sth->execute();
   $result = $sth->fetchAll(PDO::FETCH_ASSOC);
 
   return $result;

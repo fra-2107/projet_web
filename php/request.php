@@ -1,4 +1,4 @@
-<?php
+<?php 
 require_once('database.php');
 
 // Database connexion.
@@ -14,23 +14,23 @@ $request = $_SERVER['PATH_INFO'];
 $request = explode('/', $request);
 
 if ($request[1] == 'arbres') {
-    $id = $request[2];
+    $limit = isset($_GET['limit']) ? (int)$_GET['limit'] : 20;
+    $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+    $offset = ($page - 1) * $limit;
+
+    // Préparation des filtres à partir de la requête GET
+    $filters = [];
+
+    if (isset($_GET['etat'])) {
+        $filters['fk_arb_etat'] = $_GET['etat'];
+    }
+    if (isset($_GET['espece'])) {
+        $filters['espece'] = $_GET['espece'];
+    }
 
     if ($requestMethod == 'GET') {
-        $limit = isset($_GET['limit']) ? (int)$_GET['limit'] : 20;
-        $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-
-        // Préparation des filtres à partir de la requête GET
-        $filters = [];
-        if (isset($_GET['espece'])) {
-            $filters['espece'] = $_GET['espece'];
-        }
-        if (isset($_GET['etat'])) {
-            $filters['fk_arb_etat'] = $_GET['etat'];
-        }
-
         // Appel de la fonction dbGetArbres avec les paramètres appropriés
-        $arbres = dbGetArbres($db, $limit, $filters);
+        $arbres = dbGetArbres($db, $limit, $offset, $filters);
         $total = dbGetTotalArbres($db); 
         
         $response = [
@@ -179,10 +179,7 @@ if ($request[1] == 'arbres') {
     }
 } elseif ($request[1] == 'especes') {
     $data = dbGetEspeces($db);
-    // $data = array_map('strtolower', $data);
-    // $data = array_unique($data);
-    
-}else {
+} else {
     header('HTTP/1.1 400 Bad Request');
     exit;
 }
