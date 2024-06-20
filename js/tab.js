@@ -104,15 +104,18 @@ function afficheArbres(data) {
         // Ajoutez un gestionnaire d'événements pour gérer le clic
         delButton.addEventListener('click', () => {
             // Ajoutez le code suivant pour afficher une popup de 2 secondes indiquant que l'arbre a été supprimé avec succès
-            // const popup = document.createElement('div');
-            // popup.textContent = 'Arbre supprimé avec succès';
-            // popup.classList.add('popup');
-            // document.body.appendChild(popup);
+            const popup = document.createElement('div');
+            popup.textContent = 'Arbre supprimé avec succès';
+            popup.classList.add('popup');
+            document.body.appendChild(popup);
 
-            // setTimeout(() => {
-            //     popup.remove();
-            // }, 2000);
-            ajaxRequest('DELETE', 'php/request.php/arbres?id=' + el.id, fetchArbres());
+            setTimeout(() => {
+                popup.remove();
+            }, 2000);
+            
+            ajaxRequest('DELETE', 'php/request.php/arbres?id=' + el.id, () =>{
+                fetchArbres();
+            });
         });
         
         // Ajoutez le SVG dans la cellule du tableau
