@@ -68,6 +68,16 @@ function afficheArbres(data) {
         td_btn.appendChild(predictionButton);
         tr.appendChild(td_btn);
 
+        let td_del = document.createElement('td');
+        let delButton = document.createElement('button');
+        delButton.textContent = 'Prediction';
+        delButton.addEventListener('click', () => {
+            // Call the function for prediction
+            console.log('delete element : ' + el.id);
+        });
+        td_del.appendChild(delButton);
+        tr.appendChild(td_del);
+
         tableArbre.appendChild(tr);
     });
 }
