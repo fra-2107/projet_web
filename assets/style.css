@@ -113,6 +113,18 @@ header .cta-btn {
 }
 /* FIN HEADER */
 
+/* DEBUT MAIN */
+
+.main_accueil {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/* FIN MAIN */
+
 /*  FIN PAGE D'ACCUEIL */
 
 /* ------------------------------------------------------ */
