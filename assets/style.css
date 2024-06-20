@@ -406,6 +406,14 @@ main #ajoutArbre .taille_form input {
     margin-left: 4rem;
 }
 
+.predict_main .prediction .card {
+    display: flex;
+}
+
+.predict_main .prediction .card h1{
+    margin-right: 10px;
+}
+
 /* FIN PAGE PREDICTION */
 
 /* ------------------------------------------------------ */
