@@ -158,6 +158,7 @@ header .cta-btn {
     margin-bottom: 10px;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .main_accueil .desc_project .part_card_project p {
