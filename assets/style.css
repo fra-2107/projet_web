@@ -33,7 +33,7 @@ nav .right_nav a:hover {
     cursor: pointer;
 }
 
-.login-btn {
+nav .login-btn {
     margin-left: 10px;
     background-color: #34671b;
     color: white;
