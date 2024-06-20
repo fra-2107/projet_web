@@ -203,7 +203,10 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchArbres();
 });
 
+fetchOptionsFromDB('fk_arb_etat');
+fillSpecies();
 let selectEtat = document.getElementById('fk_arb_etat');
+let selectEspece = document.getElementById('especes');
 
 selectEtat.addEventListener('change', () => {
     fetchArbres(1, selectEtat.value);
@@ -230,5 +233,19 @@ async function fetchOptionsFromDB(selectName) {
     }
 }
 
-
-fetchOptionsFromDB('fk_arb_etat');
+function fillSpecies(){
+    let selectElement = document.getElementById('especes');
+    try{
+        ajaxRequest('GET', 'php/request.php/especes', (data) => {
+            // Ajouter les options récupérées au select
+            data.forEach(optionData => {
+                let option = document.createElement('option');
+                option.value = optionData[especes]; // Assurez-vous que l'index ici correspond aux données récupérées
+                option.textContent = optionData[especes];
+                selectElement.appendChild(option);
+            });
+        });
+    } catch (error) {
+        console.error('Erreur lors de la récupération des options :', error);
+    }
+}
