@@ -403,7 +403,7 @@ main #ajoutArbre .taille_form input {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    align-items: center;
+    margin-left: 4rem;
 }
 
 /* FIN PAGE PREDICTION */
