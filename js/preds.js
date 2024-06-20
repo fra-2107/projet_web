@@ -13,20 +13,20 @@ ajaxRequest('GET', 'php/request.php/preds?age&id=' + id, (response) => {
     var ageEstim = jsonData[0].age_estim;
 
     // Utiliser la valeur récupérée comme nécessaire
-    console.log("Valeur de age_estim :", ageEstim);
+    // console.log("Valeur de age_estim :", ageEstim);
 
     // Afficher le résultat
     document.getElementById('valueage').innerHTML = ageEstim;
 });
 
 ajaxRequest('GET', 'php/request.php/preds?risque&id=' + id, (response) => {
-    console.log('response' + response);
+    // console.log('response' + response);
     
     if (response == 'false') {
         document.getElementById('valuerisque').innerHTML = "Pas de risque estimé pour cet arbre";
         return;
     }
-    elseif(response == 'true') 
+    else if(response == 'true') 
     {
         document.getElementById('valuerisque').innerHTML = "attention cet arbre peux tomber";
     }
@@ -34,7 +34,8 @@ ajaxRequest('GET', 'php/request.php/preds?risque&id=' + id, (response) => {
 });
 
 ajaxRequest('GET', 'php/request.php/preds?map&id=' + id, (response) => {
-    console.log('response' + response);
+    console.log('Cette reponse')
+    console.log(response);
     
     // Initialiser la carte centrée sur Saint-Quentin
     var map = L.map('map').setView([49.848, 3.287], 13);
