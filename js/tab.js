@@ -68,25 +68,48 @@ function afficheArbres(data) {
         td_btn.appendChild(predictionButton);
         tr.appendChild(td_btn);
 
-        let svgButton = document.createElement('td');
-        let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-        svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
-        svg.setAttribute("width", "16");
-        svg.setAttribute("height", "16");
-        svg.setAttribute("fill", "currentColor");
-        svg.setAttribute("class", "bi bi-trash3-fill");
-        svg.setAttribute("viewBox", "0 0 16 16");
-        svg.setAttribute("id", "delsvg");
-        svg.addEventListener('click', () => {
-            // Call the function when the SVG is clicked
-            console.log('SVG clicked');
-            console.log('Delete : ' + el.id);
+        function createSVG(className, pathData) {
+            let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+            svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+            svg.setAttribute("width", "16");
+            svg.setAttribute("height", "16");
+            svg.setAttribute("fill", "currentColor");
+            svg.setAttribute("class", className);
+            svg.setAttribute("viewBox", "0 0 16 16");
+        
+            let path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+            path.setAttribute("d", pathData);
+            svg.appendChild(path);
+        
+            return svg;
+        }
+        
+        // Données pour les SVG
+        const defaultPathData = "M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5";
+        const hoverPathData = "M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5";
+        
+        // Créez le SVG par défaut
+        let delButton = createSVG("bi bi-trash3-fill", defaultPathData);
+        
+        delButton.addEventListener('mouseover', () => {
+            // Remplacez le contenu du SVG avec le chemin hover
+            delButton.innerHTML = `<path d="${hoverPathData}"/>`;
         });
-        let path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-        path.setAttribute("d", "M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5");
-        svg.appendChild(path);
-        svgButton.appendChild(svg);
-        tr.appendChild(svgButton);
+        
+        delButton.addEventListener('mouseout', () => {
+            // Remplacez le contenu du SVG avec le chemin par défaut
+            delButton.innerHTML = `<path d="${defaultPathData}"/>`;
+        });
+        
+        // Ajoutez un gestionnaire d'événements pour gérer le clic
+        delButton.addEventListener('click', () => {
+            console.log('delete element : ' + el.id);
+        });
+        
+        // Ajoutez le SVG dans la cellule du tableau
+        let td_del = document.createElement('td');
+        td_del.appendChild(delButton);
+        tr.appendChild(td_del);
 
         tableArbre.appendChild(tr);
     });
