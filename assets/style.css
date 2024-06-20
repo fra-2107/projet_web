@@ -247,6 +247,11 @@ select {
     border: solid 1px #d1d1d1;
 }
 
+.selecttab{
+    margin-bottom: 2rem;
+    right: 50%;
+}
+
 .pagination {
     align-items: center;
     justify-content: center;
