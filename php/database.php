@@ -129,8 +129,8 @@ function dbGetArbres($db, $limit = 10, $filters = null)
 {
     $whereArgs = [];
     $params = [
-        ':limit' => (int)$limit, // Convertir en entier pour assurer que c'est un nombre
-        ':offset' => 0, // Initialisez à zéro, sera ajusté plus tard
+        ':limit' => (int)$limit,
+        ':offset' => 0, // Décalage initial, ajusté plus loin
     ];
 
     // Gestion de la pagination
@@ -140,7 +140,7 @@ function dbGetArbres($db, $limit = 10, $filters = null)
         $page = 1;
     }
     $offset = ($page - 1) * $limit;
-    $params[':offset'] = (int)$offset; // Convertir en entier pour assurer que c'est un nombre
+    $params[':offset'] = (int)$offset; // Convertir en entier
 
     $sql = 'SELECT * FROM arbre ';
 
@@ -149,7 +149,7 @@ function dbGetArbres($db, $limit = 10, $filters = null)
         foreach ($filters as $key => $value) {
             if ($value != '') {
                 $whereArgs[] = $key . ' = :' . $key;
-                $params[':' . $key] = $value; // Ajoute le paramètre au tableau des paramètres
+                $params[':' . $key] = $value; // Ajouter le paramètre au tableau des paramètres
             }
         }
     }
@@ -163,8 +163,12 @@ function dbGetArbres($db, $limit = 10, $filters = null)
 
     try {
         $sth = $db->prepare($sql);
+
+        // Liaison des paramètres
         $sth->bindParam(':limit', $params[':limit'], PDO::PARAM_INT);
         $sth->bindParam(':offset', $params[':offset'], PDO::PARAM_INT);
+
+        // Exécution de la requête avec les paramètres
         $sth->execute($params);
         $result = $sth->fetchAll(PDO::FETCH_ASSOC);
         return $result;
