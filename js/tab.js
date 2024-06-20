@@ -129,15 +129,63 @@ function affichePagination(total, limit, page) {
     paginationDiv.appendChild(LastButton);
 }
 
-function fetchArbres(page = 1) {
+// Fonction pour récupérer les arbres avec pagination et filtres
+function fetchArbres(page = 1, filterEspece = '', filterEtat = '') {
     let limit = 20; // Nombre d'éléments par page
-    ajaxRequest('GET', `php/request.php/arbres?limit=${limit}&page=${page}`, (response) => {
+    let url = `php/request.php/arbres?limit=${limit}&page=${page}`;
+    
+    if (filterEspece !== '') {
+        url += `&espece=${encodeURIComponent(filterEspece)}`;
+    }
+    if (filterEtat !== '') {
+        url += `&etat=${encodeURIComponent(filterEtat)}`;
+    }
+
+    ajaxRequest('GET', url, (response) => {
         afficheArbres(response.data);
         affichePagination(response.total, limit, page);
     });
 }
 
 // Déclencher la récupération des arbres au chargement de la page
-document.addEventListener('DOMContentLoaded', (event) => {
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialisation des éléments de filtre
+    let selectEspece = document.getElementById('select-espece');
+    let selectEtat = document.getElementById('select-etat');
+
+    // Gestion des événements de changement pour les filtres
+    selectEspece.addEventListener('change', () => {
+        fetchArbres(1, selectEspece.value, selectEtat.value);
+    });
+
+    selectEtat.addEventListener('change', () => {
+        fetchArbres(1, selectEspece.value, selectEtat.value);
+    });
+
+    // Récupérer et afficher les arbres avec la pagination au chargement initial
     fetchArbres();
 });
+
+// Fonction pour récupérer les options depuis l'API
+async function fetchOptionsFromDB(selectName) {
+    try {
+        let urlapi = 'php/request.php/' + selectName;
+        let selectElement = document.getElementById(selectName);
+
+        ajaxRequest('GET', urlapi, (data) => {
+            // Ajouter les options récupérées au select
+            data.forEach(optionData => {
+                let option = document.createElement('option');
+                option.value = optionData[selectName]; // Assurez-vous que l'index ici correspond aux données récupérées
+                option.textContent = optionData[selectName];
+                selectElement.appendChild(option);
+            });
+        });
+    } catch (error) {
+        console.error('Erreur lors de la récupération des options :', error);
+    }
+}
+
+// Appeler la fonction pour récupérer et ajouter les options au chargement de la page
+fetchOptionsFromDB('especes');
+fetchOptionsFromDB('fk_arb_etat');

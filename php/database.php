@@ -127,38 +127,49 @@ function dbGetArbretoRisque($db, $id)
 
 function dbGetArbres($db, $limit = 10, $filters = null)
 {
-  $whereArgs = [];
+    $whereArgs = [];
+    $params = [
+        ':limit' => $limit,
+        ':offset' => 0, // Initialisez à zéro, sera ajusté plus tard
+    ];
 
-  if (isset($_GET["page"])) {
-    $page = intval($_GET['page']);
-  } else {
-    $page = 1;
-  }
-
-  $decalage = ($page - 1) * $limit;
-
-  $sql = 'SELECT * FROM arbre ';
-
-  if ($filters != null) {
-    foreach ($filters as $key => $value) {
-      if ($value != '') $whereArgs[] = $key . ' = :' . $key;
+    // Gestion de la pagination
+    if (isset($_GET["page"])) {
+        $page = intval($_GET['page']);
+    } else {
+        $page = 1;
     }
-  }
-  if (!empty($whereArgs)) $sql .= 'WHERE ' . implode(' AND ', $whereArgs);
+    $offset = ($page - 1) * $limit;
+    $params[':offset'] = $offset;
 
-  $sql .= ' LIMIT :limit OFFSET :offset';
-  $sth = $db->prepare($sql);
+    $sql = 'SELECT * FROM arbre ';
 
-  if ($filters != null) {
+    // Construction de la clause WHERE pour les filtres
+    if ($filters != null && is_array($filters)) {
+        foreach ($filters as $key => $value) {
+            if ($value != '') {
+                $whereArgs[] = $key . ' = :' . $key;
+                $params[':' . $key] = $value; // Ajoute le paramètre au tableau des paramètres
+            }
+        }
+    }
 
-    echo ('filters: ');
-  }
-  $sth->bindParam(':limit', $limit, PDO::PARAM_INT);
-  $sth->bindParam(':offset', $decalage, PDO::PARAM_INT);
-  $sth->execute();
-  $result = $sth->fetchAll(PDO::FETCH_ASSOC);
+    // Ajout de la clause WHERE si des filtres sont présents
+    if (!empty($whereArgs)) {
+        $sql .= 'WHERE ' . implode(' AND ', $whereArgs);
+    }
 
-  return $result;
+    $sql .= ' LIMIT :limit OFFSET :offset';
+
+    try {
+        $sth = $db->prepare($sql);
+        $sth->execute($params);
+        $result = $sth->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    } catch (PDOException $e) {
+        echo json_encode(['error' => 'Erreur : ' . $e->getMessage()]);
+        return false;
+    }
 }
 
 //----------------------------------------------------------------------------
