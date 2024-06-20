@@ -142,9 +142,12 @@ header .cta-btn {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.main_accueil .desc_project .part_card_project {
+    margin: 0 2rem 0 2rem;
     background-color: #34671b;
     border-radius: 5px;
-    margin: 0 2rem 0 2rem;
 }
 
 /* FIN MAIN */
