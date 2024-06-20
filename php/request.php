@@ -96,12 +96,12 @@ if ($request[1] == 'arbres') {
     if (is_numeric($nb_clusters) && $nb_clusters > 0) {
         // Construction de la commande pour exécuter le script Python
 
-        $python_script = "/var/www/etu0106/projet_web/python/script_besoin_1.py"; // Chemin absolu vers le script Python
+        $python_script = "/var/www/etu0116/projet_web/python/script_besoin_1.py"; // Chemin absolu vers le script Python
 
         if (file_exists($python_script)) {
             $command = "/usr/bin/python " . $python_script . " " . intval($nb_clusters);
-            if (file_exists("/var/www/etu0106/projet_web/map.html"))
-                exec("rm /var/www/etu0106/projet_web/map.html");
+            if (file_exists("/var/www/etu0116/projet_web/map.html"))
+                exec("rm /var/www/etu0116/projet_web/map.html");
             // Exécution de la commande
             exec($command, $output, $return_var);
         }
@@ -113,7 +113,7 @@ if ($request[1] == 'arbres') {
 
     if (isset($_GET['age'])) {
         $data = dbGetArbretoAge($db, $id);
-        $python_script = "/var/www/etu0106/projet_web/python/script_besoin_2.py"; // Chemin absolu vers le script Python
+        $python_script = "/var/www/etu0116/projet_web/python/script_besoin_2.py"; // Chemin absolu vers le script Python
 
 
         // Vérifier si des données ont été récupérées
@@ -135,7 +135,7 @@ if ($request[1] == 'arbres') {
         }
     } elseif (isset($_GET['risque'])) {
         $data = dbGetArbretoRisque($db, $id);
-        $python_script = "/var/www/etu0106/projet_web/python/uprooting.py"; // Chemin absolu vers le script Python
+        $python_script = "/var/www/etu0116/projet_web/python/uprooting.py"; // Chemin absolu vers le script Python
         // Vérifier si des données ont été récupérées
         if ($data !== false) {
             // Encoder le tableau en JSON
