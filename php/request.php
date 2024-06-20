@@ -22,9 +22,7 @@ if ($request[1] == 'arbres') {
 
         // Préparation des filtres à partir de la requête GET
         $filters = [];
-        if (isset($_GET['espece'])) {
-            $filters['espece'] = $_GET['espece'];
-        }
+
         if (isset($_GET['etat'])) {
             $filters['fk_arb_etat'] = $_GET['etat'];
         }

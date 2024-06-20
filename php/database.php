@@ -129,9 +129,6 @@ function dbGetArbretoRisque($db, $id)
 function dbGetArbres($db, $limit = 10, $offset = 0, $espece = '', $etat = '') {
   $whereArgs = [];
 
-  if ($espece !== '') {
-      $whereArgs[] = 'espece = :espece';
-  }
   if ($etat !== '') {
       $whereArgs[] = 'fk_arb_etat = :etat';
   }

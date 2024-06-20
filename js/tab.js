@@ -134,9 +134,6 @@ function fetchArbres(page = 1, filterEspece = '', filterEtat = '') {
     let limit = 20; // Nombre d'éléments par page
     let url = `php/request.php/arbres?limit=${limit}&page=${page}`;
     
-    if (filterEspece !== '') {
-        url += `&espece=${encodeURIComponent(filterEspece)}`;
-    }
     if (filterEtat !== '') {
         url += `&etat=${encodeURIComponent(filterEtat)}`;
     }
@@ -158,17 +155,11 @@ function fetchArbres(page = 1, filterEspece = '', filterEtat = '') {
 // Déclencher la récupération des arbres au chargement de la page
 document.addEventListener('DOMContentLoaded', () => {
     // Initialisation des éléments de filtre
-    let selectEspece = document.getElementById('especes');
     let selectEtat = document.getElementById('fk_arb_etat');
 
-    // Gestion des événements de changement pour les filtres
-    selectEspece.addEventListener('change', () => {
-        fetchArbres(1, selectEspece.value, selectEtat.value);
-        console.log('Espèce : ' + selectEspece.value);
-    });
 
     selectEtat.addEventListener('change', () => {
-        fetchArbres(1, selectEspece.value, selectEtat.value);
+        fetchArbres(1, selectEtat.value);
         console.log('Etat : ' + selectEtat.value);
     });
 
@@ -196,6 +187,5 @@ async function fetchOptionsFromDB(selectName) {
     }
 }
 
-// Appeler la fonction pour récupérer et ajouter les options au chargement de la page
-fetchOptionsFromDB('especes');
+
 fetchOptionsFromDB('fk_arb_etat');
