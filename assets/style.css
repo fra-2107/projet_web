@@ -393,6 +393,16 @@ main #ajoutArbre .taille_form input {
 
 /* ------------------------------------------------------ */
 
+/* PAGE PREDICTION */
+
+.predict_main {
+    display: flex;
+}
+
+/* FIN PAGE PREDICTION */
+
+/* ------------------------------------------------------ */
+
 /* RESPONSIVE */
 @media all and (max-width:1600px) {
     nav .right_nav {
