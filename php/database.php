@@ -139,9 +139,9 @@ function dbGetArbres($db, $limit = 10, $offset = 0, $espece = '', $etat = '') {
   }
 
   $sql .= ' LIMIT :limit OFFSET :offset';
-
+echo'ca marche';
   $sth = $db->prepare($sql);
-
+echo 'ca marche encore';
   // Liaison des paramètres
   if ($espece !== '') {
       $sth->bindParam(':espece', $espece, PDO::PARAM_STR);
