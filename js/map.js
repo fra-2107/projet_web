@@ -14,12 +14,12 @@ ajaxRequest('POST', 'php/request.php/map/', (response) => {
     // Ajouter les marqueurs sur la carte
     response.forEach(arbre => {
         L.circle([arbre.longi, arbre.lat], {
-            color: 'green',
-            fillColor: '#3f0',
-            fillOpacity: 0.5,
-            radius: 5 // Rayon en mètres
-        }).addTo(map)
-        .bindPopup(`Arbre: ${arbre.lat}, ${arbre.longi}`);
+                color: 'green',
+                fillColor: '#3f0',
+                fillOpacity: 0.5,
+                radius: 5 // Rayon en mètres
+            }).addTo(map)
+            .bindPopup(`Arbre: ${arbre.lat}, ${arbre.longi}`);
     });
 });
 

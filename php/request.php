@@ -147,9 +147,16 @@ if ($request[1] == 'arbres') {
             $trunc_height = $data[0]['haut_tronc'];
             $height = $data[0]['haut_tot'];
 
-            $argdata = sprintf('-m %s --species "%s" --height %d --trunc_height %d --trunc_diameter %d --latitude %f --longitude %f',
-                   $model, $species, $height, $trunc_height, $trunc_diameter,
-                   $latitude, $longitude);
+            $argdata = sprintf(
+                '-m %s --species "%s" --height %d --trunc_height %d --trunc_diameter %d --latitude %f --longitude %f',
+                $model,
+                $species,
+                $height,
+                $trunc_height,
+                $trunc_diameter,
+                $latitude,
+                $longitude
+            );
 
 
 
@@ -160,7 +167,6 @@ if ($request[1] == 'arbres') {
                 // Exécution de la commande
                 exec($command, $output, $return_var);
                 $data = $output;
-
             }
         }
     }
