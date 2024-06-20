@@ -73,53 +73,56 @@ $(document).ready(function(){
     // Liste d'espèces d'arbres (exemple statique, remplacez par vos données réelles)
     var speciesList = [];
     // Récupérer la liste des espèces d'arbres via une requête AJAX
-    ajaxRequest('GET', 'php/request.php/especes', (response) => {
+     // Récupérer la liste des espèces d'arbres via une requête AJAX
+     ajaxRequest('GET', 'php/request.php/especes', function(response) {
         speciesList = response; // Assigner la réponse à la variable speciesList
+        console.log('Liste des espèces:', speciesList); // Afficher la liste dans la console pour vérification
+
     });
+    
+        // Initialiser les éléments DOM après récupération des données
+        var input = $("#autocomplete-input");
+        var suggestionsContainer = $("#autocomplete-suggestions");
 
-    console.log('Liste des espèces:', speciesList);
+        // Fonction pour mettre à jour les suggestions
+        function updateSuggestions(inputText) {
+            var filteredSpecies = speciesList.filter(function(species) {
+                return typeof species === 'string' && species.toLowerCase().startsWith(inputText.toLowerCase());
+            });
 
-    var input = $("#autocomplete-input");
-    var suggestionsContainer = $("#autocomplete-suggestions");
+            var suggestionsHtml = "";
+            filteredSpecies.forEach(function(species) {
+                suggestionsHtml += "<li>" + inputText + "<span style='color: grey;'>" + species.substring(inputText.length) + "</span></li>";
+            });
 
-    // Fonction pour mettre à jour les suggestions
-    function updateSuggestions(inputText) {
-        var filteredSpecies = speciesList.filter(function(species) {
-            return species.toLowerCase().startsWith(inputText.toLowerCase());
+            suggestionsContainer.html("<ul>" + suggestionsHtml + "</ul>");
+
+            // Afficher les suggestions si elles existent, sinon cacher
+            if (filteredSpecies.length > 0) {
+                suggestionsContainer.show();
+            } else {
+                suggestionsContainer.hide();
+            }
+        }
+
+        // Événement input sur le champ de saisie
+        input.on("input", function() {
+            var inputText = $(this).val();
+            updateSuggestions(inputText);
         });
 
-        var suggestionsHtml = "";
-        filteredSpecies.forEach(function(species) {
-            suggestionsHtml += "<li>" + inputText + "<span style='color: grey;'>" + species.substring(inputText.length) + "</span></li>";
+        // Sélectionner une suggestion au clic
+        suggestionsContainer.on("click", "li", function() {
+            var selectedSpecies = $(this).text().trim(); // Récupérer le texte complet
+            input.val(selectedSpecies); // Remplacer la valeur du champ avec l'espèce sélectionnée
+            suggestionsContainer.hide(); // Cacher les suggestions après sélection
         });
 
-        suggestionsContainer.html("<ul>" + suggestionsHtml + "</ul>");
+        // Cacher les suggestions au clic en dehors du champ de saisie et des suggestions
+        $(document).on("click", function(e) {
+            if (!$(e.target).closest("#autocomplete-container").length) {
+                suggestionsContainer.hide();
+            }
+        });
 
-        // Afficher les suggestions si elles existent, sinon cacher
-        if (filteredSpecies.length > 0) {
-            suggestionsContainer.show();
-        } else {
-            suggestionsContainer.hide();
-        }
-    }
-
-    // Événement input sur le champ de saisie
-    input.on("input", function() {
-        var inputText = $(this).val();
-        updateSuggestions(inputText);
-    });
-
-    // Sélectionner une suggestion au clic
-    suggestionsContainer.on("click", "li", function() {
-        var selectedSpecies = $(this).text().trim(); // Récupérer le texte complet
-        input.val(selectedSpecies); // Remplacer la valeur du champ avec l'espèce sélectionnée
-        suggestionsContainer.hide(); // Cacher les suggestions après sélection
-    });
-
-    // Cacher les suggestions au clic en dehors du champ de saisie et des suggestions
-    $(document).on("click", function(e) {
-        if (!$(e.target).closest("#autocomplete-container").length) {
-            suggestionsContainer.hide();
-        }
-    });
 });
