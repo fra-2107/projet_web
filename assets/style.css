@@ -94,7 +94,7 @@ header .content{
     flex-direction: column;
     align-items: center;
     color: white;
-    background: url('img/fond_header.jpg') no-repeat center center;
+    background: url('img/arbre2.jpg');
     background-size: cover;
 }
 
@@ -218,7 +218,7 @@ main #ajoutArbre {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    margin: 5rem 0rem 0rem 0rem;
+    margin: 6rem 0rem 6rem 0rem;
     background-color: white;
     border-radius: 5px;
     width: 20rem;
@@ -230,13 +230,8 @@ main .form_ajout {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    background: url('img/fond_header.jpg') no-repeat center center;
+    background: url('img/arbre2.jpg');
     background-size: cover;
-}
-
-main .form_ajout h1 {
-    color: white;
-    margin-top: 20px;
 }
 
 #espece {
@@ -259,15 +254,17 @@ main #ajoutArbre .taille_form input {
 .form_ajout #ajoutArbre .coord_form {
     display: flex;
     justify-content: center;
+    margin-top: 1rem;
 }
 
 .form_ajout #ajoutArbre .coord_form input {
     width: 70px;
+    margin-left: 5px;
 }
 
 .form_ajout #ajoutArbre select {
     margin-top: 1rem;
-    width: 200px;
+    width: 280px;
     padding: 10px;
     border: solid 1px #d1d1d1;
 }
@@ -287,8 +284,19 @@ main #ajoutArbre .taille_form input {
     background-color: #87bc26;
 }
 
-/* FIN PAGE AJOUT */
+.form_ajout #ajoutArbre .remarquable_card {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0 1rem 0;
+}
 
+.form_ajout #ajoutArbre .remarquable_card label {
+    margin-left: 10px;
+}
+
+/* FIN PAGE AJOUT */
 
 /* ------------------------------------------------------ */
 
