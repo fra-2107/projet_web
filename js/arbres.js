@@ -73,7 +73,8 @@ $(document).ready(function(){
     // Liste d'espèces d'arbres (exemple statique, remplacez par vos données réelles)
     var speciesList = [];
     // Récupérer la liste des espèces d'arbres via une requête AJAX
-    ajaxRequest('GET', 'php/request.php/especes', function(response) {
+     // Récupérer la liste des espèces d'arbres via une requête AJAX
+     ajaxRequest('GET', 'php/request.php/especes', function(response) {
         speciesList = response; // Assigner la réponse à la variable speciesList
         console.log('Liste des espèces:', speciesList); // Afficher la liste dans la console pour vérification
 
@@ -84,7 +85,7 @@ $(document).ready(function(){
         // Fonction pour mettre à jour les suggestions
         function updateSuggestions(inputText) {
             var filteredSpecies = speciesList.filter(function(species) {
-                return species.toLowerCase().startsWith(inputText.toLowerCase());
+                return typeof species === 'string' && species.toLowerCase().startsWith(inputText.toLowerCase());
             });
 
             var suggestionsHtml = "";
