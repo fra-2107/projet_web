@@ -19,15 +19,20 @@ if ($request[1] == 'arbres') {
     if ($requestMethod == 'GET') {
         $limit = isset($_GET['limit']) ? (int)$_GET['limit'] : 20;
         $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-        $offset = ($page - 1) * $limit;
 
-        // Filtrage par espèce et/ou état si les paramètres sont présents
-        $filterEspece = isset($_GET['espece']) ? $_GET['espece'] : '';
-        $filterEtat = isset($_GET['etat']) ? $_GET['etat'] : '';
+        // Préparation des filtres à partir de la requête GET
+        $filters = [];
+        if (isset($_GET['espece'])) {
+            $filters['espece'] = $_GET['espece'];
+        }
+        if (isset($_GET['etat'])) {
+            $filters['fk_arb_etat'] = $_GET['etat'];
+        }
 
+        // Appel de la fonction dbGetArbres avec les paramètres appropriés
+        $arbres = dbGetArbres($db, $limit, $filters);
         $total = dbGetTotalArbres($db); 
-        $arbres = dbGetArbres($db, $limit, $offset, $filterEspece, $filterEtat);
-
+        
         $response = [
             'total' => $total,
             'page' => $page,
