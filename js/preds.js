@@ -33,3 +33,10 @@ ajaxRequest('GET', 'php/request.php/preds?risque&id=' + id, (response) => {
 
 });
 
+ajaxRequest('GET', 'php/request.php/preds?map&id=' + id, (response) => {
+    console.log('response' + response);
+    
+    
+
+});
+
