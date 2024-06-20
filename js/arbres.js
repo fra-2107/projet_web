@@ -71,7 +71,7 @@ fetchOptionsFromDB('fk_port');
 
 $(document).ready(function(){
     // Liste d'espèces d'arbres (exemple statique, remplacez par vos données réelles)
-    
+    var speciesList
     // Récupérer la liste des espèces d'arbres via une requête AJAX
     ajaxRequest('GET', 'php/request.php/especes', (response) => {
         speciesList = response; // Assigner la réponse à la variable speciesList
