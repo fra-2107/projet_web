@@ -168,7 +168,7 @@ if ($request[1] == 'arbres') {
             }
         }
     }
-} elseif ($request[1] == 'espece') {
+} elseif ($request[1] == 'especes') {
     $data = dbGetOptions($db, 'espece');
     $data = array_map('strtolower', $data);
     $data = array_unique($data);
