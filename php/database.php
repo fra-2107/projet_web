@@ -127,57 +127,40 @@ function dbGetArbretoRisque($db, $id)
 
 function dbGetArbres($db, $limit = 10, $filters = null)
 {
-    $whereArgs = [];
-    $params = [
-        ':limit' => (int)$limit,
-        ':offset' => 0, // Décalage initial, ajusté plus loin
-    ];
+  $whereArgs = [];
 
-    // Gestion de la pagination
-    if (isset($_GET["page"])) {
-        $page = intval($_GET['page']);
-    } else {
-        $page = 1;
-    }
-    $offset = ($page - 1) * $limit;
-    $params[':offset'] = (int)$offset; // Convertir en entier
+  if (isset($_GET["page"])) {
+      $page = intval($_GET['page']);
+  } else {
+      $page = 1;
+  }
 
-    $sql = 'SELECT * FROM arbre ';
+  $decalage = ($page - 1) * $limit;
 
-    // Construction de la clause WHERE pour les filtres
-    if ($filters != null && is_array($filters)) {
-        foreach ($filters as $key => $value) {
-            if ($value != '') {
-                $whereArgs[] = $key . ' = :' . $key;
-                $params[':' . $key] = $value; // Ajouter le paramètre au tableau des paramètres
-            }
-        }
-    }
+  $sql = 'SELECT *
+  FROM arbre ';
 
-    // Ajout de la clause WHERE si des filtres sont présents
-    if (!empty($whereArgs)) {
-        $sql .= 'WHERE ' . implode(' AND ', $whereArgs);
-    }
+  if ($filters != null) {
+      foreach ($filters as $key => $value) {
+          if ($value != '') $whereArgs[] = $key . ' = :' . $key;
+      }
+  }
+  if (!empty($whereArgs)) $sql .= 'WHERE ' . implode(' AND ', $whereArgs);
 
-    $sql .= ' LIMIT :limit OFFSET :offset';
+  $sql .= ' LIMIT :limit OFFSET :offset';
+  $sth = $db->prepare($sql);
+  // $sth = $this->getPDO()->prepare($sql);
 
-    echo 'SQL: ' . $sql ;
+  if ($filters != null) {
+      if ($filters['espece'] != '') $sth->bindParam('espece', $filters['espece']);
+      if ($filters['etat'] != '') $sth->bindParam('fk_arb_etat', $filters['fk_arb_etat']);
+  }
+  $sth->bindParam(':limit', $limit, PDO::PARAM_INT);
+  $sth->bindParam(':offset', $decalage, PDO::PARAM_INT);
+  $sth->execute();
 
-    try {
-        $sth = $db->prepare($sql);
-
-        // Liaison des paramètres
-        $sth->bindParam(':limit', $params[':limit'], PDO::PARAM_INT);
-        $sth->bindParam(':offset', $params[':offset'], PDO::PARAM_INT);
-
-        // Exécution de la requête avec les paramètres
-        $sth->execute($params);
-        $result = $sth->fetchAll(PDO::FETCH_ASSOC);
-        return $result;
-    } catch (PDOException $e) {
-        echo json_encode(['error' => 'Erreur : ' . $e->getMessage()]);
-        return false;
-    }
+  $result = $sth->fetchAll(PDO::FETCH_ASSOC);
+  return $result;
 }
 
 
