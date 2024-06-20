@@ -150,8 +150,8 @@ function fetchArbres(page = 1, filterEspece = '', filterEtat = '') {
 // Déclencher la récupération des arbres au chargement de la page
 document.addEventListener('DOMContentLoaded', () => {
     // Initialisation des éléments de filtre
-    let selectEspece = document.getElementById('select-espece');
-    let selectEtat = document.getElementById('select-etat');
+    let selectEspece = document.getElementById('especes');
+    let selectEtat = document.getElementById('fk_arb_etat');
 
     // Gestion des événements de changement pour les filtres
     selectEspece.addEventListener('change', () => {
