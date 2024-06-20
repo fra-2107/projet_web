@@ -26,7 +26,7 @@ ajaxRequest('GET', 'php/request.php/preds?risque&id=' + id, (response) => {
         document.getElementById('valuerisque').innerHTML = "Pas de risque estimé pour cet arbre";
         return;
     }
-    elseif(response == 'true') 
+    else if(response == 'true') 
     {
         document.getElementById('valuerisque').innerHTML = "attention cet arbre peux tomber";
     }
