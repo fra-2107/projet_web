@@ -71,52 +71,55 @@ fetchOptionsFromDB('fk_port');
 
 $(document).ready(function(){
     // Liste d'espèces d'arbres (exemple statique, remplacez par vos données réelles)
-    var speciesList = [
-        "Chêne",
-        "Érable",
-        "Hêtre",
-        "Pin",
-        "Sapin",
-        "Figuier",
-        "Acajou",
-        "Cèdre",
-        "Châtaignier",
-        "Cyprès",
-        "Peuplier",
-        "Tilleul",
-        "Orme"
-    ];
-
-    // Fonction pour gérer l'autocomplétion
-    $("#espece").on("input", function() {
-        var input = $(this).val().toLowerCase();
-        var autocompleteItems = $(".autocomplete-items");
-        autocompleteItems.empty(); // Vider les anciennes suggestions
-
-        // Filtrer et afficher les suggestions correspondantes
-        speciesList.forEach(function(species) {
-            if (species.toLowerCase().startsWith(input)) {
-                var item = $("<div class='autocomplete-item'>" + species + "</div>");
-                item.on("click", function() {
-                    $("#espece").val(species); // Remplacer la valeur du champ avec l'espèce sélectionnée
-                    autocompleteItems.empty(); // Vider la liste des suggestions après sélection
-                });
-                autocompleteItems.append(item);
-            }
-        });
-
-        // Afficher la liste de suggestions si des suggestions existent
-        if (autocompleteItems.children().length > 0) {
-            autocompleteItems.show();
-        } else {
-            autocompleteItems.hide();
-        }
+    
+    // Récupérer la liste des espèces d'arbres via une requête AJAX
+    ajaxRequest('GET', 'php/request.php/especes', (response) => {
+        speciesList = response; // Assigner la réponse à la variable speciesList
     });
 
-    // Cacher la liste de suggestions au clic en dehors du champ
+    console.log('Liste des espèces:', speciesList);
+
+    var input = $("#autocomplete-input");
+    var suggestionsContainer = $("#autocomplete-suggestions");
+
+    // Fonction pour mettre à jour les suggestions
+    function updateSuggestions(inputText) {
+        var filteredSpecies = speciesList.filter(function(species) {
+            return species.toLowerCase().startsWith(inputText.toLowerCase());
+        });
+
+        var suggestionsHtml = "";
+        filteredSpecies.forEach(function(species) {
+            suggestionsHtml += "<li>" + inputText + "<span style='color: grey;'>" + species.substring(inputText.length) + "</span></li>";
+        });
+
+        suggestionsContainer.html("<ul>" + suggestionsHtml + "</ul>");
+
+        // Afficher les suggestions si elles existent, sinon cacher
+        if (filteredSpecies.length > 0) {
+            suggestionsContainer.show();
+        } else {
+            suggestionsContainer.hide();
+        }
+    }
+
+    // Événement input sur le champ de saisie
+    input.on("input", function() {
+        var inputText = $(this).val();
+        updateSuggestions(inputText);
+    });
+
+    // Sélectionner une suggestion au clic
+    suggestionsContainer.on("click", "li", function() {
+        var selectedSpecies = $(this).text().trim(); // Récupérer le texte complet
+        input.val(selectedSpecies); // Remplacer la valeur du champ avec l'espèce sélectionnée
+        suggestionsContainer.hide(); // Cacher les suggestions après sélection
+    });
+
+    // Cacher les suggestions au clic en dehors du champ de saisie et des suggestions
     $(document).on("click", function(e) {
-        if (!$(e.target).closest("#espece, .autocomplete-items").length) {
-            $(".autocomplete-items").hide();
+        if (!$(e.target).closest("#autocomplete-container").length) {
+            suggestionsContainer.hide();
         }
     });
 });
