@@ -87,42 +87,47 @@ $(document).ready(function(){
         "Orme"
     ];
 
-    var especeInput = $("#espece");
-    var especeSelect = $("#espece-select");
+    var input = $("#autocomplete-input");
+    var suggestionsContainer = $("#autocomplete-suggestions");
 
-    // Fonction pour remplir le select avec les suggestions
-    function fillSelect(suggestions) {
-        especeSelect.empty(); // Vider le select
-        suggestions.forEach(function(species) {
-            var option = $("<option>" + species + "</option>");
-            option.on("click", function() {
-                especeInput.val(species); // Remplacer la valeur du champ avec l'espèce sélectionnée
-                especeSelect.hide(); // Cacher le select après sélection
-            });
-            especeSelect.append(option);
+    // Fonction pour mettre à jour les suggestions
+    function updateSuggestions(inputText) {
+        var filteredSpecies = speciesList.filter(function(species) {
+            return species.toLowerCase().startsWith(inputText.toLowerCase());
         });
+
+        var suggestionsHtml = "";
+        filteredSpecies.forEach(function(species) {
+            suggestionsHtml += "<li>" + inputText + "<span style='color: grey;'>" + species.substring(inputText.length) + "</span></li>";
+        });
+
+        suggestionsContainer.html("<ul>" + suggestionsHtml + "</ul>");
+
+        // Afficher les suggestions si elles existent, sinon cacher
+        if (filteredSpecies.length > 0) {
+            suggestionsContainer.show();
+        } else {
+            suggestionsContainer.hide();
+        }
     }
 
     // Événement input sur le champ de saisie
-    especeInput.on("input", function() {
-        var input = $(this).val().toLowerCase();
-        var suggestions = speciesList.filter(function(species) {
-            return species.toLowerCase().startsWith(input);
-        });
-        fillSelect(suggestions);
-
-        // Afficher ou cacher le select selon s'il y a des suggestions
-        if (suggestions.length > 0) {
-            especeSelect.show();
-        } else {
-            especeSelect.hide();
-        }
+    input.on("input", function() {
+        var inputText = $(this).val();
+        updateSuggestions(inputText);
     });
 
-    // Cacher le select au clic en dehors du champ
+    // Sélectionner une suggestion au clic
+    suggestionsContainer.on("click", "li", function() {
+        var selectedSpecies = $(this).text().trim(); // Récupérer le texte complet
+        input.val(selectedSpecies); // Remplacer la valeur du champ avec l'espèce sélectionnée
+        suggestionsContainer.hide(); // Cacher les suggestions après sélection
+    });
+
+    // Cacher les suggestions au clic en dehors du champ de saisie et des suggestions
     $(document).on("click", function(e) {
-        if (!$(e.target).closest("#autocomplete-select").length) {
-            especeSelect.hide();
+        if (!$(e.target).closest("#autocomplete-container").length) {
+            suggestionsContainer.hide();
         }
     });
 });

@@ -36,9 +36,12 @@
             <div class="form_ajout">
                 <form id="ajoutArbre">
                     <h2>Ajouter un arbre</h2>
-                    <div id="autocomplete-select">
-                        <input type="text" id="espece" name="espece" placeholder="Sélectionnez une espèce" required autocomplete="off">
-                        <select id="espece-select" style="display: none;"></select> <!-- Select caché -->
+                    <div id="autocomplete-container">
+                        <!-- Champ de saisie avec autocomplétion -->
+                        <input type="text" id="autocomplete-input" placeholder="Sélectionnez une espèce">
+                        
+                        <!-- Suggestions (liste non ordonnée) -->
+                        <div id="autocomplete-suggestions"></div>
                     </div>
             
                     <p>Tailles</p>
