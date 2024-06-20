@@ -21,17 +21,13 @@ ajaxRequest('GET', 'php/request.php/preds?age&id='+id, (response) => {
 
 ajaxRequest('GET', 'php/request.php/preds?risque&id='+id, (response) => {
     console.log('response'+response);
-    var jsonString = response;
+    if (response == false)
+    {
+        document.getElementById('valuerisque').innerHTML = "Pas de risque estimé pour cet arbre";
+        return;
+    }else
+    {
+        document.getElementById('valuerisque').innerHTML = "attention il prux tomber";
+    }
 
-    // Convertir la chaîne JSON en un tableau d'objets JavaScript
-    var jsonData = JSON.parse(jsonString);
-
-    // Accéder à la première (et unique, dans ce cas) entrée du tableau
-    var risqueEstim = jsonData[0];
-
-    // Utiliser la valeur récupérée comme nécessaire
-    console.log("Valeur de risque_estim :", risqueEstim);
-
-    // Afficher le résultat
-    document.getElementById('valuerisque').innerHTML = risqueEstim;
 });

@@ -145,7 +145,6 @@ if ($request[1] == 'arbres') {
 
             // Encoder le tableau en JSON
             $jsonData = json_encode($data);
-            echo 'jsonData : ' . $jsonData;
 
             if (file_exists($python_script)) {
                 $command = "/usr/bin/python " . $python_script . " '" . ($jsonData) . "'";
