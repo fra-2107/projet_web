@@ -10,6 +10,6 @@ document.addEventListener('DOMContentLoaded', function() {
             popup.classList.add('hidden'); // Cache la popup après 3 secondes
             // Optionnel : Tu peux également soumettre le formulaire ici si nécessaire
             // event.target.submit();
-        }, 1500);
+        }, 2000);
     });
 });
