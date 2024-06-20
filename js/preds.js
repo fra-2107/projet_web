@@ -38,7 +38,7 @@ ajaxRequest('GET', 'php/request.php/preds?map&id=' + id, (response) => {
     console.log(response);
     
     // Initialiser la carte centrée sur Saint-Quentin
-    var map = L.map('map').setView([49.848, 3.287], 13);
+    var map = L.map('map').setView([response.longi, response.lat], 13);
 
     // Ajouter les tuiles OpenStreetMap
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
