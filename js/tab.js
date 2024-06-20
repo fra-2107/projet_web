@@ -156,10 +156,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Gestion des événements de changement pour les filtres
     selectEspece.addEventListener('change', () => {
         fetchArbres(1, selectEspece.value, selectEtat.value);
+        console.log('Espèce : ' + selectEspece.value);
     });
 
     selectEtat.addEventListener('change', () => {
         fetchArbres(1, selectEspece.value, selectEtat.value);
+        console.log('Etat : ' + selectEtat.value);
     });
 
     // Récupérer et afficher les arbres avec la pagination au chargement initial
