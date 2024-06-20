@@ -71,21 +71,13 @@ fetchOptionsFromDB('fk_port');
 
 $(document).ready(function(){
     // Liste d'espèces d'arbres (exemple statique, remplacez par vos données réelles)
-    var speciesList = [
-        "Chêne",
-        "Érable",
-        "Hêtre",
-        "Pin",
-        "Sapin",
-        "Figuier",
-        "Acajou",
-        "Cèdre",
-        "Châtaignier",
-        "Cyprès",
-        "Peuplier",
-        "Tilleul",
-        "Orme"
-    ];
+    
+    // Récupérer la liste des espèces d'arbres via une requête AJAX
+    ajaxRequest('GET', 'php/request.php/especes', (response) => {
+        speciesList = response; // Assigner la réponse à la variable speciesList
+    });
+
+    console.log('Liste des espèces:', speciesList);
 
     var input = $("#autocomplete-input");
     var suggestionsContainer = $("#autocomplete-suggestions");

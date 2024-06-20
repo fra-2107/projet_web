@@ -89,8 +89,6 @@ if ($request[1] == 'arbres') {
     $data = dbGetCoordMap($db);
 } elseif ($request[1] == 'predictClust') {
 
-
-
     $nb_clusters = isset($_POST['nb_clusters']) ? (int)$_POST['nb_clusters'] : 0;
 
     if (is_numeric($nb_clusters) && $nb_clusters > 0) {
@@ -170,7 +168,12 @@ if ($request[1] == 'arbres') {
             }
         }
     }
-} else {
+} elseif ($request[1] == 'espece') {
+    $data = dbGetOptions($db, 'espece');
+    $data = array_map('strtolower', $data);
+    $data = array_unique($data);
+    
+}else {
     header('HTTP/1.1 400 Bad Request');
     exit;
 }
