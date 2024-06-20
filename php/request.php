@@ -14,7 +14,6 @@ $request = $_SERVER['PATH_INFO'];
 $request = explode('/', $request);
 
 if ($request[1] == 'arbres') {
-
     $id = $request[2];
 
     if ($requestMethod == 'GET') {
@@ -22,8 +21,12 @@ if ($request[1] == 'arbres') {
         $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
         $offset = ($page - 1) * $limit;
 
-        $total = dbGetTotalArbres($db);
-        $arbres = dbGetArbres($db, $limit);
+        // Filtrage par espèce et/ou état si les paramètres sont présents
+        $filterEspece = isset($_GET['espece']) ? $_GET['espece'] : '';
+        $filterEtat = isset($_GET['etat']) ? $_GET['etat'] : '';
+
+        $total = dbGetTotalArbres($db); 
+        $arbres = dbGetArbres($db, $limit, $offset, $filterEspece, $filterEtat);
 
         $response = [
             'total' => $total,
@@ -34,6 +37,7 @@ if ($request[1] == 'arbres') {
 
         $data = $response;
     }
+
 
     if ($requestMethod == 'POST') {
         // Liste des champs requis
@@ -155,9 +159,6 @@ if ($request[1] == 'arbres') {
                 $latitude,
                 $longitude
             );
-
-
-
 
             if (file_exists($python_script)) {
                 $command = "/usr/bin/python " . $python_script . " " . ($argdata);
