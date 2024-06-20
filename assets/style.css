@@ -408,7 +408,7 @@ main #ajoutArbre .taille_form input {
 
 .predict_main .prediction .card {
     display: flex;
-    justify-content: center;
+    align-items: center;
 }
 
 .predict_main .prediction .card h1{
