@@ -76,6 +76,7 @@ function afficheArbres(data) {
         svg.setAttribute("fill", "currentColor");
         svg.setAttribute("class", "bi bi-trash3-fill");
         svg.setAttribute("viewBox", "0 0 16 16");
+        svg.setAttribute("id", "delsvg");
         svg.addEventListener('click', () => {
             // Call the function when the SVG is clicked
             console.log('SVG clicked');
