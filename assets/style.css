@@ -149,8 +149,8 @@ header .cta-btn {
     background-color: #34671b;
     border-radius: 5px;
     color: white;
-    width: 250px;
-    height: 500px;
+    max-width: 250px;
+    max-height: 400px;
 }
 
 .main_accueil .desc_project .part_card_project h3 {
