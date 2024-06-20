@@ -47,7 +47,7 @@ ajaxRequest('GET', 'php/request.php/preds?map&id=' + id, (response) => {
 
     // Ajouter les marqueurs sur la carte
     response.forEach(arbre => {
-        L.marker([arbre.lat, arbre.longi]).addTo(map)
+        L.marker([arbre.longi, arbre.lat]).addTo(map)
             .bindPopup(`Arbre: ${arbre.lat}, ${arbre.longi}`);
     });
 });
