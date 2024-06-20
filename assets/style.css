@@ -117,10 +117,21 @@ header .cta-btn {
 
 .main_accueil {
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+}
+
+.main_accueil .image_card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.main_accueil .image_card p {
+    font-weight: bold;
+    font-size: 60px;
 }
 
 /* FIN MAIN */
