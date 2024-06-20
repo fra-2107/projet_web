@@ -237,6 +237,7 @@ table {
 .tabArbre {
     margin: 0rem 20rem 0rem 20rem;
     padding: 1rem 1rem 1rem 1rem;
+    width: 100%;
 }
 
 select {
