@@ -159,10 +159,9 @@ if ($request[1] == 'arbres') {
         $python_script = "/var/www/etu0106/projet_web/python/uprooting.py"; // Chemin absolu vers le script Python
         // Vérifier si des données ont été récupérées
         if ($data !== false) {
-
             // Encoder le tableau en JSON
             $jsonData = json_encode($data);
-
+            echo 'jsonData : ' . $jsonData;
 
             if (file_exists($python_script)) {
                 $command = "/usr/bin/python " . $python_script . " '" . ($jsonData) . "'";
