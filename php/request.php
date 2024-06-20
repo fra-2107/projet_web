@@ -175,7 +175,7 @@ if ($request[1] == 'arbres') {
         }
     }elseif (isset($_GET['map'])) {
         $data = dbGetArbretoRisque($db, $id);
-        
+        $data = json_encode($data);
     }
 } elseif ($request[1] == 'especes') {
     $data = dbGetEspeces($db);
