@@ -230,6 +230,19 @@ function dbGetOptions($db, $table)
   }
 }
 
+
+function dbGetEspeces($db)
+{
+  try {
+    $stmt = $db->prepare("SELECT espece FROM arbre GROUP BY espece");
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  } catch (PDOException $e) {
+    echo json_encode(['error' => 'Erreur : ' . $e->getMessage()]);
+    return false;
+  }
+}
+
 //----------------------------------------------------------------------------
 //--- dbGetCoordMap ----------------------------------------------------------
 //----------------------------------------------------------------------------

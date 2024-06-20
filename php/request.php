@@ -169,9 +169,9 @@ if ($request[1] == 'arbres') {
         }
     }
 } elseif ($request[1] == 'especes') {
-    $data = dbGetOptions($db, 'espece');
-    $data = array_map('strtolower', $data);
-    $data = array_unique($data);
+    $data = dbGetEspeces($db);
+    // $data = array_map('strtolower', $data);
+    // $data = array_unique($data);
     
 }else {
     header('HTTP/1.1 400 Bad Request');
