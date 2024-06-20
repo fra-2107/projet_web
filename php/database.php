@@ -161,6 +161,8 @@ function dbGetArbres($db, $limit = 10, $filters = null)
 
     $sql .= ' LIMIT :limit OFFSET :offset';
 
+    echo 'SQL: ' . $sql ;
+
     try {
         $sth = $db->prepare($sql);
 
