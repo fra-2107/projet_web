@@ -140,6 +140,7 @@ function dbGetArbres($db, $limit = 10, $offset = 0, $espece = '', $etat = '') {
   if (!empty($whereArgs)) {
       $sql .= ' WHERE ' . implode(' AND ', $whereArgs);
   }
+
   $sql .= ' LIMIT :limit OFFSET :offset';
 
   $sth = $db->prepare($sql);
@@ -153,7 +154,7 @@ function dbGetArbres($db, $limit = 10, $offset = 0, $espece = '', $etat = '') {
   }
   $sth->bindParam(':limit', $limit, PDO::PARAM_INT);
   $sth->bindParam(':offset', $offset, PDO::PARAM_INT);
-  echo 'sql'.$sql;
+  echo 'sth'.$sth;
   // Exécution de la requête
   $sth->execute();
 
