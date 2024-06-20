@@ -3,13 +3,14 @@
 require_once("php/database.php"); // on recupere le fichier qui connecte la bdd
 
 $erreur = "";
+$success = "";
 
 if(isset($_POST["check-btn"])) {
 
     if(isset($_POST['mail']) && isset($_POST['mdp'])) { // on verifie si l'utilisateur a bien rentré des donnée
 
-        $email = $_POST['mail'];
-        $pwd = $_POST['mdp'];
+        $mail = $_POST['mail'];
+        $mdp = $_POST['mdp'];
 
         $con = dbConnect();
 
@@ -19,14 +20,14 @@ if(isset($_POST["check-btn"])) {
         }
 
         $request = $con->prepare("SELECT * FROM utilisateur WHERE mail=? AND mdp=?");
-        $request->bindParam(1, $email);
-        $request->bindParam(2, $pwd);
+        $request->bindParam(1, $mail);
+        $request->bindParam(2, $mdr);
         $request->execute();
 
         $num_ligne = $request->rowCount(); // compter le nb de ligne ayant un rapport avec la requete sql
         if ($num_ligne > 0) {
             session_start();
-            $_SESSION['mail'] = $email;
+            $_SESSION['mail'] = $mail;
             echo "Connexion réussie !";
             header("refresh:2;url=index_accueil.html"); // redirige après 2 secondes
             exit;
