@@ -129,9 +129,8 @@ header .cta-btn {
     margin-bottom: 2rem;
 }
 
-.main_accueil .image_card p {
-    font-weight: bold;
-    font-size: 60px;
+.main_accueil .image_card img{
+    margin: 1rem 0 1rem 0 1rem;
 }
 
 /* FIN MAIN */
