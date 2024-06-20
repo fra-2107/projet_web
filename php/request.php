@@ -32,7 +32,7 @@ if ($request[1] == 'arbres') {
         // Appel de la fonction dbGetArbres avec les paramètres appropriés
         $arbres = dbGetArbres($db, $limit, $filters);
         $total = dbGetTotalArbres($db); 
-
+        
         $response = [
             'total' => $total,
             'page' => $page,
@@ -176,7 +176,6 @@ if ($request[1] == 'arbres') {
     }
 } elseif ($request[1] == 'especes') {
     $data = dbGetEspeces($db);
-    $data = json_encode($data);
     // $data = array_map('strtolower', $data);
     // $data = array_unique($data);
     
