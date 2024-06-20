@@ -67,3 +67,56 @@ fetchOptionsFromDB('fk_arb_etat');
 fetchOptionsFromDB('fk_stadedev');
 fetchOptionsFromDB('fk_pied');
 fetchOptionsFromDB('fk_port');
+
+
+$(document).ready(function(){
+    // Liste d'espèces d'arbres (exemple statique, remplacez par vos données réelles)
+    var speciesList = [
+        "Chêne",
+        "Érable",
+        "Hêtre",
+        "Pin",
+        "Sapin",
+        "Figuier",
+        "Acajou",
+        "Cèdre",
+        "Châtaignier",
+        "Cyprès",
+        "Peuplier",
+        "Tilleul",
+        "Orme"
+    ];
+
+    // Fonction pour gérer l'autocomplétion
+    $("#espece").on("input", function() {
+        var input = $(this).val().toLowerCase();
+        var autocompleteItems = $(".autocomplete-items");
+        autocompleteItems.empty(); // Vider les anciennes suggestions
+
+        // Filtrer et afficher les suggestions correspondantes
+        speciesList.forEach(function(species) {
+            if (species.toLowerCase().startsWith(input)) {
+                var item = $("<div class='autocomplete-item'>" + species + "</div>");
+                item.on("click", function() {
+                    $("#espece").val(species); // Remplacer la valeur du champ avec l'espèce sélectionnée
+                    autocompleteItems.empty(); // Vider la liste des suggestions après sélection
+                });
+                autocompleteItems.append(item);
+            }
+        });
+
+        // Afficher la liste de suggestions si des suggestions existent
+        if (autocompleteItems.children().length > 0) {
+            autocompleteItems.show();
+        } else {
+            autocompleteItems.hide();
+        }
+    });
+
+    // Cacher la liste de suggestions au clic en dehors du champ
+    $(document).on("click", function(e) {
+        if (!$(e.target).closest("#espece, .autocomplete-items").length) {
+            $(".autocomplete-items").hide();
+        }
+    });
+});
