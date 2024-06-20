@@ -399,6 +399,22 @@ main #ajoutArbre .taille_form input {
     display: flex;
 }
 
+.predict_main .prediction {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 4rem;
+}
+
+.predict_main .prediction .card {
+    display: flex;
+    align-items: center;
+}
+
+.predict_main .prediction .card h1{
+    margin-right: 10px;
+}
+
 /* FIN PAGE PREDICTION */
 
 /* ------------------------------------------------------ */

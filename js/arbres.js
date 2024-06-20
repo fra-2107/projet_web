@@ -4,10 +4,10 @@
 
 $('#ajoutArbre').submit((event) => {
     event.preventDefault(); // Empêcher la soumission par défaut du formulaire
-
+    console.log("espece" + $('#espece').val())
     // Collecter les données du formulaire
     let formData = {
-        espece: $('#espece').val(),
+        espece: $('#autocomplete-input').val(),
         haut_tot: $('#haut_tot').val(),
         haut_tronc: $('#haut_tronc').val(),
         diam_tronc: $('#diam_tronc').val(),
