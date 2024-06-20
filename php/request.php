@@ -86,6 +86,12 @@ if ($request[1] == 'arbres') {
             echo json_encode($errors);
         }
     }
+
+    if ($requestMethod == 'DELETE') {
+        if($id !='')
+            $data = dbDeleteArbre($db, intval($id));
+    }
+    
 } else if ($request[1] == 'fk_arb_etat') {
     $data = dbGetOptions($db, 'fk_arb_etat');
 } else if ($request[1] == 'fk_stadedev') {

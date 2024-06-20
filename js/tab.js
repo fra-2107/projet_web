@@ -104,6 +104,10 @@ function afficheArbres(data) {
         // Ajoutez un gestionnaire d'événements pour gérer le clic
         delButton.addEventListener('click', () => {
             console.log('delete element : ' + el.id);
+            ajaxRequest('DELETE', 'php/request.php/arbres?id=' + el.id, (response) => {
+                console.log('Réponse de la requête:', response);
+                fetchArbres();
+            });
         });
         
         // Ajoutez le SVG dans la cellule du tableau

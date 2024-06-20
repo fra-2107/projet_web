@@ -265,3 +265,28 @@ function dbGetCoordMap($db)
   }
   return $result;
 }
+
+//----------------------------------------------------------------------------
+//--- dbDeleteArbre ----------------------------------------------------------
+//----------------------------------------------------------------------------
+// Function to delete a tree from the database.
+// \param db The connected database.
+// \param id The id of the tree.
+// \return True on success, false otherwise.
+
+function dbDeleteArbre($db, $id)
+  {
+    try
+    {
+      $request = 'DELETE FROM tweets WHERE id=:id';
+      $statement = $db->prepare($request);
+      $statement->bindParam(':id', $id, PDO::PARAM_INT);
+      $statement->execute();
+    }
+    catch (PDOException $exception)
+    {
+      error_log('Request error: '.$exception->getMessage());
+      return false;
+    }
+    return true;
+  }
