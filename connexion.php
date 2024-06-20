@@ -27,7 +27,9 @@ if(isset($_POST["check-btn"])) {
         if ($num_ligne > 0) {
             session_start();
             $_SESSION['mail'] = $email;
-            header("Location:index_accueil.html");
+            echo "Connexion réussie !";
+            header("refresh:2;url=index_accueil.html"); // redirige après 2 secondes
+            exit;
         } else {
             $erreur = "Adresse mail ou mot de passe incorrect !";
         }
