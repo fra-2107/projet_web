@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log("Script chargé!");
-    document.getElementById('monFormulaire').addEventListener('submit', function(event) {
+    document.getElementById('ajoutArbre').addEventListener('submit', function(event) {
         event.preventDefault(); // Empêche la soumission normale du formulaire
 
         const popup = document.getElementById('popup');
