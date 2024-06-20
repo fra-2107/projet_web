@@ -87,36 +87,42 @@ $(document).ready(function(){
         "Orme"
     ];
 
-    // Fonction pour gérer l'autocomplétion
-    $("#espece").on("input", function() {
-        var input = $(this).val().toLowerCase();
-        var autocompleteItems = $(".autocomplete-items");
-        autocompleteItems.empty(); // Vider les anciennes suggestions
+    var especeInput = $("#espece");
+    var especeSelect = $("#espece-select");
 
-        // Filtrer et afficher les suggestions correspondantes
-        speciesList.forEach(function(species) {
-            if (species.toLowerCase().startsWith(input)) {
-                var item = $("<div class='autocomplete-item'>" + species + "</div>");
-                item.on("click", function() {
-                    $("#espece").val(species); // Remplacer la valeur du champ avec l'espèce sélectionnée
-                    autocompleteItems.empty(); // Vider la liste des suggestions après sélection
-                });
-                autocompleteItems.append(item);
-            }
+    // Fonction pour remplir le select avec les suggestions
+    function fillSelect(suggestions) {
+        especeSelect.empty(); // Vider le select
+        suggestions.forEach(function(species) {
+            var option = $("<option>" + species + "</option>");
+            option.on("click", function() {
+                especeInput.val(species); // Remplacer la valeur du champ avec l'espèce sélectionnée
+                especeSelect.hide(); // Cacher le select après sélection
+            });
+            especeSelect.append(option);
         });
+    }
 
-        // Afficher la liste de suggestions si des suggestions existent
-        if (autocompleteItems.children().length > 0) {
-            autocompleteItems.show();
+    // Événement input sur le champ de saisie
+    especeInput.on("input", function() {
+        var input = $(this).val().toLowerCase();
+        var suggestions = speciesList.filter(function(species) {
+            return species.toLowerCase().startsWith(input);
+        });
+        fillSelect(suggestions);
+
+        // Afficher ou cacher le select selon s'il y a des suggestions
+        if (suggestions.length > 0) {
+            especeSelect.show();
         } else {
-            autocompleteItems.hide();
+            especeSelect.hide();
         }
     });
 
-    // Cacher la liste de suggestions au clic en dehors du champ
+    // Cacher le select au clic en dehors du champ
     $(document).on("click", function(e) {
-        if (!$(e.target).closest("#espece, .autocomplete-items").length) {
-            $(".autocomplete-items").hide();
+        if (!$(e.target).closest("#autocomplete-select").length) {
+            especeSelect.hide();
         }
     });
 });
