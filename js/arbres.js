@@ -113,7 +113,7 @@ $(document).ready(function () {
         // Sélectionner une suggestion au clic
         suggestionsContainer.on("click", "li", function () {
             var selectedSpecies = $(this).text().trim(); // Récupérer le texte complet
-            input.val(selectedSpecies.toLowerCase()); // Remplacer la valeur du champ avec l'espèce sélectionnée
+            input.val(selectedSpecies.toUpperCase()); // Remplacer la valeur du champ avec l'espèce sélectionnée
             suggestionsContainer.hide(); // Cacher les suggestions après sélection
         });
 
