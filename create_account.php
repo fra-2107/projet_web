@@ -85,7 +85,7 @@ if(isset($_POST["btn-create"])) {
                     ?>
                     <input type="text" placeholder="Nom" name="nom">
                     <input type="text" placeholder="Prénom" name="prenom">
-                    <input type="text" placeholder="Date de naissance (exemple : 2023-06-06)" name="age">
+                    <input type="text" placeholder="Âge" name="age">
                     <input type="text" placeholder="Email" name="mail">
                     <input type="password" placeholder="Mot de passe" name="mdp">
                     <input type="password" placeholder="Confirmez mot de passe" name="confirm-mdp">
