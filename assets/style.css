@@ -445,9 +445,11 @@ main #ajoutArbre .taille_form input {
 
 
 .page {
+    display: flex;
     height: 100vh;
     text-align: center;
-    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
     background: linear-gradient(to top, #87bc26, #34671b);
 }
@@ -460,10 +462,14 @@ main #ajoutArbre .taille_form input {
     opacity: 30%;
 }
 
+.page a {
+    color: white;
+    margin-top: 2rem;
+}
+
 .form {
     background-color: white;
     width: 500px;
-    margin-top: 10rem;
 }
 
 form .top_form {
@@ -495,20 +501,20 @@ form .top_form button:hover {
     background-color: #87bc26;
 }
 
-form input {
+.page form input {
     width: 300px;
     margin-top: 20px;
     padding: 20px;
-    border: none;
+    border: solid 1px #919191;
     background-color: white;
     opacity: 80%;
-    color: white;
     font-size: 15px;
+    color: #919191;
     font-weight: bold;
 }
 
-form input::placeholder {
-    color: #D3D3D3;
+.page form input::placeholder {
+    color: #919191;
 }
 
 .btn-create {
@@ -535,6 +541,14 @@ form input::placeholder {
 }
 
 /* FIN PAGE CONNEXION */
+
+/* ------------------------------------------------------ */
+
+/* PAGE CREATE ACCOUNT */
+
+
+
+/* FIN PAGE CREATE ACCOUNT */
 
 /* ------------------------------------------------------ */
 

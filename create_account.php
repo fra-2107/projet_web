@@ -58,7 +58,7 @@ if(isset($_POST["btn-create"])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/style.css">
     <title>Projet web - nouveau compte</title>
 </head>
 <body>
@@ -66,12 +66,13 @@ if(isset($_POST["btn-create"])) {
 
     <div class="page">
 
-        <h1>Créer un compte</h1>
 
         <div class="form">
             <form class="form_auth_1" method="POST">
 
                 <div class="top_form">
+
+                    <h1>Créer un compte</h1>
                     <?php
                     // Gestion des erreurs
                     if($erreur_mdp != "") {
@@ -84,7 +85,7 @@ if(isset($_POST["btn-create"])) {
                     ?>
                     <input type="text" placeholder="Nom" name="nom">
                     <input type="text" placeholder="Prénom" name="prenom">
-                    <input type="text" placeholder="Date de naissance (exemple : 2023-06-06)" name="age">
+                    <input type="text" placeholder="Âge" name="age">
                     <input type="text" placeholder="Email" name="mail">
                     <input type="password" placeholder="Mot de passe" name="mdp">
                     <input type="password" placeholder="Confirmez mot de passe" name="confirm-mdp">

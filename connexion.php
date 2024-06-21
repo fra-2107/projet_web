@@ -46,7 +46,6 @@ if(isset($_POST["check-btn"])) {
 </head>
 <body>
     <div class="page">
-        
         <div class="form">
             <form class="form_auth_1" method="POST" action="">
 
@@ -62,7 +61,7 @@ if(isset($_POST["check-btn"])) {
                     ?>
 
                     <input type="text" placeholder="Email" name="email">
-                    <input type="text" placeholder="Mot de passe" name="pwd">
+                    <input type="password" placeholder="Mot de passe" name="pwd">
                     <button  name="check-btn">Connexion</button>
                 </div>
 
@@ -74,6 +73,7 @@ if(isset($_POST["check-btn"])) {
                 <a href="create_account.php"><button class="btn-create">Créer un compte</button></a>
             </div>
         </div>
+        <a href="index_accueil.html">Continuer en tant qu'invité</a>
     </div>
 </body>
 </html>
