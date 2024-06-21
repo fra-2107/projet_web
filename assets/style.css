@@ -508,8 +508,8 @@ form input {
     border: solid 1px #D3D3D3;
     background-color: white;
     opacity: 80%;
-    color: white;
     font-size: 15px;
+    color: #D3D3D3;
     font-weight: bold;
 }
 
