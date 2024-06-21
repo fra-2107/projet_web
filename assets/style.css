@@ -464,6 +464,7 @@ main #ajoutArbre .taille_form input {
 
 .page a {
     color: white;
+    margin-top: 2rem;
 }
 
 .form {
@@ -504,7 +505,7 @@ form input {
     width: 300px;
     margin-top: 20px;
     padding: 20px;
-    border: none;
+    border: solid 1px #D3D3D3;
     background-color: white;
     opacity: 80%;
     color: white;
