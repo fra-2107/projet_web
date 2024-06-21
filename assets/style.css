@@ -509,12 +509,16 @@ form .top_form button:hover {
     background-color: white;
     opacity: 80%;
     font-size: 15px;
-    color: #919191;
+    color: black;
     font-weight: bold;
 }
 
 .page form input::placeholder {
     color: #919191;
+}
+
+.page .retour {
+    color: white;
 }
 
 .btn-create {
