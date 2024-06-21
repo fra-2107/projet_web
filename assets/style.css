@@ -461,15 +461,7 @@ main #ajoutArbre .taille_form input {
 }
 
 .form {
-    background-color: #212121;
-}
-
-form .logo {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    background-color: #6F6F6F;
-    margin: 20px;
+    background-color: white;
 }
 
 form .top_form {
@@ -487,7 +479,7 @@ form .top_form button {
     margin-top: 20px;
     width: 340px;
     padding: 10px;
-    background-color: #9E1EDA;
+    background-color: #34671b;
     border: none;
     border-radius: 5px;
     transition: 0.4s all;
@@ -498,7 +490,7 @@ form .top_form button {
 
 form .top_form button:hover {
     cursor: pointer;
-    background-color: #AD50DA;
+    background-color: #87bc26;
 }
 
 form input {
@@ -506,7 +498,7 @@ form input {
     margin-top: 20px;
     padding: 20px;
     border: none;
-    background-color: #6F6F6F;
+    background-color: white;
     opacity: 80%;
     color: white;
     font-size: 15px;
@@ -522,7 +514,7 @@ form input::placeholder {
     width: 340px;
     justify-content: center;
     padding: 10px;
-    background-color: #9E1EDA;
+    background-color: #34671b;
     border: none;
     border-radius: 5px;
     transition: 0.2s all;
@@ -533,7 +525,7 @@ form input::placeholder {
 
 .btn-create:hover {
     cursor: pointer;
-    background-color: #B971DB;
+    background-color: #87bc26;
 }
 
 .erreur {

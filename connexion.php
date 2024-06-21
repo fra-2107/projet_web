@@ -53,7 +53,6 @@ if(isset($_POST["check-btn"])) {
             <form class="form_auth_1" method="POST" action="">
 
                 <div class="top_form">
-                    <div class="logo"></div>
                     <h2>Connectez-vous</h2>
 
                     <?php 
