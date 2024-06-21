@@ -61,7 +61,7 @@ if(isset($_POST["check-btn"])) {
                     ?>
 
                     <input type="text" placeholder="Email" name="email">
-                    <input type="text" placeholder="Mot de passe" name="pwd">
+                    <input type="password" placeholder="Mot de passe" name="pwd">
                     <button  name="check-btn">Connexion</button>
                 </div>
 
