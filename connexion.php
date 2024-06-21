@@ -46,8 +46,6 @@ if(isset($_POST["check-btn"])) {
 </head>
 <body>
     <div class="page">
-
-        <h1>Connectez Vous</h1>
         
         <div class="form">
             <form class="form_auth_1" method="POST" action="">

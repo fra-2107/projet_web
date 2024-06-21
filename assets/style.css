@@ -445,9 +445,8 @@ main #ajoutArbre .taille_form input {
 
 
 .page {
-    width: 700px;
-    margin: auto;
-    padding: 40px;
+    width: 100vh;
+    height: 100vh;
     text-align: center;
     display: flex;
     flex-direction: column;
