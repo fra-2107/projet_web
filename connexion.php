@@ -41,20 +41,18 @@ if(isset($_POST["check-btn"])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/style.css">
     <title>Projet web - connexion</title>
 </head>
 <body>
-
     <div class="page">
 
-        <h1>Bienvenue</h1>
+        <h1>Connectez Vous</h1>
         
         <div class="form">
             <form class="form_auth_1" method="POST" action="">
 
                 <div class="top_form">
-                    <div class="logo"></div>
                     <h2>Connectez-vous</h2>
 
                     <?php 

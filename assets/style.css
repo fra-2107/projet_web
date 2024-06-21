@@ -433,6 +433,109 @@ main #ajoutArbre .taille_form input {
 
 /* ------------------------------------------------------ */
 
+/* PAGE CONNEXION */
+
+/* .page {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to top, #87bc26, #f2f3eb);
+    width: 100vh;
+    height: 100vh;
+} */
+
+.page {
+    width: 700px;
+    margin: auto;
+    padding: 40px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.page h1 {
+    font-size: 40px;
+}
+
+.page hr {
+    opacity: 30%;
+}
+
+.form {
+    background-color: white;
+}
+
+form .top_form {
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    align-items: center;
+}
+
+form .top_form h2 {
+    font-size: 30px;
+}
+
+form .top_form button {
+    margin-top: 20px;
+    width: 340px;
+    padding: 10px;
+    background-color: #34671b;
+    border: none;
+    border-radius: 5px;
+    transition: 0.4s all;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+form .top_form button:hover {
+    cursor: pointer;
+    background-color: #87bc26;
+}
+
+form input {
+    width: 300px;
+    margin-top: 20px;
+    padding: 20px;
+    border: none;
+    background-color: white;
+    opacity: 80%;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+form input::placeholder {
+    color: #D3D3D3;
+}
+
+.btn-create {
+    margin-bottom: 35px;
+    width: 340px;
+    justify-content: center;
+    padding: 10px;
+    background-color: #34671b;
+    border: none;
+    border-radius: 5px;
+    transition: 0.2s all;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.btn-create:hover {
+    cursor: pointer;
+    background-color: #87bc26;
+}
+
+.erreur {
+    color: red;
+}
+
+/* FIN PAGE CONNEXION */
+
+/* ------------------------------------------------------ */
+
 /* RESPONSIVE */
 @media all and (max-width:1600px) {
     nav .right_nav {

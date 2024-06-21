@@ -42,7 +42,7 @@ if(isset($_POST["btn-create"])) {
 
             try {
                 $request->execute();
-                header("Location:index_connexion.php");
+                header("Location:connexion.php");
                 exit;
             } catch (PDOException $e) {
                 $erreur = "Erreur lors de l'inscription : " . $e->getMessage();
