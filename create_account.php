@@ -1,32 +1,34 @@
 <?php 
-    //recuperation de la connexion a la bdd
-    require_once("php/database.php");
-    $erreur = "";
-    $erreur_mdp = "";
+// récupération de la connexion à la bdd
+require_once("php/database.php");
+$erreur = "";
+$erreur_mdp = "";
 
-    //lorsqu'on clique sur le boutton
-    if(isset($_POST["btn-create"])) {
+// lorsqu'on clique sur le bouton
+if(isset($_POST["btn-create"])) {
 
-        // on verifie si tous les champs sont remplis
-        if(empty($_POST["nom"]) || empty($_POST["prenom"]) || empty($_POST["age"]) || empty($_POST["mail"]) || empty($_POST["mdp"]) || empty($_POST["confirm-mdp"])) {
-            $erreur = "Veuillez remplir tous les champs";
-            
+    // on vérifie si tous les champs sont remplis
+    if(empty($_POST["nom"]) || empty($_POST["prenom"]) || empty($_POST["age"]) || empty($_POST["mail"]) || empty($_POST["mdp"]) || empty($_POST["confirm-mdp"])) {
+        $erreur = "Veuillez remplir tous les champs";
+    } else {
+        $nom = $_POST["nom"];
+        $prenom = $_POST["prenom"];
+        $age = $_POST["age"];
+        $mail = $_POST["mail"];
+        $mdp = $_POST["mdp"];
+        $confirm_mdp = $_POST["confirm-mdp"];
+
+        // vérification que les mots de passe correspondent
+        if ($mdp != $confirm_mdp) {
+            $erreur_mdp = "Les mots de passe ne correspondent pas";
         } else {
-            $nom = $_POST["nom"];
-            $prenom = $_POST["prenom"];
-            $age = $_POST["age"];
-            $mail = $_POST["mail"];
-            $mdp = $_POST["mdp"];
-            $confirm_mdp = $_POST["confirm-mdp"];
-        
             $con = dbConnect();
 
             if(!$con) {
                 header("HTTP/1.1 503 Service Unavailable");
                 exit;
             }
-            
-            
+
             $request = $con->prepare("
             INSERT INTO utilisateur (mail, nom, prenom, age, mdp)
             VALUES (:email, :nom, :prenom, :age, :mdp)
@@ -37,17 +39,18 @@
             $request->bindParam(':prenom', $prenom);
             $request->bindParam(':age', $age);
             $request->bindParam(':mdp', $mdp);
-            $request->execute();
 
-            if ($mdp != $confirm_mdp) {
-                $erreur_mdp = "Mot de passe incorrect";
-            } else {
+            try {
+                $request->execute();
                 header("Location:index_connexion.php");
+                exit;
+            } catch (PDOException $e) {
+                $erreur = "Erreur lors de l'inscription : " . $e->getMessage();
             }
         }
     }
+}
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -70,27 +73,25 @@
 
                 <div class="top_form">
                     <?php
-
-                    //Gestion des erreurs
-                    if(isset($erreur_mdp)) {
+                    // Gestion des erreurs
+                    if($erreur_mdp != "") {
                         echo "<p class='erreur'>".$erreur_mdp."</p>";
                     }
 
-                    if(isset($erreur)) {
+                    if($erreur != "") {
                         echo "<p class='erreur'>".$erreur."</p>";
                     }
                     ?>
                     <input type="text" placeholder="Nom" name="nom">
                     <input type="text" placeholder="Prénom" name="prenom">
-                    <input type="text" placeholder="Date naissance (exemple : 2023-06-06)" name="age">
+                    <input type="text" placeholder="Date de naissance (exemple : 2023-06-06)" name="age">
                     <input type="text" placeholder="Email" name="mail">
                     <input type="password" placeholder="Mot de passe" name="mdp">
                     <input type="password" placeholder="Confirmez mot de passe" name="confirm-mdp">
                 </div>
 
-
                 <div class="bottom_form">
-                    <a href="index_connexion.html"><button class="btn-create" name="btn-create">S'inscrire</button></a>
+                    <button class="btn-create" name="btn-create">S'inscrire</button>
                 </div>
 
             </form>
