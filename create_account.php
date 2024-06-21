@@ -97,6 +97,7 @@ if(isset($_POST["btn-create"])) {
 
             </form>
         </div>
+        <a href="connexion.php" class="retour">Retour à la page de connexion</a>
     </div>
 
     <!-- fin du formulaire -->
