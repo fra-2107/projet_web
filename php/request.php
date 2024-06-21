@@ -106,7 +106,7 @@ if ($request[1] == 'arbres') {
 } elseif ($request[1] == 'predictClust') {
 
     $nb_clusters = isset($_POST['nb_clusters']) ? (int)$_POST['nb_clusters'] : 0;
-
+    echo 'nb_clusters : ' . $nb_clusters ;
     if (is_numeric($nb_clusters) && $nb_clusters > 0) {
         // Construction de la commande pour exécuter le script Python
 
