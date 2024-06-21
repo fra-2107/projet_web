@@ -41,7 +41,7 @@ $('#predClusterBtn').click(() => {
     const data = `nb_clusters=${encodeURIComponent(nbClusters)}`;
 
     // Envoi de la requête AJAX avec le nombre de clusters
-    ajaxRequest('GET', 'php/request.php/predictClust/', (response) => {
+    ajaxRequest('POST', 'php/request.php/predictClust/', (response) => {
         console.log('Prédiction reçue:', response);
         window.open('map.html', '_blank')
     }, data);
