@@ -26,9 +26,10 @@ ajaxRequest('GET', 'php/request.php/map/', (response) => {
 
 $('#predClusterBtn').click(() => {
     console.log('Prédiction de clusters');
-
     // Récupération de la valeur du champ de saisie
     const nbClusters = document.getElementById('nb_clust').value;
+
+    console.log('Nombre de clusters:', nbClusters);
 
     // Vérification que la valeur est bien un nombre et est valide
     if (!nbClusters || isNaN(nbClusters) || nbClusters <= 0) {
