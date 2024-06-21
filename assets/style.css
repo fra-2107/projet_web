@@ -461,7 +461,7 @@ main #ajoutArbre .taille_form input {
 }
 
 .form {
-    background-color: white;
+    background: linear-gradient(to top, #87bc26, #34671b);
 }
 
 form .top_form {
