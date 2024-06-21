@@ -443,13 +443,13 @@ main #ajoutArbre .taille_form input {
     height: 100vh;
 } */
 
+
 .page {
-    width: 700px;
-    margin: auto;
-    padding: 40px;
+    height: 100vh;
     text-align: center;
     display: flex;
     flex-direction: column;
+    background: linear-gradient(to top, #87bc26, #34671b);
 }
 
 .page h1 {
@@ -462,6 +462,8 @@ main #ajoutArbre .taille_form input {
 
 .form {
     background-color: white;
+    width: 500px;
+    margin-top: 10rem;
 }
 
 form .top_form {
