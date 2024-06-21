@@ -1,6 +1,6 @@
 'use strict'
 
-ajaxRequest('POST', 'php/request.php/map/', (response) => {
+ajaxRequest('GET', 'php/request.php/map/', (response) => {
     console.log('Données reçues:', response);
 
     // Initialiser la carte centrée sur Saint-Quentin
@@ -40,7 +40,7 @@ $('#predClusterBtn').click(() => {
     const data = `nb_clusters=${encodeURIComponent(nbClusters)}`;
 
     // Envoi de la requête AJAX avec le nombre de clusters
-    ajaxRequest('POST', 'php/request.php/predictClust/', (response) => {
+    ajaxRequest('GET', 'php/request.php/predictClust/', (response) => {
         console.log('Prédiction reçue:', response);
         window.open('map.html', '_blank')
     }, data);
