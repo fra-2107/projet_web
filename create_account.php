@@ -66,12 +66,13 @@ if(isset($_POST["btn-create"])) {
 
     <div class="page">
 
-        <h1>Créer un compte</h1>
 
         <div class="form">
             <form class="form_auth_1" method="POST">
 
                 <div class="top_form">
+
+                    <h1>Créer un compte</h1>
                     <?php
                     // Gestion des erreurs
                     if($erreur_mdp != "") {
