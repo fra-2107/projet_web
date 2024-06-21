@@ -505,16 +505,16 @@ form input {
     width: 300px;
     margin-top: 20px;
     padding: 20px;
-    border: solid 1px #D3D3D3;
+    border: solid 1px #919191;
     background-color: white;
     opacity: 80%;
     font-size: 15px;
-    color: #D3D3D3;
+    color: #919191;
     font-weight: bold;
 }
 
 form input::placeholder {
-    color: #D3D3D3;
+    color: #919191;
 }
 
 .btn-create {
