@@ -1,7 +1,6 @@
 'use strict'
 
-// ajaxRequest('GET', 'php/request.php/arbres', afficheArbres);
-
+// Fonction pour ajouter les arbres à la base de donnée 
 $('#ajoutArbre').submit((event) => {
     event.preventDefault(); // Empêcher la soumission par défaut du formulaire
     console.log("espece" + $('#espece').val())
@@ -28,8 +27,6 @@ $('#ajoutArbre').submit((event) => {
     // Envoyer les données via AJAX
     ajaxRequest('POST', 'php/request.php/arbres/', (response) => {
         console.log('Arbre ajouté avec succès:', response);
-        // Mettre à jour l'affichage des arbres
-        ajaxRequest('GET', 'php/request.php/arbres', afficheArbres);
     }, urlEncodedData);
 
     // Vider le formulaire
@@ -37,14 +34,10 @@ $('#ajoutArbre').submit((event) => {
 });
 
 
-
-function afficheArbres(data) {}
-
-// Récupérer l'élément select
-
-// Fonction pour récupérer les options depuis l'API
+// Fonction pour récupérer les options des selects depuis l'API
 async function fetchOptionsFromDB(selectName) {
     try {
+        // Récupérer l'élément select
         let urlapi = 'php/request.php/' + selectName;
         let selectElement = document.getElementById(selectName);
 
@@ -69,6 +62,7 @@ fetchOptionsFromDB('fk_pied');
 fetchOptionsFromDB('fk_port');
 
 
+// fonction autocompletion pour la selection de l'espece
 $(document).ready(function () {
     // Liste d'espèces d'arbres (exemple statique, remplacez par vos données réelles)
     var speciesList = [];
