@@ -501,7 +501,7 @@ form .top_form button:hover {
     background-color: #87bc26;
 }
 
-form input {
+.page form input {
     width: 300px;
     margin-top: 20px;
     padding: 20px;
@@ -513,7 +513,7 @@ form input {
     font-weight: bold;
 }
 
-form input::placeholder {
+.page form input::placeholder {
     color: #919191;
 }
 
