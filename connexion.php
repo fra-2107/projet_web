@@ -75,7 +75,7 @@ if(isset($_POST["check-btn"])) {
 
             <div class="bottom_form">
                 <p>Vous n'avez pas de compte ?</p>
-                <a href="index_creation_compte.php"><button class="btn-create">Créer un compte</button></a>
+                <a href="create_account.php"><button class="btn-create">Créer un compte</button></a>
             </div>
         </div>
     </div>
